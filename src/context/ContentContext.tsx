@@ -82,7 +82,7 @@ export const FALLBACK_DEFAULTS = {
 
   // Missing Fields to prevent Compilation conflicts
   socialSectionTitle: "Follow Our Sisterhood",
-  socialSubTitle: "Hear our voices and see our latest visual stories",
+  socialSubTitle: "",
   socialLinkX: "https://x.com/thevaginaroom",
   instagramHandle: "@thevaginaroom",
   socialFeedJson: "[]",

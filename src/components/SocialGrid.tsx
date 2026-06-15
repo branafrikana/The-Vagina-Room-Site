@@ -90,15 +90,6 @@ export default function SocialGrid() {
             </motion.a>
           ))}
         </div>
-
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-white font-sans mt-16 text-xl font-bold tracking-widest uppercase"
-        >
-          <EditableText field="socialSubTitle" />
-        </motion.p>
       </div>
     </section>
   );
