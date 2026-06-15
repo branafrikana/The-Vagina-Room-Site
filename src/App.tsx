@@ -281,7 +281,7 @@ function GlobalWidgets() {
   
   // Hide chat widget and PWA popup on specific landing pages to reduce distractions
   const hidePwaPaths = ['/telegram'];
-  const hideWhatsAppPaths = ['/telegram', '/admin', '/member-dashboard'];
+  const hideWhatsAppPaths = ['/telegram', '/admin', '/member-dashboard', '/connect'];
   
   const shouldHidePwa = hidePwaPaths.some(p => location.pathname === p || location.pathname.startsWith(p + '/'));
   const shouldHideWhatsApp = hideWhatsAppPaths.some(p => location.pathname === p || location.pathname.startsWith(p + '/'));

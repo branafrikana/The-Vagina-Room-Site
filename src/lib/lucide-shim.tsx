@@ -6,6 +6,33 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
   strokeWidth?: number | string;
 }
 
+export function createLucideIcon(iconName: string, iconNode: any[]) {
+  const Component = React.forwardRef<SVGSVGElement, IconProps>((props, ref) => {
+    return (
+      <svg
+        ref={ref}
+        width={props.size || 24}
+        height={props.size || 24}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke={props.color || "currentColor"}
+        strokeWidth={props.strokeWidth || 2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={props.className}
+        {...props}
+      >
+        {iconNode.map(([tag, attrs], index) => {
+          const Tag = tag as any;
+          return <Tag key={index} {...attrs} />;
+        })}
+      </svg>
+    );
+  });
+  Component.displayName = iconName;
+  return Component;
+}
+
 const createIcon = (html: string, viewBox = "0 0 24 24") => {
   const Component = React.forwardRef<SVGSVGElement, IconProps>(
     ({ size = 24, color = "currentColor", strokeWidth = 2, className = "", ...props }, ref) => (
@@ -216,10 +243,12 @@ const d: Record<string, string> = {
 const fallbackHtml = '<circle cx="12" cy="12" r="10" /><path d="M12 8v8M8 12h8" />';
 
 // Helper proxy or mapped exports generator
-const icons: Record<string, any> = {};
+export const icons: Record<string, any> = {};
 Object.keys(d).forEach(key => {
   icons[key] = createIcon(d[key]);
 });
+
+export default icons;
 
 // Explicit named functional components so they are fully typable and resolvable as static assets
 export const ChevronDown = icons.ChevronDown || createIcon(fallbackHtml);
