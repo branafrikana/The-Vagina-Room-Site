@@ -7,7 +7,7 @@ import { useContent } from "../context/ContentContext";
 import { safeJsonParse } from "../lib/json";
 import { Link } from "react-router-dom";
 
-const confettiColors = ["#D4AF37", "#0088cc", "#ffffff", "#facc15", "#4ade80"];
+const confettiColors = ["#D4AF37", "#25D366", "#ffffff", "#facc15", "#4ade80"];
 
 function ConfettiEffect() {
   const [particles, setParticles] = useState<{ id: number; x: number; color: string; size: number; duration: number; delay: number }[]>([]);
@@ -55,9 +55,9 @@ function ConfettiEffect() {
   );
 }
 
-export default function TelegramCommunityThankYouPage() {
+export default function WhatsAppCommunityThankYouPage() {
   const { content } = useContent();
-  const communityLink = content.contactThankYouTelegramLink || "https://t.me/";
+  const communityLink = content.contactThankYouWhatsAppLink || "https://wa.me/";
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-50 flex flex-col font-sans selection:bg-brand-gold/30 relative">
@@ -76,15 +76,15 @@ export default function TelegramCommunityThankYouPage() {
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-xl mx-auto bg-zinc-900/50 border border-white/5 p-10 md:p-14 shadow-2xl shadow-[#0088cc]/5 backdrop-blur-xl rounded-[2rem] w-full"
+          className="max-w-xl mx-auto bg-zinc-900/50 border border-white/5 p-10 md:p-14 shadow-2xl shadow-[#25D366]/5 backdrop-blur-xl rounded-[2rem] w-full"
         >
           <motion.div 
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-            className="mx-auto w-24 h-24 rounded-full bg-[#0088cc]/10 flex items-center justify-center border border-[#0088cc]/20 mb-8"
+            className="mx-auto w-24 h-24 rounded-full bg-[#25D366]/10 flex items-center justify-center border border-[#25D366]/20 mb-8"
           >
-            <CheckCircle2 className="text-[#0088cc]" size={48} />
+            <CheckCircle2 className="text-[#25D366]" size={48} />
           </motion.div>
 
           <div className="flex items-center justify-center gap-3 w-full max-w-xs mx-auto mb-8">
@@ -93,10 +93,10 @@ export default function TelegramCommunityThankYouPage() {
                   initial={{ width: "50%" }}
                   animate={{ width: "100%" }}
                   transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-                  className="h-full bg-[#0088cc] rounded-full shadow-[0_0_10px_#0088cc]" 
+                  className="h-full bg-[#25D366] rounded-full shadow-[0_0_10px_#25D366]" 
                 />
             </div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#0088cc] whitespace-nowrap">Step 2 of 2</span>
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#25D366] whitespace-nowrap">Step 2 of 2</span>
           </div>
 
           <motion.div
@@ -109,7 +109,7 @@ export default function TelegramCommunityThankYouPage() {
             </h1>
             
             <p className="text-lg text-zinc-400 font-light leading-relaxed mb-10">
-              Your details have been recorded. You are now officially invited to join our exclusive Telegram network.
+              Your details have been recorded. You are now officially invited to join our exclusive WhatsApp network.
             </p>
 
             <div className="flex flex-col gap-4">
@@ -117,20 +117,20 @@ export default function TelegramCommunityThankYouPage() {
                 href={communityLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-full px-8 py-5 bg-[#0088cc] text-white font-bold text-lg hover:bg-[#007ab8] transition-all duration-300 rounded-xl uppercase tracking-widest shadow-xl shadow-[#0088cc]/20 gap-3 hover:scale-[1.02] active:scale-95 group border-none cursor-pointer"
+                className="inline-flex items-center justify-center w-full px-8 py-5 bg-[#25D366] text-white font-bold text-lg hover:bg-[#1DA851] transition-all duration-300 rounded-xl uppercase tracking-widest shadow-xl shadow-[#25D366]/20 gap-3 hover:scale-[1.02] active:scale-95 group border-none cursor-pointer"
               >
-                Join Telegram Group <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                Join WhatsApp Group <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </a>
 
               <Link
-                to="/telegram"
+                to="/whatsapp"
                 className="inline-flex items-center justify-center w-full px-8 py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm tracking-widest uppercase transition-all duration-300 rounded-xl gap-2 hover:scale-[1.02] active:scale-95 border border-white/5 cursor-pointer hover:border-white/10"
               >
-                Return to Telegram Page
+                Return to Landing Page
               </Link>
             </div>
 
-            <Link to="/" className="inline-block mt-8 text-xs text-zinc-500 hover:text-[#0088cc] hover:underline transition-colors font-medium">
+            <Link to="/" className="inline-block mt-8 text-xs text-zinc-500 hover:text-[#25D366] hover:underline transition-colors font-medium">
               Go to Website Homepage
             </Link>
           </motion.div>

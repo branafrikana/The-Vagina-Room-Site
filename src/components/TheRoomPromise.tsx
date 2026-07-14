@@ -23,14 +23,16 @@ export default function TheRoomPromise() {
   return (
     <section className="bg-brand-black text-white relative overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-         <img 
-           src={content.heroBgUrl || "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1600"} 
-           alt="" 
-           className="w-full h-full object-cover grayscale" 
-           referrerPolicy="no-referrer"
-         />
-      </div>
+      {content.heroBgUrl && (
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+           <img 
+             src={content.heroBgUrl} 
+             alt="" 
+             className="w-full h-full object-cover grayscale" 
+             referrerPolicy="no-referrer"
+           />
+        </div>
+      )}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-red/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 py-40">

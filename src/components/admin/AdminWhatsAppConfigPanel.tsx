@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useContent } from '../../context/ContentContext';
-import { AdminTelegramCommunityTab } from './AdminOtherTabs';
+import { AdminWhatsAppCommunityTab } from './AdminOtherTabs';
 import { ImageUploader } from './ImageUploader';
 
-export default function AdminTelegramConfigPanel() {
+export default function AdminWhatsAppConfigPanel() {
   const { content, updateContentField, saveContentChanges } = useContent();
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle');
   const [saveMsg, setSaveMsg] = useState("");
@@ -14,7 +14,7 @@ export default function AdminTelegramConfigPanel() {
       const result = await saveContentChanges();
       if (result.success) {
         setSaveStatus("success");
-        setSaveMsg("Telegram Landing Page configuration successfully committed to database!");
+        setSaveMsg("WhatsApp Landing Page configuration successfully committed to database!");
         setTimeout(() => setSaveStatus("idle"), 4000);
       } else {
         setSaveStatus("error");
@@ -33,7 +33,7 @@ export default function AdminTelegramConfigPanel() {
       {/* Top Header & Commit Action Bar */}
       <div className="bg-zinc-900 border border-brand-gold/30 p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h3 className="text-base font-black uppercase tracking-[0.2em] text-brand-gold">📢 Sisterhood Telegram Community</h3>
+          <h3 className="text-base font-black uppercase tracking-[0.2em] text-brand-gold">📢 Sisterhood WhatsApp Community</h3>
           <p className="text-xs text-white/50 mt-1 font-light">Modify landing page copy, media layouts, image assets, and configure post-submission behavior.</p>
         </div>
         <div className="flex items-center gap-3">
@@ -68,19 +68,19 @@ export default function AdminTelegramConfigPanel() {
         </div>
       )}
 
-      <AdminTelegramCommunityTab />
+      <AdminWhatsAppCommunityTab />
       
       <div className="border-t border-white/5 pt-10">
-        <h3 className="text-base font-black uppercase tracking-[0.2em] text-brand-gold flex items-center gap-1.5 border-b border-white/5 pb-2 mt-8">🖼️ Telegram Landing Page Images</h3>
+        <h3 className="text-base font-black uppercase tracking-[0.2em] text-brand-gold flex items-center gap-1.5 border-b border-white/5 pb-2 mt-8">🖼️ WhatsApp Landing Page Images</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-          <ImageUploader fieldKey="telegramHeroBgUrl" label="Hero Banner Image" />
-          <ImageUploader fieldKey="telegramCommunityImgUrl" label="Community Session Image" />
-          <ImageUploader fieldKey="telegramFounderImageUrl" label="Founder Image" />
+          <ImageUploader fieldKey="whatsappHeroBgUrl" label="Hero Banner Image" />
+          <ImageUploader fieldKey="whatsappCommunityImgUrl" label="Community Session Image" />
+          <ImageUploader fieldKey="whatsappFounderImageUrl" label="Founder Image" />
         </div>
       </div>
 
       <div className="border-t border-white/5 pt-10">
-        <h3 className="text-base font-black uppercase tracking-[0.2em] text-brand-gold flex items-center gap-1.5 border-b border-white/5 pb-2 mt-8">🎉 Thank You Page & Telegram CTA</h3>
+        <h3 className="text-base font-black uppercase tracking-[0.2em] text-brand-gold flex items-center gap-1.5 border-b border-white/5 pb-2 mt-8">🎉 Thank You Page & WhatsApp CTA</h3>
 
         <div className="border border-white/5 p-4 rounded-none bg-white/[0.02] space-y-6">
           <p className="text-xs text-white/50 font-light">Configure the custom separate Thank You page that displays to community members after they submit the contact form.</p>
@@ -97,24 +97,24 @@ export default function AdminTelegramConfigPanel() {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">Telegram CTA Button Text</label>
+              <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">WhatsApp CTA Button Text</label>
               <input 
                 type="text" 
                 value={content.contactThankYouCtaText || ""}
                 onChange={(e) => updateContentField("contactThankYouCtaText", e.target.value)}
-                placeholder="e.g. Join Our Free Telegram Community"
+                placeholder="e.g. Join Our Free WhatsApp Community"
                 className="w-full bg-brand-black border border-white/10 p-3 text-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold text-xs" 
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">Telegram Group Invite Link</label>
+            <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">WhatsApp Group Invite Link</label>
             <input 
               type="text" 
-              value={content.contactThankYouTelegramLink || ""}
-              onChange={(e) => updateContentField("contactThankYouTelegramLink", e.target.value)}
-              placeholder="e.g. https://t.me/yourgroup"
+              value={content.contactThankYouWhatsAppLink || ""}
+              onChange={(e) => updateContentField("contactThankYouWhatsAppLink", e.target.value)}
+              placeholder="e.g. https://chat.whatsapp.com/invite_code"
               className="w-full bg-brand-black border border-white/10 p-3 text-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold text-xs font-mono" 
             />
           </div>
@@ -131,7 +131,7 @@ export default function AdminTelegramConfigPanel() {
       </div>
 
       <div className="border-t border-white/5 pt-10">
-        <h3 className="text-base font-black uppercase tracking-[0.2em] text-brand-gold flex items-center gap-1.5 border-b border-white/5 pb-2 mt-8">🎨 Telegram Landing Page Header Logo</h3>
+        <h3 className="text-base font-black uppercase tracking-[0.2em] text-brand-gold flex items-center gap-1.5 border-b border-white/5 pb-2 mt-8">🎨 WhatsApp Landing Page Header Logo</h3>
         <div className="border border-white/5 p-4 rounded-none bg-white/[0.02] space-y-6 mt-4">
           {/* Hero Banner Section Logo */}
           <h4 className="text-xs font-black uppercase tracking-wider text-brand-gold">Hero Banner Section Logo</h4>
@@ -139,8 +139,8 @@ export default function AdminTelegramConfigPanel() {
             <label className="flex items-center gap-2 cursor-pointer">
               <input 
                 type="radio" 
-                checked={content.telegramHeroLogoType === 'image'}
-                onChange={() => updateContentField("telegramHeroLogoType", "image")}
+                checked={content.whatsappHeroLogoType === 'image'}
+                onChange={() => updateContentField("whatsappHeroLogoType", "image")}
                 className="accent-brand-gold"
               />
               <span className="text-xs text-white">Image Logo</span>
@@ -148,23 +148,23 @@ export default function AdminTelegramConfigPanel() {
             <label className="flex items-center gap-2 cursor-pointer">
               <input 
                 type="radio" 
-                checked={content.telegramHeroLogoType !== 'image'}
-                onChange={() => updateContentField("telegramHeroLogoType", "text")}
+                checked={content.whatsappHeroLogoType !== 'image'}
+                onChange={() => updateContentField("whatsappHeroLogoType", "text")}
                 className="accent-brand-gold"
               />
               <span className="text-xs text-white">Text Logo</span>
             </label>
           </div>
 
-          {content.telegramHeroLogoType === 'image' ? (
-            <ImageUploader fieldKey="telegramHeroLogoUrl" label="Hero Banner Image Logo" />
+          {content.whatsappHeroLogoType === 'image' ? (
+            <ImageUploader fieldKey="whatsappHeroLogoUrl" label="Hero Banner Image Logo" />
           ) : (
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">Text Logo Content</label>
               <input 
                 type="text" 
-                value={content.telegramHeroHeaderTextLogo || "The Vagina Room"}
-                onChange={(e) => updateContentField("telegramHeroHeaderTextLogo", e.target.value)}
+                value={content.whatsappHeroHeaderTextLogo || "The Vagina Room"}
+                onChange={(e) => updateContentField("whatsappHeroHeaderTextLogo", e.target.value)}
                 className="w-full bg-brand-black border border-white/10 p-3 text-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold text-xs" 
               />
             </div>
@@ -173,12 +173,12 @@ export default function AdminTelegramConfigPanel() {
           <div className="space-y-2 border-t border-white/5 pt-4">
             <div className="flex justify-between items-center">
               <label className="text-[10px] font-black uppercase tracking-wider text-white/30">Hero Section Logo Height (px)</label>
-              <span className="text-white/60 font-mono text-[10px]">{content.telegramHeroLogoHeight || 150}px</span>
+              <span className="text-white/60 font-mono text-[10px]">{content.whatsappHeroLogoHeight || 150}px</span>
             </div>
             <input 
               type="range" min="50" max="400" step="1"
-              value={content.telegramHeroLogoHeight || 150}
-              onChange={(e) => updateContentField("telegramHeroLogoHeight", e.target.value)}
+              value={content.whatsappHeroLogoHeight || 150}
+              onChange={(e) => updateContentField("whatsappHeroLogoHeight", e.target.value)}
               className="w-full accent-brand-gold h-1 bg-white/10 rounded-lg appearance-none cursor-pointer"
             />
           </div>
@@ -191,8 +191,8 @@ export default function AdminTelegramConfigPanel() {
             <label className="flex items-center gap-2 cursor-pointer">
               <input 
                 type="radio" 
-                checked={content.telegramHeaderLogoType === 'image'}
-                onChange={() => updateContentField("telegramHeaderLogoType", "image")}
+                checked={content.whatsappHeaderLogoType === 'image'}
+                onChange={() => updateContentField("whatsappHeaderLogoType", "image")}
                 className="accent-brand-gold"
               />
               <span className="text-xs text-white">Image Logo</span>
@@ -200,23 +200,23 @@ export default function AdminTelegramConfigPanel() {
             <label className="flex items-center gap-2 cursor-pointer">
               <input 
                 type="radio" 
-                checked={content.telegramHeaderLogoType !== 'image'}
-                onChange={() => updateContentField("telegramHeaderLogoType", "text")}
+                checked={content.whatsappHeaderLogoType !== 'image'}
+                onChange={() => updateContentField("whatsappHeaderLogoType", "text")}
                 className="accent-brand-gold"
               />
               <span className="text-xs text-white">Text Logo</span>
             </label>
           </div>
 
-          {content.telegramHeaderLogoType === 'image' ? (
-            <ImageUploader fieldKey="telegramHeaderLogoUrl" label="Header Image Logo" />
+          {content.whatsappHeaderLogoType === 'image' ? (
+            <ImageUploader fieldKey="whatsappHeaderLogoUrl" label="Header Image Logo" />
           ) : (
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">Text Logo Content</label>
               <input 
                 type="text" 
-                value={content.telegramHeaderTextLogo || "The Vagina Room"}
-                onChange={(e) => updateContentField("telegramHeaderTextLogo", e.target.value)}
+                value={content.whatsappHeaderTextLogo || "The Vagina Room"}
+                onChange={(e) => updateContentField("whatsappHeaderTextLogo", e.target.value)}
                 className="w-full bg-brand-black border border-white/10 p-3 text-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold text-xs" 
               />
             </div>
@@ -224,12 +224,12 @@ export default function AdminTelegramConfigPanel() {
           <div className="space-y-2 border-t border-white/5 pt-4">
             <div className="flex justify-between items-center">
               <label className="text-[10px] font-black uppercase tracking-wider text-white/30">Header Logo Height (px)</label>
-              <span className="text-white/60 font-mono text-[10px]">{content.telegramHeaderLogoHeight || 44}px</span>
+              <span className="text-white/60 font-mono text-[10px]">{content.whatsappHeaderLogoHeight || 44}px</span>
             </div>
             <input 
               type="range" min="16" max="100" step="1"
-              value={content.telegramHeaderLogoHeight || 44}
-              onChange={(e) => updateContentField("telegramHeaderLogoHeight", e.target.value)}
+              value={content.whatsappHeaderLogoHeight || 44}
+              onChange={(e) => updateContentField("whatsappHeaderLogoHeight", e.target.value)}
               className="w-full accent-brand-gold h-1 bg-white/10 rounded-lg appearance-none cursor-pointer"
             />
           </div>
@@ -243,7 +243,7 @@ export default function AdminTelegramConfigPanel() {
           disabled={saveStatus === "saving"}
           className="px-8 py-4 bg-brand-gold hover:bg-white text-brand-black font-black tracking-widest text-xs uppercase transition-all duration-300 shadow active:scale-95 disabled:opacity-50 cursor-pointer border-none flex items-center gap-2"
         >
-          {saveStatus === "saving" ? "Saving..." : "Save Telegram Configuration"}
+          {saveStatus === "saving" ? "Saving..." : "Save WhatsApp Configuration"}
         </button>
       </div>
     </div>

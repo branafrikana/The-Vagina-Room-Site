@@ -41,7 +41,7 @@ const SEARCHABLE_CONFIG_FIELDS: { key: string; label: string; tab: string }[] = 
   { key: "drFidHeading", label: "Dr. FID Biography Headline", tab: "dr-fid" },
   { key: "drFidCertifications", label: "Dr. FID Educational Badges List", tab: "dr-fid" },
   { key: "productsListJson", label: "Active Products Core List", tab: "products" },
-  { key: "telegramConfigsJson", label: "Telegram Onboarding Setup Settings", tab: "telegram_config" }
+  { key: "whatsappConfigsJson", label: "WhatsApp Onboarding Setup Settings", tab: "whatsapp_config" }
 ];
 
 export default function AdminGlobalSearch({ 

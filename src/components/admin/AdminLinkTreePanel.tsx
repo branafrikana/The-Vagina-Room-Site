@@ -4,7 +4,7 @@ import { ImageUploader } from "./ImageUploader";
 import { 
   Instagram, 
   Youtube, 
-  Send, 
+   
   Linkedin, 
   Plus, 
   Trash2, 
@@ -575,11 +575,11 @@ export default function AdminLinkTreePanel() {
                 🌐 2. Social Media Shortcuts
               </h4>
               <div className="flex flex-wrap gap-2">
-                {["Instagram", "Youtube", "Telegram", "LinkedIn", "TikTok", "Facebook", "Twitter", "WhatsApp", "Threads", "Snapchat", "Pinterest", "Website"].map((platform) => {
+                {["Instagram", "Youtube", "LinkedIn", "TikTok", "Facebook", "Twitter", "WhatsApp", "Threads", "Snapchat", "Pinterest", "Website"].map((platform) => {
                   const hasIcon = socials.some(s => s.platform.toLowerCase() === platform.toLowerCase());
                   
                   let iconName = platform;
-                  if (platform === "Telegram") iconName = "Send";
+                  if (platform === "WhatsApp") iconName = "MessageCircle";
                   if (platform === "TikTok") iconName = "Tiktok";
                   if (platform === "Twitter" || platform === "X") iconName = "XIcon";
                   if (platform === "WhatsApp") iconName = "MessageCircle";
@@ -612,7 +612,7 @@ export default function AdminLinkTreePanel() {
                     <span className="text-brand-gold p-1 bg-white/5 rounded">
                       {soc.platform.toLowerCase() === "instagram" && <Instagram size={14} />}
                       {soc.platform.toLowerCase() === "youtube" && <Youtube size={14} />}
-                      {soc.platform.toLowerCase() === "telegram" && <Send size={14} />}
+                      {soc.platform.toLowerCase() === "whatsapp" && <MessageCircle size={14} />}
                       {soc.platform.toLowerCase() === "linkedin" && <Linkedin size={14} />}
                       {soc.platform.toLowerCase() === "facebook" && <Facebook size={14} />}
                       {(soc.platform.toLowerCase() === "twitter" || soc.platform.toLowerCase() === "x") && <XIcon size={14} />}
@@ -1030,7 +1030,7 @@ export default function AdminLinkTreePanel() {
                   <span key={i} className="text-white/40 text-[10px] p-1.5 bg-white/5 rounded-full block" title={s.platform}>
                     {s.platform.toLowerCase() === "instagram" && <Instagram size={11} />}
                     {s.platform.toLowerCase() === "youtube" && <Youtube size={11} />}
-                    {s.platform.toLowerCase() === "telegram" && <Send size={11} />}
+                    {s.platform.toLowerCase() === "whatsapp" && <MessageCircle size={11} />}
                     {s.platform.toLowerCase() === "linkedin" && <Linkedin size={11} />}
                     {s.platform.toLowerCase() === "facebook" && <Facebook size={11} />}
                     {(s.platform.toLowerCase() === "twitter" || s.platform.toLowerCase() === "x") && <XIcon size={11} />}

@@ -1,15 +1,14 @@
 import { motion } from 'motion/react';
 import { useContent } from '../context/ContentContext';
 import EditableText from './EditableText';
-import { ImageLoader } from './ImageLoader';
 
 export default function IdentityGrid() {
   const { content } = useContent();
   const fallbackIdentities = [
-    { label: content.identityLabel1 || 'Speaker', image: content.identityImg1 || 'https://images.unsplash.com/photo-1576089234411-497c62ca621e?auto=format&fit=crop&q=80&w=800' },
-    { label: content.identityLabel2 || 'Trainer', image: content.identityImg2 || 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800' },
-    { label: content.identityLabel3 || 'Coach', image: content.identityImg3 || 'https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=800' },
-    { label: content.identityLabel4 || 'Therapist', image: content.identityImg4 || 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800' }
+    { label: content.identityLabel1 || 'Speaker', image: content.identityImg1 || '' },
+    { label: content.identityLabel2 || 'Trainer', image: content.identityImg2 || '' },
+    { label: content.identityLabel3 || 'Coach', image: content.identityImg3 || '' },
+    { label: content.identityLabel4 || 'Therapist', image: content.identityImg4 || '' }
   ];
 
   let identities = fallbackIdentities;
@@ -62,13 +61,22 @@ export default function IdentityGrid() {
             transition={{ delay: index * 0.1 }}
             className="relative group overflow-hidden border-r border-white/5 last:border-0 grayscale hover:grayscale-0 transition-all duration-1000 cursor-crosshair"
           >
-            <ImageLoader 
-              src={item.image} 
-              alt={item.label} 
-              className="w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-125"
-              referrerPolicy="no-referrer"
-              priority={false}
-            />
+            {item.image ? (
+              <img 
+                src={item.image} 
+                alt={item.label} 
+                className="w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-125"
+                referrerPolicy="no-referrer"
+                loading="eager"
+                // @ts-ignore - fetchpriority is a valid HTML attribute but may not be in React types yet
+                fetchPriority="high"
+              />
+            ) : (
+              <div className="w-full h-full bg-zinc-950 flex flex-col items-center justify-center p-6 text-center border border-white/5">
+                <span className="font-serif text-2xl italic text-brand-gold/60 mb-2">{item.label}</span>
+                <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">Restorative Space</span>
+              </div>
+            )}
             <div className="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition-colors" />
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                <div className="w-16 h-16 border border-white/40 flex items-center justify-center text-white backdrop-blur-sm">

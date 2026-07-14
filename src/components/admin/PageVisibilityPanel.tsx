@@ -23,7 +23,7 @@ const STATIC_PAGES: StaticPageItem[] = [
   { path: "/products", name: "Products Page (Shop)", category: "Store", desc: "Phyto-medicinal intimate care formulations & therapeutic tools." },
   { path: "/checkout", name: "Checkout & Cart Gate", category: "Store", desc: "Transaction billing fields, delivery options, and payment gateway." },
   { path: "/affiliate-program", name: "Affiliate Program", category: "Community", desc: "Collaborator program where partners earn commission for sharing products." },
-  { path: "/telegram", name: "Telegram Free Community", category: "Community", desc: "Free sisterhood landing portal channeling users to Telegram circles." },
+  { path: "/whatsapp", name: "WhatsApp Free Community", category: "Community", desc: "Free sisterhood landing portal channeling users to WhatsApp circles." },
   { path: "/blogs", name: "Blogs & Gazette", category: "Community", desc: "Clinical and therapeutic articles (Know Your Vagina Gazette)." },
   { path: "/support", name: "Support Our Mission", category: "Core", desc: "Financial contributions and sponsorship intake form options." },
   { path: "/partner", name: "Partner With Us", category: "Core", desc: "Corporate collaboration, sponsor alignments, and clinical training inquiry." },

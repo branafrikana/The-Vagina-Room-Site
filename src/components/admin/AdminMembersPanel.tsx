@@ -172,8 +172,7 @@ export default function AdminMembersPanel() {
 
   const fetchUsers = async () => {
     try {
-      const { getDocs: clientGetDocs } = await import('firebase/firestore');
-      const querySnapshot = await clientGetDocs(collection(db, "users"));
+      const querySnapshot = await getDocs(collection(db, "users"));
       const usersList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setUsers(usersList);
     } catch (e) {

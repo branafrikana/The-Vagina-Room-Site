@@ -47,7 +47,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { fetchWithApiBase } from '../lib/api';
 import { useAuth } from "../context/AuthContext";
 import { auth, db } from "../lib/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import AdminContentRenderer from "../components/admin/AdminContentRenderer";
 import NavigationMenuManager from "../components/admin/NavigationMenuManager";
@@ -87,7 +87,7 @@ import AdminAnalytics from "../components/admin/AdminAnalytics";
 import AdminPermissionsPanel from "../components/admin/AdminPermissionsPanel";
 import AdminAutomationPanel from "../components/admin/AdminAutomationPanel";
 import AdminMembersPanel from "../components/admin/AdminMembersPanel";
-import AdminTelegramConfigPanel from "../components/admin/AdminTelegramConfigPanel";
+import AdminWhatsAppConfigPanel from "../components/admin/AdminWhatsAppConfigPanel";
 
 
 export default function AdminPage() {
@@ -135,7 +135,7 @@ export default function AdminPage() {
       products: ['products', 'discount_codes'],
       members: ['members', 'approvals', 'partners', 'community'],
       content: ['content', 'page_manager', 'page_visibility', 'blog_manager', 'media_manager', 'events', 'resources', 'reorder_sections', 'link_tree'],
-      settings: ['general', 'branding', 'seo', 'security', 'social', 'navigation', 'live_class', 'checkout_settings', 'payment_gateways', 'media_sync', 'telegram_config', 'integrations', 'permissions', 'automation', 'member_hub', 'business_details', 'settings'],
+      settings: ['general', 'branding', 'seo', 'security', 'social', 'navigation', 'live_class', 'checkout_settings', 'payment_gateways', 'media_sync', 'whatsapp_config', 'integrations', 'permissions', 'automation', 'member_hub', 'business_details', 'settings'],
       moderation: ['moderation', 'submissions']
     };
 
@@ -160,7 +160,7 @@ export default function AdminPage() {
       const tabs: (typeof activeTab)[] = [
         'dashboard', 'members', 'approvals', 'payouts', 'partners', 
         'moderation', 'submissions', 'content', 'link_tree', 'reorder_sections', 'sales_trends', 
-        'discount_codes', 'navigation', 'telegram_config', 'events', 'resources', 
+        'discount_codes', 'navigation', 'whatsapp_config', 'events', 'resources', 
         'community', 'live_class', 'products', 'orders', 'business_details', 'checkout_settings', 
         'payment_gateways', 'media_sync', 'page_manager', 'page_visibility', 'blog_manager', 'media_manager', 
         'general', 'branding', 'seo', 'security', 'social', 'integrations', 'permissions'
@@ -180,7 +180,7 @@ export default function AdminPage() {
   const [usersLoading, setUsersLoading] = useState(false);
   const [selectedSub, setSelectedSub] = useState<any | null>(null);
   const [confirmDeleteSubId, setConfirmDeleteSubId] = useState<string | null>(null);
-  const [submissionFilter, setSubmissionFilter] = useState<"all" | "partnership" | "contact" | "booking_dr_fid" | "telegram_community">("all");
+  const [submissionFilter, setSubmissionFilter] = useState<"all" | "partnership" | "contact" | "booking_dr_fid" | "whatsapp_community">("all");
 
   const [leadsMeta, setLeadsMeta] = useState<Record<string, { status: string; notes: string }>>(() => {
     try {
@@ -267,10 +267,10 @@ export default function AdminPage() {
   const totalPartnershipSubmissions = enrichedSubmissions.filter(s => s.formType === "partnership").length;
   const totalContactSubmissions = enrichedSubmissions.filter(s => s.formType === "contact").length;
   const totalBookingSubmissions = enrichedSubmissions.filter(s => s.formType === "booking_dr_fid").length;
-  const totalTelegramSubmissions = enrichedSubmissions.filter(s => s.formType === "telegram_community").length;
+  const totalWhatsAppSubmissions = enrichedSubmissions.filter(s => s.formType === "whatsapp_community").length;
 
-  const telegramSubmissions = React.useMemo(() => {
-    return enrichedSubmissions.filter(s => s.formType === "telegram_community");
+  const whatsappSubmissions = React.useMemo(() => {
+    return enrichedSubmissions.filter(s => s.formType === "whatsapp_community");
   }, [enrichedSubmissions]);
 
   const continentStats = React.useMemo(() => {
@@ -422,7 +422,6 @@ export default function AdminPage() {
     if (!isAdmin && !isAdminEmail) return;
     setSubmissionsLoading(true);
     try {
-      const { collection, getDocs } = await import('firebase/firestore');
       const querySnapshot = await getDocs(collection(db, "submissions"));
       const data = querySnapshot.docs.map(doc => {
         const docData = doc.data() as any;
@@ -446,7 +445,6 @@ export default function AdminPage() {
     if (!isAdmin && !isAdminEmail) return;
     setOrdersLoading(true);
     try {
-      const { collection, getDocs } = await import('firebase/firestore');
       const querySnapshot = await getDocs(collection(db, "orders"));
       const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setOrders(Array.isArray(data) ? data : []);
@@ -601,7 +599,6 @@ export default function AdminPage() {
     }
 
     try {
-      const { doc, deleteDoc } = await import('firebase/firestore');
       await deleteDoc(doc(db, "submissions", id));
       setSubmissions((prev) => prev.filter((s) => s.id !== id));
       if (selectedSub?.id === id) setSelectedSub(null);
@@ -1170,17 +1167,17 @@ export default function AdminPage() {
                       </span>
                     </button>
                   ),
-                  telegram_config: () => hasPermission("settings") && (
+                  whatsapp_config: () => hasPermission("settings") && (
                     <button
-                      onClick={() => setActiveTab("telegram_config")}
+                      onClick={() => setActiveTab("whatsapp_config")}
                       className={`w-full text-left px-5 py-4 text-xs font-black uppercase tracking-widest transition-all flex items-center justify-between cursor-pointer ${
-                        activeTab === "telegram_config"
+                        activeTab === "whatsapp_config"
                           ? "bg-brand-gold text-brand-black"
                           : "bg-white/[0.02] border border-white/5 text-white/70 hover:bg-white/[0.05]"
                       }`}
                     >
                       <span className="flex items-center gap-2">
-                        <span className="text-xs">🤖</span> Telegram Config
+                        <span className="text-xs">🤖</span> WhatsApp Config
                       </span>
                     </button>
                   ),
@@ -1502,7 +1499,7 @@ export default function AdminPage() {
                     "discount_codes",
                     "navigation",
                     "live_class",
-                    "telegram_config",
+                    "whatsapp_config",
                     "automation",
                     "events",
                     "resources",
@@ -1649,13 +1646,13 @@ export default function AdminPage() {
                 const dashBookings = dashboardSubmissionsFiltered.filter(s => s.formType === "booking_dr_fid").length;
                 const dashPartnerships = dashboardSubmissionsFiltered.filter(s => s.formType === "partnership").length;
                 const dashContacts = dashboardSubmissionsFiltered.filter(s => s.formType === "contact").length;
-                const dashTelegram = dashboardSubmissionsFiltered.filter(s => s.formType === "telegram_community").length;
+                const dashWhatsApp = dashboardSubmissionsFiltered.filter(s => s.formType === "whatsapp_community").length;
 
                 // Percentages for the segment stacked ratio bar
                 const bPct = dashTotalInbound ? Math.round((dashBookings / dashTotalInbound) * 100) : 0;
                 const pPct = dashTotalInbound ? Math.round((dashPartnerships / dashTotalInbound) * 100) : 0;
                 const cPct = dashTotalInbound ? Math.round((dashContacts / dashTotalInbound) * 100) : 0;
-                const tPct = dashTotalInbound ? Math.round((dashTelegram / dashTotalInbound) * 100) : 0;
+                const tPct = dashTotalInbound ? Math.round((dashWhatsApp / dashTotalInbound) * 100) : 0;
 
                 // User / Membership Stats
                 const totalMembers = users.filter(u => u.isMember).length;
@@ -1955,11 +1952,11 @@ export default function AdminPage() {
                                   title={`Inquiries: ${dashContacts} (${cPct}%)`}
                                 />
                               )}
-                              {dashTelegram > 0 && (
+                              {dashWhatsApp > 0 && (
                                 <div 
-                                  className="h-full bg-[#0088cc] transition-all duration-500 ease-out" 
+                                  className="h-full bg-[#25D366] transition-all duration-500 ease-out" 
                                   style={{ width: `${tPct}%` }}
-                                  title={`Telegram Leads: ${dashTelegram} (${tPct}%)`}
+                                  title={`WhatsApp Leads: ${dashWhatsApp} (${tPct}%)`}
                                 />
                               )}
                             </div>
@@ -1978,9 +1975,9 @@ export default function AdminPage() {
                                 <span className="w-2 h-2 bg-brand-gold rounded-none inline-block border border-white/10" />
                                 <span>Inquiries: {dashContacts} ({cPct}%)</span>
                               </div>
-                              <div className="flex items-center gap-1.5 text-[#0088cc]">
-                                <span className="w-2 h-2 bg-[#0088cc] rounded-none inline-block border border-white/10" />
-                                <span>Telegram: {dashTelegram} ({tPct}%)</span>
+                              <div className="flex items-center gap-1.5 text-[#25D366]">
+                                <span className="w-2 h-2 bg-[#25D366] rounded-none inline-block border border-white/10" />
+                                <span>WhatsApp: {dashWhatsApp} ({tPct}%)</span>
                               </div>
                             </div>
                           </div>
@@ -2027,11 +2024,11 @@ export default function AdminPage() {
                           <p className="text-[10px] text-zinc-500 font-mono mt-1">out of {totalContactSubmissions} global</p>
                           <button onClick={() => { setActiveTab("submissions"); setSubmissionFilter("contact"); }} className="text-[9px] uppercase font-bold text-brand-gold hover:underline mt-3 block text-left">View Inquiries →</button>
                         </div>
-                        <div className="bg-[#0088cc]/10 p-5 border border-[#0088cc]/20 hover:border-[#0088cc]/40 transition-colors">
-                          <p className="text-[9px] text-[#0088cc] uppercase tracking-widest font-black">Telegram Leads</p>
-                          <p className="text-3xl font-black mt-2 text-white">{dashTelegram}</p>
-                          <p className="text-[10px] text-zinc-500 font-mono mt-1">out of {totalTelegramSubmissions} global</p>
-                          <button onClick={() => { setActiveTab("submissions"); setSubmissionFilter("telegram_community"); }} className="text-[9px] uppercase font-bold text-[#0088cc] hover:underline mt-3 block text-left font-mono">View Members →</button>
+                        <div className="bg-[#25D366]/10 p-5 border border-[#25D366]/20 hover:border-[#25D366]/40 transition-colors">
+                          <p className="text-[9px] text-[#25D366] uppercase tracking-widest font-black">WhatsApp Leads</p>
+                          <p className="text-3xl font-black mt-2 text-white">{dashWhatsApp}</p>
+                          <p className="text-[10px] text-zinc-500 font-mono mt-1">out of {totalWhatsAppSubmissions} global</p>
+                          <button onClick={() => { setActiveTab("submissions"); setSubmissionFilter("whatsapp_community"); }} className="text-[9px] uppercase font-bold text-[#25D366] hover:underline mt-3 block text-left font-mono">View Members →</button>
                         </div>
                       </div>
                     </div>
@@ -2171,7 +2168,7 @@ export default function AdminPage() {
                               const email = sub.data.email || "No Email";
                               const type = sub.formType === "partnership" ? "Partnership"
                                          : sub.formType === "booking_dr_fid" ? "Booking"
-                                         : sub.formType === "telegram_community" ? "Telegram"
+                                         : sub.formType === "whatsapp_community" ? "WhatsApp"
                                          : "Contact";
                               return (
                                 <div key={idx} className="flex justify-between items-center bg-white/[0.01] hover:bg-white/[0.03] p-3 border border-white/5 text-xs transition-colors">
@@ -2183,7 +2180,7 @@ export default function AdminPage() {
                                     <span className={`px-2 py-0.5 text-[8px] font-black uppercase tracking-widest ${
                                       type === "Partnership" ? "bg-brand-red/25 text-brand-red"
                                       : type === "Booking" ? "bg-emerald-500/20 text-emerald-400"
-                                      : type === "Telegram" ? "bg-[#0088cc]/20 text-[#0088cc]"
+                                      : type === "WhatsApp" ? "bg-[#25D366]/20 text-[#25D366]"
                                       : "bg-brand-gold/25 text-brand-gold"
                                     }`}>
                                       {type}
@@ -2241,25 +2238,25 @@ export default function AdminPage() {
                     {/* ENRICHED TELEMETRY & MULTI-CHANNEL MEMBERSHIP SUMMARY */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
                       
-                      {/* Section A: Telegram Funnel Landing Info & Telemetry */}
+                      {/* Section A: WhatsApp Funnel Landing Info & Telemetry */}
                       <div className="bg-zinc-950/70 border border-white/5 p-6 rounded-none space-y-4">
                         <div className="flex justify-between items-center border-b border-white/5 pb-3 font-mono">
                           <h5 className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold flex items-center gap-1.5">
-                            📢 Telegram Landing Info & Funnel Setup
+                            📢 WhatsApp Landing Info & Funnel Setup
                           </h5>
-                          <span className="text-[8px] text-zinc-500 uppercase">TELEGRAM-COMMUNITY-V1</span>
+                          <span className="text-[8px] text-zinc-500 uppercase">WHATSAPP-COMMUNITY-V1</span>
                         </div>
 
                         {(() => {
                           let tConfig: any = {};
                           try {
-                            tConfig = JSON.parse(content.telegramLandingPageJson || "{}");
+                            tConfig = JSON.parse(content.whatsappLandingPageJson || "{}");
                           } catch (err) {}
 
                           return (
                             <div className="space-y-4 font-sans text-xs">
                               <p className="text-[11px] text-zinc-400">
-                                Active content loaded on the public-facing Telegram Inbound Landing Page which feeds leads into the community channel.
+                                Active content loaded on the public-facing WhatsApp Inbound Landing Page which feeds leads into the community channel.
                               </p>
 
                               <div className="grid grid-cols-2 gap-3 pt-1">
@@ -2269,7 +2266,7 @@ export default function AdminPage() {
                                 </div>
                                 <div className="p-3 bg-white/[0.01] border border-white/5 text-left">
                                   <p className="text-[8px] text-white/40 uppercase tracking-widest font-mono">Button CTA Text</p>
-                                  <p className="text-[11px] font-bold text-brand-gold mt-1">{tConfig.ctaFinalBtnText || "Join Telegram Group"}</p>
+                                  <p className="text-[11px] font-bold text-brand-gold mt-1">{tConfig.ctaFinalBtnText || "Join WhatsApp Group"}</p>
                                 </div>
                               </div>
 
@@ -2288,13 +2285,13 @@ export default function AdminPage() {
                                 </div>
                               </div>
 
-                              <div className="bg-[#0088cc]/10 border border-[#0088cc]/20 p-3 text-left">
+                              <div className="bg-[#25D366]/10 border border-[#25D366]/20 p-3 text-left">
                                 <div className="flex justify-between items-center">
-                                  <p className="text-[9px] text-[#0088cc] uppercase font-black tracking-widest font-mono">Direct Connection Link</p>
-                                  <span className="text-[8.5px] bg-[#0088cc]/20 text-white font-mono px-2 py-0.5 uppercase">Lounge URL</span>
+                                  <p className="text-[9px] text-[#25D366] uppercase font-black tracking-widest font-mono">Direct Connection Link</p>
+                                  <span className="text-[8.5px] bg-[#25D366]/20 text-white font-mono px-2 py-0.5 uppercase">Lounge URL</span>
                                 </div>
                                 <p className="text-[10px] text-white/80 font-mono mt-1 font-bold break-all select-all">
-                                  {content.contactThankYouTelegramLink || "https://t.me/thevaginaroom"}
+                                  {content.contactThankYouWhatsAppLink || "https://chat.whatsapp.com/invite_code"}
                                 </p>
                               </div>
                             </div>
@@ -2320,11 +2317,11 @@ export default function AdminPage() {
                             const totInbound = submissions.length || 1;
                             const tBookings = submissions.filter(s => s.formType === "booking_dr_fid").length;
                             const tPartner = submissions.filter(s => s.formType === "partnership").length;
-                            const tTelegram = submissions.filter(s => s.formType === "telegram_community").length;
+                            const tWhatsApp = submissions.filter(s => s.formType === "whatsapp_community").length;
 
                             const bookingsPercent = Math.round((tBookings / totInbound) * 100);
                             const partnersPercent = Math.round((tPartner / totInbound) * 100);
-                            const telegramPercent = Math.round((tTelegram / totInbound) * 100);
+                            const whatsappPercent = Math.round((tWhatsApp / totInbound) * 100);
 
                             return (
                               <div className="space-y-3 pt-1">
@@ -2339,14 +2336,14 @@ export default function AdminPage() {
                                   </div>
                                 </div>
 
-                                {/* Telegram Landing Conversion rate */}
+                                {/* WhatsApp Landing Conversion rate */}
                                 <div className="space-y-1">
                                   <div className="flex justify-between text-[10px] font-mono uppercase text-zinc-400">
-                                    <span>Telegram Social Sign-up Rate</span>
-                                    <span className="text-[#0088cc] font-bold">{telegramPercent}% ({tTelegram} lines)</span>
+                                    <span>WhatsApp Social Sign-up Rate</span>
+                                    <span className="text-[#25D366] font-bold">{whatsappPercent}% ({tWhatsApp} lines)</span>
                                   </div>
                                   <div className="w-full h-1.5 bg-zinc-900 border border-white/5">
-                                    <div className="h-full bg-[#0088cc] transition-all duration-500" style={{ width: `${telegramPercent}%` }} />
+                                    <div className="h-full bg-[#25D366] transition-all duration-500" style={{ width: `${whatsappPercent}%` }} />
                                   </div>
                                 </div>
 
@@ -2472,8 +2469,8 @@ export default function AdminPage() {
                         <p className="text-2xl font-black text-brand-gold">{totalContactSubmissions}</p>
                       </div>
                       <div className="bg-white/[0.03] p-4 border border-white/5 text-center">
-                        <p className="text-[10px] uppercase text-[#0088cc]/80 mb-1 font-bold">Telegram Collective</p>
-                        <p className="text-2xl font-black text-[#0088cc]">{totalTelegramSubmissions}</p>
+                        <p className="text-[10px] uppercase text-[#25D366]/80 mb-1 font-bold">WhatsApp Collective</p>
+                        <p className="text-2xl font-black text-[#25D366]">{totalWhatsAppSubmissions}</p>
                       </div>
                     </div>
 
@@ -2521,14 +2518,14 @@ export default function AdminPage() {
                         Queries ({totalContactSubmissions})
                       </button>
                       <button
-                        onClick={() => setSubmissionFilter("telegram_community")}
+                        onClick={() => setSubmissionFilter("whatsapp_community")}
                         className={`px-4 py-2 text-[10px] uppercase font-black tracking-wider transition-colors cursor-pointer ${
-                          submissionFilter === "telegram_community"
-                            ? "bg-[#0088cc] text-white"
+                          submissionFilter === "whatsapp_community"
+                            ? "bg-[#25D366] text-white"
                             : "bg-white/5 text-white/60 hover:bg-white/10"
                         }`}
                       >
-                        Telegram ({totalTelegramSubmissions})
+                        WhatsApp ({totalWhatsAppSubmissions})
                       </button>
                         </div>
                         <div className="flex-shrink-0">
@@ -2549,7 +2546,7 @@ export default function AdminPage() {
                         booking_dr_fid: "Dr. FID Bookings Channel",
                         partnership: "Corporate & Clinic Partnerships",
                         contact: "General Inbound Contacts",
-                        telegram_community: "Sisterhood Telegram Community"
+                        whatsapp_community: "Sisterhood WhatsApp Community"
                       };
                       const activeChannelLabel = channelNames[submissionFilter] || "Inbound Channels";
                       return (
@@ -2832,7 +2829,7 @@ export default function AdminPage() {
                               const date = new Date(sub.timestamp).toLocaleString();
                               const typeLabel = sub.formType === "partnership" ? "Partnership" 
                                               : sub.formType === "booking_dr_fid" ? "Booking"
-                                              : sub.formType === "telegram_community" ? "Telegram"
+                                              : sub.formType === "whatsapp_community" ? "WhatsApp"
                                               : "General Contact";
                               const name = sub.data.fullName || sub.data.contactPerson || sub.data.name || "Anonymous";
                               const company = sub.data.organization || sub.data.organizationName || "";
@@ -2850,7 +2847,7 @@ export default function AdminPage() {
                                     <span className={`px-2 py-0.5 text-[9px] font-black uppercase tracking-widest ${
                                       sub.formType === "partnership" ? "bg-brand-red/20 text-brand-red" 
                                       : sub.formType === "booking_dr_fid" ? "bg-emerald-500/20 text-emerald-400"
-                                      : sub.formType === "telegram_community" ? "bg-[#0088cc]/20 text-[#0088cc]"
+                                      : sub.formType === "whatsapp_community" ? "bg-[#25D366]/20 text-[#25D366]"
                                       : "bg-brand-gold/20 text-brand-gold"
                                     }`}>
                                       {typeLabel}
@@ -3275,16 +3272,16 @@ export default function AdminPage() {
                 </motion.div>
               )}
 
-              {/* Tab: Telegram Config */}
-              {activeTab === "telegram_config" && hasPermission("settings") && (
+              {/* Tab: WhatsApp Config */}
+              {activeTab === "whatsapp_config" && hasPermission("settings") && (
                 <motion.div
-                  key="telegram-config-tab"
+                  key="whatsapp-config-tab"
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -10 }}
                   className="bg-white/[0.02] border border-white/5 p-6"
                 >
-                  <AdminTelegramConfigPanel />
+                  <AdminWhatsAppConfigPanel />
                 </motion.div>
               )}
 
@@ -3303,7 +3300,7 @@ export default function AdminPage() {
                     </p>
 
                       <div className="flex flex-wrap gap-2 mb-8 border-b border-white/5 pb-2">
-                        {["home", "about_us", "about_dr_fid", "dr_fid_booking", "telegram_community", "join_community", "focus_areas", "testimonials", "team_partner", "projects_events", "gallery", "contact", "support", "policy_terms", "footer"].map((tab) => (
+                        {["home", "about_us", "about_dr_fid", "dr_fid_booking", "whatsapp_community", "join_community", "focus_areas", "testimonials", "team_partner", "projects_events", "gallery", "contact", "support", "policy_terms", "footer"].map((tab) => (
                           <button
                             key={tab}
                             onClick={() => setActiveContentTab(tab as any)}
@@ -3317,7 +3314,7 @@ export default function AdminPage() {
                              : tab === "about_us" ? "About Us Page" 
                              : tab === "about_dr_fid" ? "About Dr. FID" 
                              : tab === "dr_fid_booking" ? "Dr. FID Booking"
-                             : tab === "telegram_community" ? "Telegram Landing Page"
+                             : tab === "whatsapp_community" ? "WhatsApp Landing Page"
                              : tab === "join_community" ? "Join Community"
                              : tab === "support" ? "Support/Donate"
                              : tab === "policy_terms" ? "Policy & Terms"

@@ -42,17 +42,17 @@ const ABOUT_SECTIONS = [
   { id: "promise", label: "The Room Commitments & Star Promise" }
 ];
 
-const TELEGRAM_SECTIONS = [
-  { id: "telegram_hero", label: "Immersive Telegram Hero Banner with Text" },
-  { id: "telegram_purpose_pain", label: "Purpose & Common Health Pain Points Grid" },
-  { id: "telegram_bento", label: "Bento Grid (Core Mission & Healing)" },
-  { id: "telegram_showcase", label: "Inside Community Showcase (Chat topics)" },
-  { id: "telegram_benefits", label: "What You Get (Masterclass, Community, Retreats)" },
-  { id: "telegram_who_should_join", label: "Who This Free Collective Is For" },
-  { id: "telegram_founder", label: "Meet the Founder Messaging Section (Dr. FID)" },
-  { id: "telegram_promise", label: "The Vagina Room Community Promises Outline" },
-  { id: "telegram_community_sisterhood", label: "Sisterhood Support Banner and Image" },
-  { id: "telegram_cta", label: "CTA Booking / Joining Next Step Base" }
+const WHATSAPP_SECTIONS = [
+  { id: "whatsapp_hero", label: "Immersive WhatsApp Hero Banner with Text" },
+  { id: "whatsapp_purpose_pain", label: "Purpose & Common Health Pain Points Grid" },
+  { id: "whatsapp_bento", label: "Bento Grid (Core Mission & Healing)" },
+  { id: "whatsapp_showcase", label: "Inside Community Showcase (Chat topics)" },
+  { id: "whatsapp_benefits", label: "What You Get (Masterclass, Community, Retreats)" },
+  { id: "whatsapp_who_should_join", label: "Who This Free Collective Is For" },
+  { id: "whatsapp_founder", label: "Meet the Founder Messaging Section (Dr. FID)" },
+  { id: "whatsapp_promise", label: "The Vagina Room Community Promises Outline" },
+  { id: "whatsapp_community_sisterhood", label: "Sisterhood Support Banner and Image" },
+  { id: "whatsapp_cta", label: "CTA Booking / Joining Next Step Base" }
 ];
 
 const MEMBER_SIDEBAR_SECTIONS = [
@@ -84,7 +84,7 @@ const ADMIN_SIDEBAR_SECTIONS = [
   { id: "sales_trends", label: "📈 Sales Trends Charts" },
   { id: "discount_codes", label: "🎟️ Discount Codes" },
   { id: "navigation", label: "🗺️ Navigation Setup" },
-  { id: "telegram_config", label: "🤖 Telegram Config" },
+  { id: "whatsapp_config", label: "🤖 WhatsApp Config" },
   { id: "automation", label: "⚡ Automated Marketing" },
   { id: "events", label: "📅 Events & Calendar" },
   { id: "resources", label: "📚 Resource Library" },
@@ -110,20 +110,20 @@ const ADMIN_SIDEBAR_SECTIONS = [
 
 export default function AdminReorderPanel() {
   const { content, updateContentField, saveContentChanges } = useContent();
-  const [selectedPage, setSelectedPage] = useState<"home" | "drfid" | "about" | "telegram" | "member_sidebar" | "admin_sidebar">("home");
+  const [selectedPage, setSelectedPage] = useState<"home" | "drfid" | "about" | "whatsapp" | "member_sidebar" | "admin_sidebar">("home");
   const [isSaving, setIsSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
 
   const fieldKey = selectedPage === "home" ? "homePageSectionsOrder" 
                  : selectedPage === "drfid" ? "drFidPageSectionsOrder" 
-                 : selectedPage === "telegram" ? "telegramPageSectionsOrder"
+                 : selectedPage === "whatsapp" ? "whatsappPageSectionsOrder"
                  : selectedPage === "about" ? "aboutPageSectionsOrder"
                  : selectedPage === "member_sidebar" ? "memberSidebarOrderJson"
                  : "adminSidebarOrderJson";
 
   const allPossibleSections = selectedPage === "home" ? HOME_SECTIONS 
                             : selectedPage === "drfid" ? DR_FID_SECTIONS 
-                            : selectedPage === "telegram" ? TELEGRAM_SECTIONS
+                            : selectedPage === "whatsapp" ? WHATSAPP_SECTIONS
                             : selectedPage === "about" ? ABOUT_SECTIONS
                             : selectedPage === "member_sidebar" ? MEMBER_SIDEBAR_SECTIONS
                             : ADMIN_SIDEBAR_SECTIONS;
@@ -221,12 +221,12 @@ export default function AdminReorderPanel() {
           About Us Page ({ABOUT_SECTIONS.length} segments)
         </button>
         <button
-          onClick={() => setSelectedPage("telegram")}
+          onClick={() => setSelectedPage("whatsapp")}
           className={`px-4 py-2 text-[10px] uppercase font-black tracking-wider transition-colors cursor-pointer ${
-            selectedPage === "telegram" ? "bg-brand-gold text-brand-black" : "bg-white/5 text-white/60 hover:bg-white/10"
+            selectedPage === "whatsapp" ? "bg-brand-gold text-brand-black" : "bg-white/5 text-white/60 hover:bg-white/10"
           }`}
         >
-          Telegram Page ({TELEGRAM_SECTIONS.length} segments)
+          WhatsApp Page ({WHATSAPP_SECTIONS.length} segments)
         </button>
         <button
           onClick={() => setSelectedPage("member_sidebar")}

@@ -23,9 +23,9 @@ export default function ThankYouPage() {
   const bgUrl = content.contactBgUrl || "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=1600";
   const headingText = content.contactThankYouHeading || "THANK YOU FOR REACHING OUT";
   const bodyText = content.contactThankYouMessage || "Your message has been logged securely, and our team will get in touch shortly.";
-  const ctaBtnText = content.contactThankYouCtaText || "Join Our Free Telegram Community";
-  const telegramLandingUrl = content.contactThankYouTelegramLandingUrl || "/telegram";
-  const isInternal = telegramLandingUrl.startsWith("/");
+  const ctaBtnText = content.contactThankYouCtaText || "Join Our Free WhatsApp Community";
+  const whatsappLandingUrl = content.contactThankYouWhatsAppLandingUrl || "/whatsapp";
+  const isInternal = whatsappLandingUrl.startsWith("/");
 
   return (
     <>
@@ -87,7 +87,7 @@ export default function ThankYouPage() {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 {isInternal ? (
-                  <Link to={telegramLandingUrl} className="w-full sm:w-auto">
+                  <Link to={whatsappLandingUrl} className="w-full sm:w-auto">
                     <motion.div
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
@@ -100,7 +100,7 @@ export default function ThankYouPage() {
                   </Link>
                 ) : (
                   <motion.a
-                    href={telegramLandingUrl}
+                    href={whatsappLandingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}

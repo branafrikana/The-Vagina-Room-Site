@@ -3,6 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useContent, FALLBACK_DEFAULTS } from '../../context/ContentContext';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db, auth } from '../../lib/firebase';
+import { updatePassword } from 'firebase/auth';
 import { 
   User, 
   MapPin, 
@@ -293,7 +294,6 @@ export default function ProfileManager() {
     
     setSaving(true);
     try {
-      const { updatePassword } = await import('firebase/auth');
       await updatePassword(auth.currentUser, newPassword);
       setCurrentPassword('');
       setNewPassword('');

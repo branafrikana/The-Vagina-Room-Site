@@ -11,13 +11,17 @@ import { safeJsonParse } from '../lib/json';
 
 function formatHref(url: string) {
   if (!url) return "/";
-  if (url.startsWith("/") || url.startsWith("#") || url.startsWith("mailto:") || url.startsWith("tel:")) {
-    return url;
+  const trimmed = url.trim();
+  if (trimmed.startsWith("/") || trimmed.startsWith("#") || trimmed.startsWith("mailto:") || trimmed.startsWith("tel:")) {
+    return trimmed;
   }
-  if (!/^https?:\/\//i.test(url) && !url.startsWith("//")) {
-    return `https://${url}`;
+  if (/^https?:\/\//i.test(trimmed) || trimmed.startsWith("//")) {
+    return trimmed;
   }
-  return url;
+  if (trimmed.startsWith("www.") || (trimmed.includes(".") && !trimmed.startsWith("."))) {
+    return `https://${trimmed}`;
+  }
+  return `/${trimmed}`;
 }
 
 export default function Navigation() {

@@ -68,17 +68,17 @@ export const FALLBACK_DEFAULTS = {
   homeAboutUsVisionTitle: "Our Vision",
   homeAboutUsVisionDesc: "To become a globally trusted women’s wellness ecosystem where every woman feels informed, supported, confident, safe, and empowered in her intimate health journey.",
 
-  telegramHeroBgUrl: "",
-  telegramHeroLogoUrl: "",
-  telegramCommunityImgUrl: "",
-  telegramFounderImageUrl: "",
-  telegramHeaderLogoType: "text",
-  telegramHeaderLogoUrl: "",
-  telegramHeaderTextLogo: "The Vagina Room",
-  telegramHeroHeaderTextLogo: "The Vagina Room",
-  telegramHeaderLogoHeight: "44",
-  telegramHeroLogoType: "text",
-  telegramHeroLogoHeight: "150",
+  whatsappHeroBgUrl: "",
+  whatsappHeroLogoUrl: "",
+  whatsappCommunityImgUrl: "",
+  whatsappFounderImageUrl: "",
+  whatsappHeaderLogoType: "text",
+  whatsappHeaderLogoUrl: "",
+  whatsappHeaderTextLogo: "The Vagina Room",
+  whatsappHeroHeaderTextLogo: "The Vagina Room",
+  whatsappHeaderLogoHeight: "44",
+  whatsappHeroLogoType: "text",
+  whatsappHeroLogoHeight: "150",
 
   // Missing Fields to prevent Compilation conflicts
   socialSectionTitle: "Follow Our Sisterhood",
@@ -314,9 +314,9 @@ export const FALLBACK_DEFAULTS = {
   // Contact Thank You Page Config
   contactThankYouHeading: "THANK YOU FOR REACHING OUT",
   contactThankYouMessage: "Your message has been logged securely, and our team will get in touch shortly.",
-  contactThankYouCtaText: "Join Our Free Telegram Community",
-  contactThankYouTelegramLink: "https://t.me/thevaginaroom",
-  contactThankYouTelegramLandingUrl: "/telegram",
+  contactThankYouCtaText: "Join Our Free WhatsApp Community",
+  contactThankYouWhatsAppLink: "https://chat.whatsapp.com/",
+  contactThankYouWhatsAppLandingUrl: "/whatsapp",
 
   // Support page extra defaults
   supportFuelHeading: "FUELING THE RESTORATION",
@@ -417,8 +417,8 @@ export const FALLBACK_DEFAULTS = {
   securitySettingsJson: '{\n  "sessionTimeout": "60 mins",\n  "twoFactorAuth": "Optional",\n  "restrictIframe": "No",\n  "allowedOrigins": "*"\n}',
   topHeaderSettingsJson: '{\n  "logoText": "The Vagina Room",\n  "logoImageUrl": "",\n  "enableSearchBar": true,\n  "enableNotificationsIcon": true,\n  "enableMessagesIcon": true,\n  "enableAdminProfileDropdown": true\n}',
   leftSidebarSettingsJson: '{\n  "isCollapsible": true,\n  "defaultCollapsed": false,\n  "sections": [\n    {\n      "label": "Main Operations",\n      "items": [\n        { "label": "Client Enquiries", "path": "/admin?tab=submissions", "icon": "Inbox", "badge": "Active" },\n        { "label": "Live Page Designer", "path": "/admin?tab=content", "icon": "Layout", "badge": "" }\n      ]\n    },\n    {\n      "label": "Content Management",\n      "items": [\n        { "label": "Community Content", "path": "/admin?tab=content&sub=home", "icon": "Home", "badge": "" },\n        { "label": "Reproductive Focus Areas", "path": "/admin?tab=content&sub=focus_areas", "icon": "BookOpen", "badge": "" },\n        { "label": "Testimonials Slider", "path": "/admin?tab=content&sub=testimonials", "icon": "MessageSquare", "badge": "" },\n        { "label": "Global Menu Setup", "path": "/admin?tab=navigation", "icon": "Menu", "badge": "" }\n      ]\n    }\n  ],\n  "quickAccessLinks": [\n    { "label": "View Live Site", "path": "/", "icon": "ExternalLink" },\n    { "label": "System Settings", "path": "/admin?tab=settings", "icon": "Settings" }\n  ]\n}',
-  headerMenuJson: '[\n  { "name": "Who We Are", "href": "#", "submenu": [{ "name": "About Us", "href": "/about" }, { "name": "Meet Dr. FID", "href": "/dr-fid" }, { "name": "Book Dr. FID Session", "href": "/dr-fid-booking" }, { "name": "Meet Our Team", "href": "/team" }, { "name": "Focus Areas", "href": "/focus-areas" }, { "name": "Support Our Mission", "href": "/support" }, { "name": "Partner With Us", "href": "/partner" }, { "name": "Privacy Policy", "href": "/privacy-policy" }, { "name": "Terms of Engagement", "href": "/terms-of-service" }] },\n  { "name": "Products", "href": "/products" },\n  { "name": "Projects", "href": "/projects" },\n  { "name": "Our Blog", "href": "/blogs" },\n  { "name": "Events", "href": "/events" },\n  { "name": "Gallery", "href": "/gallery" },\n  { "name": "Affiliate Program", "href": "/affiliate-program" },\n  { "name": "Telegram Community", "href": "/telegram" },\n  { "name": "Contact Us", "href": "/contact" }\n]',
-  footerMenuJson: '[\n  { "name": "About Us", "href": "/about" },\n  { "name": "Meet Dr. FID", "href": "/dr-fid" },\n  { "name": "Book Dr. FID Session", "href": "/dr-fid-booking" },\n  { "name": "Meet Our Team", "href": "/team" },\n  { "name": "Focus Areas", "href": "/focus-areas" },\n  { "name": "Support Our Mission", "href": "/support" },\n  { "name": "Partner With Us", "href": "/partner" },\n  { "name": "Products", "href": "/products" },\n  { "name": "Projects", "href": "/projects" },\n  { "name": "Our Blog", "href": "/blogs" },\n  { "name": "Events", "href": "/events" },\n  { "name": "Gallery", "href": "/gallery" },\n  { "name": "Telegram Community", "href": "/telegram" },\n  { "name": "Contact Us", "href": "/contact" },\n  { "name": "Affiliate Program", "href": "/affiliate-program" }\n]',
+  headerMenuJson: '[\n  { "name": "Who We Are", "href": "#", "submenu": [{ "name": "About Us", "href": "/about" }, { "name": "Meet Dr. FID", "href": "/dr-fid" }, { "name": "Book Dr. FID Session", "href": "/dr-fid-booking" }, { "name": "Meet Our Team", "href": "/team" }, { "name": "Focus Areas", "href": "/focus-areas" }, { "name": "Support Our Mission", "href": "/support" }, { "name": "Partner With Us", "href": "/partner" }, { "name": "Privacy Policy", "href": "/privacy-policy" }, { "name": "Terms of Engagement", "href": "/terms-of-service" }] },\n  { "name": "Products", "href": "/products" },\n  { "name": "Projects", "href": "/projects" },\n  { "name": "Our Blog", "href": "/blogs" },\n  { "name": "Events", "href": "/events" },\n  { "name": "Gallery", "href": "/gallery" },\n  { "name": "Affiliate Program", "href": "/affiliate-program" },\n  { "name": "WhatsApp Community", "href": "/whatsapp" },\n  { "name": "Contact Us", "href": "/contact" }\n]',
+  footerMenuJson: '[\n  { "name": "About Us", "href": "/about" },\n  { "name": "Meet Dr. FID", "href": "/dr-fid" },\n  { "name": "Book Dr. FID Session", "href": "/dr-fid-booking" },\n  { "name": "Meet Our Team", "href": "/team" },\n  { "name": "Focus Areas", "href": "/focus-areas" },\n  { "name": "Support Our Mission", "href": "/support" },\n  { "name": "Partner With Us", "href": "/partner" },\n  { "name": "Products", "href": "/products" },\n  { "name": "Projects", "href": "/projects" },\n  { "name": "Our Blog", "href": "/blogs" },\n  { "name": "Events", "href": "/events" },\n  { "name": "Gallery", "href": "/gallery" },\n  { "name": "WhatsApp Community", "href": "/whatsapp" },\n  { "name": "Contact Us", "href": "/contact" },\n  { "name": "Affiliate Program", "href": "/affiliate-program" }\n]',
   
   // Products Management
   productsTitle: "Our Curated Products",
@@ -441,11 +441,11 @@ export const FALLBACK_DEFAULTS = {
   externalSourcesJson: '[\n  { "name": "Global Inventory", "url": "", "active": true }\n]',
   featuredProductIdsJson: "[]",
   disabledPagesJson: "{}",
-  telegramPageSectionsOrder: '["telegram_hero", "telegram_purpose_pain", "telegram_bento", "telegram_showcase", "telegram_benefits", "telegram_who_should_join", "telegram_founder", "telegram_promise", "telegram_community_sisterhood", "telegram_cta"]',
+  whatsappPageSectionsOrder: '["whatsapp_hero", "whatsapp_purpose_pain", "whatsapp_bento", "whatsapp_showcase", "whatsapp_benefits", "whatsapp_who_should_join", "whatsapp_founder", "whatsapp_promise", "whatsapp_community_sisterhood", "whatsapp_cta"]',
   memberSidebarOrderJson: '["dashboard", "reflection", "breathing", "profile", "resources", "programs", "events", "community", "inbox", "shop", "id_card", "referral", "support", "settings"]',
-  adminSidebarOrderJson: '["dashboard", "members", "approvals", "payouts", "partners", "moderation", "submissions", "content", "reorder_sections", "sales_trends", "discount_codes", "navigation", "telegram_config", "automation", "events", "resources", "community", "products", "orders", "business_details", "checkout_settings", "payment_gateways", "media_sync", "page_manager", "page_visibility", "blog_manager", "media_manager", "general", "branding", "seo", "security", "social", "integrations", "permissions"]',
-  telegramLandingPageJson: JSON.stringify({
-    heroTitle: "Welcome To<br/><span class='text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-gold italic pr-2'>The Vagina Room</span><br/>Free Telegram Community",
+  adminSidebarOrderJson: '["dashboard", "members", "approvals", "payouts", "partners", "moderation", "submissions", "content", "reorder_sections", "sales_trends", "discount_codes", "navigation", "whatsapp_config", "automation", "events", "resources", "community", "products", "orders", "business_details", "checkout_settings", "payment_gateways", "media_sync", "page_manager", "page_visibility", "blog_manager", "media_manager", "general", "branding", "seo", "security", "social", "integrations", "permissions"]',
+  whatsappLandingPageJson: JSON.stringify({
+    heroTitle: "Welcome To<br/><span class='text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-gold italic pr-2'>The Vagina Room</span><br/>Free WhatsApp Community",
     heroSubtitle: "A private, judgment-free collective dedicated to women's health, healing, and holistic empowerment.",
     heroBtnText: "Join Our Free Community",
     purposeLabel: "Our Purpose",
@@ -482,7 +482,7 @@ export const FALLBACK_DEFAULTS = {
     showcaseTitle: "Inside The Community",
     showcaseSubtitle: "Everything you need to learn, heal, and thrive.",
     benefitsTitle: "What You Get When You Join",
-    benefitsSubtitle: "As a member of our free Telegram community, you will receive:",
+    benefitsSubtitle: "As a member of our free WhatsApp community, you will receive:",
     benefitsItems: [
       { "title": "Weekly Tips", "desc": "Fertility and reproductive wellness tips", "icon": "Heart", "color": "text-rose-400" },
       { "title": "Health Sessions", "desc": "Women's health education sessions", "icon": "BookOpen", "color": "text-blue-400" },
@@ -529,8 +529,8 @@ export const FALLBACK_DEFAULTS = {
     ctaCommunityP3: "Together, we are building stronger women, healthier families, and more informed communities.",
     ctaFinalLabel: "Your Next Step",
     ctaFinalTitle: "Take the first step toward better understanding your <span class='text-brand-gold italic'>body.</span>",
-    ctaFinalDesc: "Improve your wellness and join a supportive community that truly cares. Join The Vagina Room Free Telegram Community Today.",
-    ctaFinalBtnText: "Join Telegram Group",
+    ctaFinalDesc: "Improve your wellness and join a supportive community that truly cares. Join The Vagina Room Free WhatsApp Community Today.",
+    ctaFinalBtnText: "Join WhatsApp Group",
     ctaFinalFooterText: "Learn. Heal. Thrive."
   }),
   memberDashboardFeaturesJson: '{"profile":true,"resources":true,"programs":true,"events":true,"community":true,"shop":true,"id_card":true,"referral":true,"support":true,"settings":true}',
@@ -560,7 +560,7 @@ export const FALLBACK_DEFAULTS = {
   welcomeDrFidImgUrl: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80",
   welcomeActionBtnText: "Explore Your Members Dashboard",
   welcomeInstructions: "1. Update your wellness reflection so we can understand your health goals.\n2. Complete your personal profile in your Account Settings.\n3. Drop an introduction on the Community discussion timeline to meet your new sisters.\n4. Explore the resource library for guides, courses and materials.",
-  linkTreeConfigJson: '{\n  "profilePicture": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=400",\n  "fullName": "Amb. Dr. Damilola Awoyemi (Dr. FID)",\n  "bio": "Holistic Wellness Expert • SPA Business Consultant • Women\'s Reproductive Health Advocate & Visionary Entrepreneur",\n  "socials": [\n    { "platform": "Instagram", "url": "https://instagram.com/thevaginaroom", "icon": "Instagram" },\n    { "platform": "Youtube", "url": "https://youtube.com", "icon": "Youtube" },\n    { "platform": "Telegram", "url": "https://t.me/thevaginaroom", "icon": "Send" },\n    { "platform": "LinkedIn", "url": "https://linkedin.com", "icon": "Linkedin" }\n  ],\n  "topBannerEnabled": true,\n  "topBannerUrl": "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&q=80&w=1200",\n  "topBannerClickUrl": "/join-community",\n  "links": [\n    { "id": "l1", "type": "cta", "label": "🌸 Join The Inner Circle (NGN 25,000 / $50)", "url": "/join-community", "description": "Weekly masterclasses with Dr. FID, medical board resources & global sisterhood circle.", "isHighlighted": true, "iconUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=200" },\n    { "id": "l2", "type": "cta", "label": "📅 Book A Confidential Session with Dr. FID", "url": "/dr-fid-booking", "description": "Consult directly for intimate, spinal manipulation, spa wellness, and chiropractic support.", "isHighlighted": false, "iconUrl": "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=200" },\n    { "id": "l3", "type": "cta", "label": "🌿 Our Curated Phyto-Medicinal Selections", "url": "/products", "description": "Explore scientific botanical formulations engineered for female anatomy restore.", "isHighlighted": false, "iconUrl": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=200" },\n    { "id": "l4", "type": "cta", "label": "💬 Free Telegram General Discussion Safe-Space", "url": "/telegram", "description": "Dismantling silent stigmas with 1,000+ sisters who talk freely without taboos.", "isHighlighted": false, "iconUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=200" }\n  ],\n  "images": [\n    { "id": "img1", "imageUrl": "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=800", "title": "About Our Shared Mission", "description": "Where biology meets compassion to end intimate shame, providing restorative care standardizations worldwide.", "clickUrl": "/about" },\n    { "id": "img2", "imageUrl": "https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=800", "title": "Our Clinical Spa Groundwork", "description": "Undergoing active certified chiropractic manipulation & holistic clinical retreats with Dr. FID.", "clickUrl": "/dr-fid" }\n  ],\n  "footerLine1": "The Vagina Room Global",\n  "footerLine2": "Refined Intimacy & Somatic Wholeness"\n}'
+  linkTreeConfigJson: '{\n  "profilePicture": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=400",\n  "fullName": "Amb. Dr. Damilola Awoyemi (Dr. FID)",\n  "bio": "Holistic Wellness Expert • SPA Business Consultant • Women\'s Reproductive Health Advocate & Visionary Entrepreneur",\n  "socials": [\n    { "platform": "Instagram", "url": "https://instagram.com/thevaginaroom", "icon": "Instagram" },\n    { "platform": "Youtube", "url": "https://youtube.com", "icon": "Youtube" },\n    { "platform": "WhatsApp", "url": "https://chat.whatsapp.com/", "icon": "MessageCircle" },\n    { "platform": "LinkedIn", "url": "https://linkedin.com", "icon": "Linkedin" }\n  ],\n  "topBannerEnabled": true,\n  "topBannerUrl": "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&q=80&w=1200",\n  "topBannerClickUrl": "/join-community",\n  "links": [\n    { "id": "l1", "type": "cta", "label": "🌸 Join The Inner Circle (NGN 25,000 / $50)", "url": "/join-community", "description": "Weekly masterclasses with Dr. FID, medical board resources & global sisterhood circle.", "isHighlighted": true, "iconUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=200" },\n    { "id": "l2", "type": "cta", "label": "📅 Book A Confidential Session with Dr. FID", "url": "/dr-fid-booking", "description": "Consult directly for intimate, spinal manipulation, spa wellness, and chiropractic support.", "isHighlighted": false, "iconUrl": "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=200" },\n    { "id": "l3", "type": "cta", "label": "🌿 Our Curated Phyto-Medicinal Selections", "url": "/products", "description": "Explore scientific botanical formulations engineered for female anatomy restore.", "isHighlighted": false, "iconUrl": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=200" },\n    { "id": "l4", "type": "cta", "label": "💬 Free WhatsApp General Discussion Safe-Space", "url": "/whatsapp", "description": "Dismantling silent stigmas with 1,000+ sisters who talk freely without taboos.", "isHighlighted": false, "iconUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=200" }\n  ],\n  "images": [\n    { "id": "img1", "imageUrl": "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=800", "title": "About Our Shared Mission", "description": "Where biology meets compassion to end intimate shame, providing restorative care standardizations worldwide.", "clickUrl": "/about" },\n    { "id": "img2", "imageUrl": "https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=800", "title": "Our Clinical Spa Groundwork", "description": "Undergoing active certified chiropractic manipulation & holistic clinical retreats with Dr. FID.", "clickUrl": "/dr-fid" }\n  ],\n  "footerLine1": "The Vagina Room Global",\n  "footerLine2": "Refined Intimacy & Somatic Wholeness"\n}'
 };
 
 export type ContentData = typeof FALLBACK_DEFAULTS;
@@ -585,15 +585,26 @@ interface ContentContextType {
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
 
 export function ContentProvider({ children }: { children: React.ReactNode }) {
-  const [content, setContent] = useState<ContentData>(FALLBACK_DEFAULTS);
-  const contentRef = useRef<ContentData>(FALLBACK_DEFAULTS);
-  const [loading, setLoading] = useState(true);
+  const [content, setContent] = useState<ContentData>(() => {
+    try {
+      const cached = localStorage.getItem("tvr_content_cache");
+      if (cached) {
+        return { ...FALLBACK_DEFAULTS, ...JSON.parse(cached) };
+      }
+    } catch (e) {}
+    return FALLBACK_DEFAULTS;
+  });
+  const contentRef = useRef<ContentData>(content);
+  const [loading, setLoading] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isEditMode, setEditMode] = useState(false);
   const [adminPasswordToken, setAdminPasswordToken] = useState("");
 
   useEffect(() => {
     contentRef.current = content;
+    try {
+      localStorage.setItem("tvr_content_cache", JSON.stringify(content));
+    } catch (e) {}
   }, [content]);
 
   const loadContent = async () => {
@@ -679,6 +690,8 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
             // Only update if data is different to prevent loops
             setContent(prev => ({...prev, ...data}));
         }
+    }, (err) => {
+        console.warn("Real-time content listener failed, utilizing current/cached values:", err);
     });
 
     return () => unsub();
@@ -774,7 +787,7 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
       const docRef = doc(db, "configs", "generalSettings");
       console.log("Saving to Firestore:", trimmedContent);
       try {
-        await setDoc(docRef, trimmedContent);
+        setDoc(docRef, trimmedContent).catch(e => console.error("Firestore sync failed in background", e));
         console.log("Saved successfully!");
       } catch (err: any) {
         handleFirestoreError(err, OperationType.WRITE, "configs/generalSettings");
@@ -800,82 +813,24 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
         // Log image upload to media manager collection in Firestore
         try {
           const mediaId = "media_" + Date.now();
-          try {
-            await setDoc(doc(db, "media", mediaId), {
-              id: mediaId,
-              name: fileName,
-              url: response.url,
-              createdAt: new Date().toISOString(),
-              type: fileName.split('.').pop() || "image"
-            });
-          } catch (err: any) {
+          setDoc(doc(db, "media", mediaId), {
+            id: mediaId,
+            name: fileName,
+            url: response.url,
+            createdAt: new Date().toISOString(),
+            type: fileName.split('.').pop() || "image"
+          }).catch((err: any) => {
             handleFirestoreError(err, OperationType.CREATE, `media/${mediaId}`);
-          }
+          });
         } catch (mediaErr) {
           console.warn("Could not register media asset to Firestore library catalog.", mediaErr);
         }
         return response;
       } else {
-        // Cloudinary upload returned failure.
-        // Let's implement a robust Base64 data URL fallback!
-        console.warn("Cloudinary upload failed, falling back to local base64:", response.error);
-
-        let fallbackUrl = "";
-        if (typeof fileOrBase64 === "string") {
-          fallbackUrl = fileOrBase64;
-        } else {
-          // It's a File object, let's read it to base64
-          fallbackUrl = await new Promise<string>((resolve) => {
-            const reader = new FileReader();
-            reader.onloadend = () => resolve(reader.result as string);
-            reader.readAsDataURL(fileOrBase64);
-          });
-        }
-
-        if (fallbackUrl) {
-          // Log config warning or info to media collection (storing a truncated url to fit Firestore limits)
-          try {
-            const mediaId = "media_" + Date.now();
-            await setDoc(doc(db, "media", mediaId), {
-              id: mediaId,
-              name: fileName + " (Client Fallback)",
-              url: fallbackUrl.slice(0, 10000) + "...[truncated fallback base64 Data URL]",
-              createdAt: new Date().toISOString(),
-              type: "local_fallback"
-            });
-          } catch (e) {}
-
-          return {
-            success: true,
-            url: fallbackUrl,
-            error: "Uploaded as Local Data URI fallback (Cloudinary pending configuration: " + (response.error || "Failed to fetch") + ")"
-          };
-        }
-
         return response;
       }
     } catch (e: any) {
-      console.warn("Upload failed, attempting standard client base64 fallback", e);
-      // Fallback for unexpected throws
-      try {
-        let fallbackUrl = "";
-        if (typeof fileOrBase64 === "string") {
-          fallbackUrl = fileOrBase64;
-        } else {
-          fallbackUrl = await new Promise<string>((resolve) => {
-            const reader = new FileReader();
-            reader.onloadend = () => resolve(reader.result as string);
-            reader.readAsDataURL(fileOrBase64);
-          });
-        }
-        if (fallbackUrl) {
-          return {
-            success: true,
-            url: fallbackUrl,
-            error: "Uploaded as Local Data URI fallback: " + (e.message || "Unknown error")
-          };
-        }
-      } catch (innerErr) {}
+      console.error("Upload failed", e);
       return { success: false, error: e.message || "Failed to upload image." };
     }
   };
@@ -883,16 +838,14 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
   const submitFormSubmission = async (formType: string, formData: any): Promise<{ success: boolean; id?: string }> => {
     try {
       const subId = "sub_" + Date.now();
-      try {
-        await setDoc(doc(db, "submissions", subId), {
-          id: subId,
-          formType,
-          formData,
-          createdAt: new Date().toISOString()
-        });
-      } catch (err: any) {
+      setDoc(doc(db, "submissions", subId), {
+        id: subId,
+        formType,
+        formData,
+        createdAt: new Date().toISOString()
+      }).catch((err: any) => {
         handleFirestoreError(err, OperationType.CREATE, `submissions/${subId}`);
-      }
+      });
       return { success: true, id: subId };
     } catch (e) {
       console.error("Form submit to Firestore failed", e);

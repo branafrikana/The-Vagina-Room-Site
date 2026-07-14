@@ -1279,7 +1279,7 @@ export function AdminContactTab() {
         </div>
       </div>
 
-      <h3 className="text-base font-black uppercase tracking-[0.2em] text-brand-gold flex items-center gap-1.5 border-b border-white/5 pb-2 mt-8">🎉 Thank You Page & Telegram CTA</h3>
+      <h3 className="text-base font-black uppercase tracking-[0.2em] text-brand-gold flex items-center gap-1.5 border-b border-white/5 pb-2 mt-8">🎉 Thank You Page & WhatsApp CTA</h3>
 
       <div className="border border-white/5 p-4 rounded-none bg-white/[0.02] space-y-6">
         <p className="text-xs text-white/50 font-light">Configure the custom separate Thank You page that displays to community members after they submit the contact form.</p>
@@ -1296,12 +1296,12 @@ export function AdminContactTab() {
             />
           </div>
           <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">Telegram CTA Button Text</label>
+            <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">WhatsApp CTA Button Text</label>
             <input 
               type="text" 
               value={content.contactThankYouCtaText || ""}
               onChange={(e) => updateContentField("contactThankYouCtaText", e.target.value)}
-              placeholder="e.g. Join Our Free Telegram Community"
+              placeholder="e.g. Join Our Free WhatsApp Community"
               className="w-full bg-brand-black border border-white/10 p-3 text-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold text-xs" 
             />
           </div>
@@ -1309,22 +1309,22 @@ export function AdminContactTab() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">Telegram Group Invite Link</label>
+            <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">WhatsApp Group Invite Link</label>
             <input 
               type="text" 
-              value={content.contactThankYouTelegramLink || ""}
-              onChange={(e) => updateContentField("contactThankYouTelegramLink", e.target.value)}
-              placeholder="e.g. https://t.me/yourgroup"
+              value={content.contactThankYouWhatsAppLink || ""}
+              onChange={(e) => updateContentField("contactThankYouWhatsAppLink", e.target.value)}
+              placeholder="e.g. https://chat.whatsapp.com/invite_code"
               className="w-full bg-brand-black border border-white/10 p-3 text-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold text-xs font-mono" 
             />
           </div>
           <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">Telegram Landing Page URL</label>
+            <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">WhatsApp Landing Page URL</label>
             <input 
               type="text" 
-              value={content.contactThankYouTelegramLandingUrl || ""}
-              onChange={(e) => updateContentField("contactThankYouTelegramLandingUrl", e.target.value)}
-              placeholder="e.g. /telegram"
+              value={content.contactThankYouWhatsAppLandingUrl || ""}
+              onChange={(e) => updateContentField("contactThankYouWhatsAppLandingUrl", e.target.value)}
+              placeholder="e.g. /whatsapp"
               className="w-full bg-brand-black border border-white/10 p-3 text-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold text-xs font-mono" 
             />
           </div>
@@ -1951,12 +1951,12 @@ export function AdminJoinCommunityTab() {
   );
 }
 
-export function AdminTelegramCommunityTab() {
+export function AdminWhatsAppCommunityTab() {
   const { content, updateContentField } = useContent();
   const [activeSection, setActiveSection] = React.useState<string>("hero");
 
   // Parse current page data
-  let rawJson = content.telegramLandingPageJson || "{}";
+  let rawJson = content.whatsappLandingPageJson || "{}";
   let tData: any = {};
   try {
     tData = JSON.parse(rawJson);
@@ -1967,7 +1967,7 @@ export function AdminTelegramCommunityTab() {
   // Update helper
   const handleFieldChange = (key: string, val: any) => {
     const updated = { ...tData, [key]: val };
-    updateContentField("telegramLandingPageJson", JSON.stringify(updated, null, 2));
+    updateContentField("whatsappLandingPageJson", JSON.stringify(updated, null, 2));
   };
 
   // List field helpers
@@ -1998,10 +1998,10 @@ export function AdminTelegramCommunityTab() {
       <div className="bg-white/5 border border-brand-gold/20 p-6">
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h4 className="text-sm font-black text-brand-gold uppercase tracking-[0.2em]">Telegram Landing Page Editor</h4>
+            <h4 className="text-sm font-black text-brand-gold uppercase tracking-[0.2em]">WhatsApp Landing Page Editor</h4>
             <p className="text-xs text-white/50 mt-1">Manage sections, update display texts, and edit lists visually without writing JSON.</p>
           </div>
-          <span className="text-[10px] font-mono uppercase bg-[#0088cc]/10 border border-[#0088cc]/30 text-[#0088cc] px-3 py-1 font-bold">
+          <span className="text-[10px] font-mono uppercase bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] px-3 py-1 font-bold">
             Active Community Source
           </span>
         </div>
@@ -2051,7 +2051,7 @@ export function AdminTelegramCommunityTab() {
                      {tData.logoType === 'image' ? (
                        <div className="space-y-4 animate-fade-in">
                         <ImageUploader 
-                            fieldKey="telegramHeroLogoUrl" 
+                            fieldKey="whatsappHeroLogoUrl" 
                             label="Upload Hero Logo Asset" 
                             currentValue={tData.logoUrl || ""}
                             onUploadSuccess={(url) => handleFieldChange("logoUrl", url)}
@@ -2085,7 +2085,7 @@ export function AdminTelegramCommunityTab() {
                   <div className="border border-white/5 bg-black/10 p-4 space-y-4">
                      <label className="text-[9px] font-mono uppercase text-white/40 font-bold block mb-2">Hero Section Background</label>
                      <ImageUploader 
-                        fieldKey="telegramHeroBgUrl" 
+                        fieldKey="whatsappHeroBgUrl" 
                         label="Upload Hero Background Image" 
                      />
                   </div>
@@ -2445,7 +2445,7 @@ export function AdminTelegramCommunityTab() {
                     <input 
                       type="text"
                       className="w-full bg-black/40 border border-white/15 px-3 py-2 text-xs text-zinc-300 focus:outline-none"
-                      value={tData.benefitsSubtitle || "As a member of our free Telegram community, you will receive:"}
+                      value={tData.benefitsSubtitle || "As a member of our free WhatsApp community, you will receive:"}
                       onChange={(e) => handleFieldChange("benefitsSubtitle", e.target.value)}
                     />
                   </div>
@@ -2606,7 +2606,7 @@ export function AdminTelegramCommunityTab() {
               <div className="p-4 space-y-4 border-t border-white/5 bg-black/20 animate-fade-in font-sans">
                 <div className="border border-white/5 bg-black/10 p-4 mb-4">
                   <ImageUploader 
-                    fieldKey="telegramFounderImageUrl" 
+                    fieldKey="whatsappFounderImageUrl" 
                     label="Upload Founder Biography Portrait" 
                   />
                 </div>
@@ -2793,7 +2793,7 @@ export function AdminTelegramCommunityTab() {
               <div className="p-4 space-y-4 border-t border-white/5 bg-black/20 animate-fade-in font-sans">
                 <div className="border border-white/5 bg-black/10 p-4 mb-4">
                   <ImageUploader 
-                    fieldKey="telegramCommunityImgUrl" 
+                    fieldKey="whatsappCommunityImgUrl" 
                     label="Upload Sisterhood & Growing Community Image" 
                   />
                 </div>
@@ -2897,7 +2897,7 @@ export function AdminTelegramCommunityTab() {
                     <input 
                       type="text"
                       className="w-full bg-black/40 border border-white/15 px-3 py-2 text-xs text-zinc-300 focus:outline-none font-sans"
-                      value={tData.ctaFinalBtnText || "Join Telegram Group"}
+                      value={tData.ctaFinalBtnText || "Join WhatsApp Group"}
                       onChange={(e) => handleFieldChange("ctaFinalBtnText", e.target.value)}
                     />
                   </div>
@@ -2920,7 +2920,7 @@ export function AdminTelegramCommunityTab() {
         {/* Expandable RAW JSON structure in case they need to configure/reset it */}
         <details className="mt-8 border border-white/5 bg-zinc-950/40 p-4 font-sans text-xs">
           <summary className="text-[10px] uppercase font-mono tracking-widest text-brand-gold cursor-pointer hover:text-white select-none">
-            🛠️ Advanced: Edit Raw Telegram Page Configuration JSON
+            🛠️ Advanced: Edit Raw WhatsApp Page Configuration JSON
           </summary>
           <div className="mt-4 space-y-2">
             <p className="text-[10px] text-white/40 font-light">
@@ -2928,8 +2928,8 @@ export function AdminTelegramCommunityTab() {
             </p>
             <textarea
               className="w-full bg-black/80 border border-white/10 rounded p-4 text-xs font-mono text-zinc-300 min-h-[350px]"
-              value={content.telegramLandingPageJson || "{}"}
-              onChange={(e) => updateContentField("telegramLandingPageJson", e.target.value)}
+              value={content.whatsappLandingPageJson || "{}"}
+              onChange={(e) => updateContentField("whatsappLandingPageJson", e.target.value)}
             />
           </div>
         </details>

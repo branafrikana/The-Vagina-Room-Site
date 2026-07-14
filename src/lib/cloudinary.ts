@@ -1,3 +1,5 @@
+import { compressImage } from "./imageCompression";
+
 /**
  * Cloudinary Client-Side Direct Upload Helper
  * Enables serverless direct uploads from the browser to Cloudinary
@@ -18,7 +20,6 @@ const getCloudinaryConfig = (): CloudinaryConfig => {
   } catch (e) {
     console.warn("Could not read local Cloudinary configs", e);
   }
-
   // Ensure production credentials are read from env or settings, fail if not exists.
   return {
     cloudName: (import.meta.env.VITE_CLOUDINARY_CLOUD_NAME as string) || "",
@@ -40,29 +41,23 @@ export async function uploadToCloudinaryClient(
   fileOrBase64: string | File,
   fileName: string = "uploaded_media"
 ): Promise<{ success: boolean; url?: string; error?: string }> {
-  let fallbackBase64 = "";
+  let payloadToUpload: string | File = fileOrBase64;
+  
   try {
-    if (typeof fileOrBase64 === "string") {
-      fallbackBase64 = fileOrBase64;
-    } else {
-      fallbackBase64 = await new Promise<string>((resolve) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result as string);
-        reader.readAsDataURL(fileOrBase64);
-      });
+    if (typeof fileOrBase64 !== "string") {
+      payloadToUpload = await compressImage(fileOrBase64);
     }
 
     const config = getCloudinaryConfig();
     if (!config.cloudName) {
       return {
-        success: true,
-        url: fallbackBase64,
-        error: "Cloudinary Cloud Name is not configured. Falling back to local Base64."
+        success: false,
+        error: "Cloudinary Cloud Name is not configured. Please add your Cloudinary credentials in Settings."
       };
     }
 
     const formData = new FormData();
-    formData.append("file", fileOrBase64);
+    formData.append("file", payloadToUpload);
     formData.append("upload_preset", config.uploadPreset || "ml_default");
     formData.append("tags", "vagina_room_cms");
 
@@ -93,10 +88,9 @@ export async function uploadToCloudinaryClient(
       url: data.secure_url,
     };
   } catch (err: any) {
-    console.error("Cloudinary upload failed, falling back:", err);
+    console.warn("Cloudinary upload failed:", err);
     return {
-      success: true,
-      url: fallbackBase64 || (typeof fileOrBase64 === "string" ? fileOrBase64 : ""),
+      success: false,
       error: `Cloudinary upload failed: ${err.message || "Failed to fetch"}`,
     };
   }

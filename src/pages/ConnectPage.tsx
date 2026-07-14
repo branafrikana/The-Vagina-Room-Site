@@ -4,7 +4,7 @@ import ScreenLoader from "../components/ScreenLoader";
 import { 
   Instagram, 
   Youtube, 
-  Send, 
+   
   Linkedin, 
   ExternalLink, 
   Share2, 
@@ -60,9 +60,6 @@ const getIconComponent = (iconName: string) => {
   switch (normalized) {
     case "instagram": return <Instagram className="w-5 h-5" />;
     case "youtube": return <Youtube className="w-5 h-5" />;
-    case "telegram":
-    case "send": 
-      return <Send className="w-5 h-5" />;
     case "linkedin": return <Linkedin className="w-5 h-5" />;
     case "facebook": return <Facebook className="w-5 h-5" />;
     case "twitter":
@@ -228,14 +225,14 @@ export default function ConnectPage() {
     socials: rawConfig.socials || [
       { platform: "Instagram", url: "https://instagram.com/thevaginaroom", icon: "Instagram" },
       { platform: "Youtube", url: "https://youtube.com", icon: "Youtube" },
-      { platform: "Telegram", url: "https://t.me/thevaginaroom", icon: "Send" },
+      { platform: "WhatsApp", url: "https://wa.me/1234567890", icon: "MessageCircle" },
       { platform: "LinkedIn", url: "https://linkedin.com", icon: "Linkedin" }
     ],
     links: rawConfig.links || [
       { id: "l1", type: "cta", label: "🌸 Join The Inner Circle (NGN 25,000 / $50)", url: "/join-community", description: "Weekly masterclasses with Dr. FID, medical board resources & global sisterhood circle.", isHighlighted: true },
       { id: "l2", type: "cta", label: "📅 Book A Confidential Session styled by Dr. FID", url: "/dr-fid-booking", description: "Consult directly for intimate, spinal manipulation, spa wellness, and chiropractic support.", isHighlighted: false },
       { id: "l3", type: "cta", label: "🌿 Our Curated Phyto-Medicinal Selections", url: "/products", description: "Explore scientific botanical formulations engineered for female anatomy restore.", isHighlighted: false },
-      { id: "l4", type: "cta", label: "💬 Free Telegram General Discussion Safe-Space", url: "/telegram", description: "Dismantling silent stigmas with 1,000+ sisters who talk freely without taboos.", isHighlighted: false }
+      { id: "l4", type: "cta", label: "💬 Free WhatsApp General Discussion Safe-Space", url: "/whatsapp", description: "Dismantling silent stigmas with 1,000+ sisters who talk freely without taboos.", isHighlighted: false }
     ],
     images: rawConfig.images || [
       { id: "img1", imageUrl: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=800", title: "About Our Shared Mission", description: "Where biology meets compassion to end intimate shame, providing restorative care standardizations worldwide.", clickUrl: "/about" },

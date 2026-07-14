@@ -9,8 +9,6 @@ import {
 import SEO from "../components/SEO";
 import { useContent } from "../context/ContentContext";
 import { safeJsonParse } from "../lib/json";
-import heroBg from "../assets/images/wellness_bg_hero_1780780675207.png";
-import communityImg from "../assets/images/women_community_1780781882048.png";
 
 // Sample Data for Bento Grid Showcase
 const topics = [
@@ -29,7 +27,7 @@ const topics = [
 ];
 
 const CONTINENT_COUNTRIES: Record<string, string[]> = {
-  "Africa": ["Nigeria", "Ghana", "Kenya", "South Africa", "Rwanda", "Uganda", "Cameroon", "Egypt", "Ethiopia", "Tanzania", "Other African Country"],
+  "Africa": ["Algeria","Angola","Benin","Botswana","Burkina Faso","Burundi","Cabo Verde","Cameroon","Central African Republic","Chad","Comoros","Congo","Democratic Republic of the Congo","Côte d'Ivoire","Djibouti","Egypt","Equatorial Guinea","Eritrea","Eswatini","Ethiopia","Gabon","The Gambia","Ghana","Guinea","Guinea-Bissau","Kenya","Lesotho","Liberia","Libya","Madagascar","Malawi","Mali","Mauritania","Mauritius","Morocco","Mozambique","Namibia","Niger","Nigeria","Rwanda","Sao Tome and Principe","Senegal","Seychelles","Sierra Leone","Somalia","South Africa","South Sudan","Sudan","Tanzania","Togo","Tunisia","Uganda","Zambia","Zimbabwe","Other African Country"],
   "North America": ["United States", "Canada", "Jamaica", "Trinidad and Tobago", "Other North American Country"],
   "Europe": ["United Kingdom", "Germany", "France", "Netherlands", "Ireland", "Italy", "Spain", "Other European Country"],
   "South America": ["Brazil", "Colombia", "Argentina", "Other South American Country"],
@@ -38,73 +36,1383 @@ const CONTINENT_COUNTRIES: Record<string, string[]> = {
 };
 
 const SUBDIVISIONS: Record<string, { label: string; placeholder: string; options?: string[] }> = {
-  "Nigeria": {
-    label: "State",
-    placeholder: "Select State",
-    options: [
-      "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "FCT - Abuja", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara"
+  "Algeria": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Adrar",
+      "Algiers",
+      "Annaba",
+      "Aïn Defla",
+      "Aïn Témouchent",
+      "Batna",
+      "Biskra",
+      "Blida",
+      "Bordj Baji Mokhtar",
+      "Bordj Bou Arréridj",
+      "Boumerdès",
+      "Bouïra",
+      "Béchar",
+      "Béjaïa",
+      "Béni Abbès",
+      "Chlef",
+      "Constantine",
+      "Djanet",
+      "Djelfa",
+      "El Bayadh",
+      "El M'ghair",
+      "El Menia",
+      "El Oued",
+      "El Tarf",
+      "Ghardaïa",
+      "Guelma",
+      "Illizi",
+      "In Guezzam",
+      "In Salah",
+      "Jijel",
+      "Khenchela",
+      "Laghouat",
+      "M'Sila",
+      "Mascara",
+      "Mila",
+      "Mostaganem",
+      "Médéa",
+      "Naama",
+      "Oran",
+      "Ouargla",
+      "Ouled Djellal",
+      "Oum El Bouaghi",
+      "Relizane",
+      "Saïda",
+      "Sidi Bel Abbès",
+      "Skikda",
+      "Souk Ahras",
+      "Sétif",
+      "Tamanghasset",
+      "Tiaret",
+      "Timimoun",
+      "Tindouf",
+      "Tipasa",
+      "Tissemsilt",
+      "Tizi Ouzou",
+      "Tlemcen",
+      "Touggourt",
+      "Tébessa"
     ]
   },
-  "Kenya": {
-    label: "County",
-    placeholder: "Select County",
-    options: [
-      "Nairobi", "Mombasa", "Kiambu", "Nakuru", "Kisumu", "Uasin Gishu", "Machakos", "Kajiado", "Nyeri", "Makueni", "Kilifi", "Kakamega", "Other County"
+  "Angola": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Bengo Province",
+      "Benguela Province",
+      "Bié Province",
+      "Cabinda Province",
+      "Cuando Cubango Province",
+      "Cuanza Norte Province",
+      "Cuanza Sul",
+      "Cunene Province",
+      "Huambo Province",
+      "Huíla Province",
+      "Luanda Province",
+      "Lunda Norte Province",
+      "Lunda Sul Province",
+      "Malanje Province",
+      "Moxico Province",
+      "Uíge Province",
+      "Zaire Province"
+    ]
+  },
+  "Benin": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Alibori Department",
+      "Atakora Department",
+      "Atlantique Department",
+      "Borgou Department",
+      "Collines Department",
+      "Donga Department",
+      "Kouffo Department",
+      "Littoral Department",
+      "Mono Department",
+      "Ouémé Department",
+      "Plateau Department",
+      "Zou Department"
+    ]
+  },
+  "Botswana": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Central District",
+      "Ghanzi District",
+      "Kgalagadi District",
+      "Kgatleng District",
+      "Kweneng District",
+      "Ngamiland",
+      "North-East District",
+      "North-West District",
+      "South-East District",
+      "Southern District"
+    ]
+  },
+  "Burkina Faso": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Balé Province",
+      "Bam Province",
+      "Banwa Province",
+      "Bazèga Province",
+      "Boucle du Mouhoun Region",
+      "Bougouriba Province",
+      "Boulgou",
+      "Cascades Region",
+      "Centre",
+      "Centre-Est Region",
+      "Centre-Nord Region",
+      "Centre-Ouest Region",
+      "Centre-Sud Region",
+      "Comoé Province",
+      "Est Region",
+      "Ganzourgou Province",
+      "Gnagna Province",
+      "Gourma Province",
+      "Hauts-Bassins Region",
+      "Houet Province",
+      "Ioba Province",
+      "Kadiogo Province",
+      "Komondjari Province",
+      "Kompienga Province",
+      "Kossi Province",
+      "Koulpélogo Province",
+      "Kouritenga Province",
+      "Kourwéogo Province",
+      "Kénédougou Province",
+      "Loroum Province",
+      "Léraba Province",
+      "Mouhoun",
+      "Nahouri Province",
+      "Namentenga Province",
+      "Nayala Province",
+      "Nord Region, Burkina Faso",
+      "Noumbiel Province",
+      "Oubritenga Province",
+      "Oudalan Province",
+      "Passoré Province",
+      "Plateau-Central Region",
+      "Poni Province",
+      "Sahel Region",
+      "Sanguié Province",
+      "Sanmatenga Province",
+      "Sissili Province",
+      "Soum Province",
+      "Sourou Province",
+      "Sud-Ouest Region",
+      "Séno Province",
+      "Tapoa Province",
+      "Tuy Province",
+      "Yagha Province",
+      "Yatenga Province",
+      "Ziro Province",
+      "Zondoma Province",
+      "Zoundwéogo Province"
+    ]
+  },
+  "Burundi": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Bubanza Province",
+      "Bujumbura Mairie Province",
+      "Bujumbura Rural Province",
+      "Bururi Province",
+      "Cankuzo Province",
+      "Cibitoke Province",
+      "Gitega Province",
+      "Karuzi Province",
+      "Kayanza Province",
+      "Kirundo Province",
+      "Makamba Province",
+      "Muramvya Province",
+      "Muyinga Province",
+      "Mwaro Province",
+      "Ngozi Province",
+      "Rumonge Province",
+      "Rutana Province",
+      "Ruyigi Province"
+    ]
+  },
+  "Cabo Verde": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region"
+  },
+  "Cameroon": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Adamawa",
+      "Centre",
+      "East",
+      "Far North",
+      "Littoral",
+      "North",
+      "Northwest",
+      "South",
+      "Southwest",
+      "West"
+    ]
+  },
+  "Central African Republic": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Bamingui-Bangoran Prefecture",
+      "Bangui",
+      "Basse-Kotto Prefecture",
+      "Haut-Mbomou Prefecture",
+      "Haute-Kotto Prefecture",
+      "Kémo Prefecture",
+      "Lobaye Prefecture",
+      "Mambéré-Kadéï",
+      "Mbomou Prefecture",
+      "Nana-Grébizi Economic Prefecture",
+      "Nana-Mambéré Prefecture",
+      "Ombella-M'Poko Prefecture",
+      "Ouaka Prefecture",
+      "Ouham Prefecture",
+      "Ouham-Pendé Prefecture",
+      "Sangha-Mbaéré",
+      "Vakaga Prefecture"
+    ]
+  },
+  "Chad": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Bahr el Gazel",
+      "Batha Region",
+      "Borkou",
+      "Ennedi Region",
+      "Ennedi-Est",
+      "Ennedi-Ouest",
+      "Guéra Region",
+      "Hadjer-Lamis",
+      "Kanem Region",
+      "Lac Region",
+      "Logone Occidental Region",
+      "Logone Oriental Region",
+      "Mandoul Region",
+      "Mayo-Kebbi Est Region",
+      "Mayo-Kebbi Ouest Region",
+      "Moyen-Chari Region",
+      "N'Djamena",
+      "Ouaddaï Region",
+      "Salamat Region",
+      "Sila Region",
+      "Tandjilé Region",
+      "Tibesti Region",
+      "Wadi Fira Region"
+    ]
+  },
+  "Comoros": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Anjouan",
+      "Grande Comore",
+      "Mohéli"
+    ]
+  },
+  "Congo": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Bouenza Department",
+      "Brazzaville",
+      "Cuvette Department",
+      "Cuvette-Ouest Department",
+      "Kouilou Department",
+      "Likouala Department",
+      "Lékoumou Department",
+      "Niari Department",
+      "Plateaux Department",
+      "Pointe-Noire",
+      "Pool Department",
+      "Sangha Department"
+    ]
+  },
+  "Democratic Republic of the Congo": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Bas-Uélé",
+      "Haut-Katanga",
+      "Haut-Lomami",
+      "Haut-Uélé",
+      "Ituri",
+      "Kasaï",
+      "Kasaï Central",
+      "Kasaï Oriental",
+      "Kinshasa",
+      "Kongo Central",
+      "Kwango",
+      "Kwilu",
+      "Lomami",
+      "Lualaba",
+      "Mai-Ndombe",
+      "Maniema",
+      "Mongala",
+      "Nord-Kivu",
+      "Nord-Ubangi",
+      "Sankuru",
+      "Sud-Kivu",
+      "Sud-Ubangi",
+      "Tanganyika",
+      "Tshopo",
+      "Tshuapa",
+      "Équateur"
+    ]
+  },
+  "Côte d'Ivoire": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region"
+  },
+  "Djibouti": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Ali Sabieh Region",
+      "Arta Region",
+      "Dikhil Region",
+      "Djibouti",
+      "Obock Region",
+      "Tadjourah Region"
+    ]
+  },
+  "Egypt": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Alexandria",
+      "Aswan",
+      "Asyut",
+      "Beheira",
+      "Beni Suef",
+      "Cairo",
+      "Dakahlia",
+      "Damietta",
+      "Faiyum",
+      "Gharbia",
+      "Giza",
+      "Ismailia",
+      "Kafr el-Sheikh",
+      "Luxor",
+      "Matrouh",
+      "Minya",
+      "Monufia",
+      "New Valley",
+      "North Sinai",
+      "Port Said",
+      "Qalyubia",
+      "Qena",
+      "Red Sea",
+      "Sharqia",
+      "Sohag",
+      "South Sinai",
+      "Suez"
+    ]
+  },
+  "Equatorial Guinea": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Annobón Province",
+      "Bioko Norte Province",
+      "Bioko Sur Province",
+      "Centro Sur Province",
+      "Insular Region",
+      "Kié-Ntem Province",
+      "Litoral Province",
+      "Río Muni",
+      "Wele-Nzas Province"
+    ]
+  },
+  "Eritrea": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Anseba Region",
+      "Debub Region",
+      "Gash-Barka Region",
+      "Maekel Region",
+      "Northern Red Sea Region",
+      "Southern Red Sea Region"
+    ]
+  },
+  "Eswatini": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region"
+  },
+  "Ethiopia": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Addis Ababa",
+      "Afar Region",
+      "Amhara Region",
+      "Benishangul-Gumuz Region",
+      "Dire Dawa",
+      "Gambela Region",
+      "Harari Region",
+      "Oromia Region",
+      "Somali Region",
+      "Southern Nations, Nationalities, and Peoples' Region",
+      "Tigray Region"
+    ]
+  },
+  "Gabon": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Estuaire Province",
+      "Haut-Ogooué Province",
+      "Moyen-Ogooué Province",
+      "Ngounié Province",
+      "Nyanga Province",
+      "Ogooué-Ivindo Province",
+      "Ogooué-Lolo Province",
+      "Ogooué-Maritime Province",
+      "Woleu-Ntem Province"
+    ]
+  },
+  "The Gambia": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Banjul",
+      "Central River Division",
+      "Lower River Division",
+      "North Bank Division",
+      "Upper River Division",
+      "West Coast Division"
     ]
   },
   "Ghana": {
-    label: "Region",
-    placeholder: "Select Region",
-    options: [
-      "Greater Accra", "Ashanti", "Western", "Eastern", "Central", "Volta", "Northern", "Brong-Ahafo", "Upper East", "Upper West", "Other Region"
+    "label": "Region",
+    "placeholder": "Select Region",
+    "options": [
+      "Greater Accra",
+      "Ashanti",
+      "Western",
+      "Eastern",
+      "Central",
+      "Volta",
+      "Northern",
+      "Brong-Ahafo",
+      "Upper East",
+      "Upper West",
+      "Other Region"
+    ]
+  },
+  "Guinea": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Beyla Prefecture",
+      "Boffa Prefecture",
+      "Boké Prefecture",
+      "Boké Region",
+      "Conakry",
+      "Coyah Prefecture",
+      "Dabola Prefecture",
+      "Dalaba Prefecture",
+      "Dinguiraye Prefecture",
+      "Dubréka Prefecture",
+      "Faranah Prefecture",
+      "Forécariah Prefecture",
+      "Fria Prefecture",
+      "Gaoual Prefecture",
+      "Guéckédou Prefecture",
+      "Kankan Prefecture",
+      "Kankan Region",
+      "Kindia Prefecture",
+      "Kindia Region",
+      "Kissidougou Prefecture",
+      "Koubia Prefecture",
+      "Koundara Prefecture",
+      "Kouroussa Prefecture",
+      "Kérouané Prefecture",
+      "Labé Prefecture",
+      "Labé Region",
+      "Lola Prefecture",
+      "Lélouma Prefecture",
+      "Macenta Prefecture",
+      "Mali Prefecture",
+      "Mamou Prefecture",
+      "Mamou Region",
+      "Mandiana Prefecture",
+      "Nzérékoré Prefecture",
+      "Nzérékoré Region",
+      "Pita Prefecture",
+      "Siguiri Prefecture",
+      "Tougué Prefecture",
+      "Télimélé Prefecture",
+      "Yomou Prefecture"
+    ]
+  },
+  "Guinea-Bissau": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Bafatá",
+      "Biombo Region",
+      "Bolama Region",
+      "Cacheu Region",
+      "Gabú Region",
+      "Leste Province",
+      "Norte Province",
+      "Oio Region",
+      "Quinara Region",
+      "Sul Province",
+      "Tombali Region"
+    ]
+  },
+  "Kenya": {
+    "label": "County",
+    "placeholder": "Select County",
+    "options": [
+      "Nairobi",
+      "Mombasa",
+      "Kiambu",
+      "Nakuru",
+      "Kisumu",
+      "Uasin Gishu",
+      "Machakos",
+      "Kajiado",
+      "Nyeri",
+      "Makueni",
+      "Kilifi",
+      "Kakamega",
+      "Other County"
+    ]
+  },
+  "Lesotho": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Berea District",
+      "Butha-Buthe District",
+      "Leribe District",
+      "Mafeteng District",
+      "Maseru District",
+      "Mohale's Hoek District",
+      "Mokhotlong District",
+      "Qacha's Nek District",
+      "Quthing District",
+      "Thaba-Tseka District"
+    ]
+  },
+  "Liberia": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Bomi County",
+      "Bong County",
+      "Gbarpolu County",
+      "Grand Bassa County",
+      "Grand Cape Mount County",
+      "Grand Gedeh County",
+      "Grand Kru County",
+      "Lofa County",
+      "Margibi County",
+      "Maryland County",
+      "Montserrado County",
+      "Nimba",
+      "River Cess County",
+      "River Gee County",
+      "Sinoe County"
+    ]
+  },
+  "Libya": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Al Wahat District",
+      "Benghazi",
+      "Derna District",
+      "Ghat District",
+      "Jabal al Akhdar",
+      "Jabal al Gharbi District",
+      "Jafara",
+      "Jufra",
+      "Kufra District",
+      "Marj District",
+      "Misrata District",
+      "Murqub",
+      "Murzuq District",
+      "Nalut District",
+      "Nuqat al Khams",
+      "Sabha District",
+      "Sirte District",
+      "Tripoli District",
+      "Wadi al Hayaa District",
+      "Wadi al Shatii District",
+      "Zawiya District"
+    ]
+  },
+  "Madagascar": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Antananarivo Province",
+      "Antsiranana Province",
+      "Fianarantsoa Province",
+      "Mahajanga Province",
+      "Toamasina Province",
+      "Toliara Province"
+    ]
+  },
+  "Malawi": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Balaka District",
+      "Blantyre District",
+      "Central Region",
+      "Chikwawa District",
+      "Chiradzulu District",
+      "Chitipa district",
+      "Dedza District",
+      "Dowa District",
+      "Karonga District",
+      "Kasungu District",
+      "Likoma District",
+      "Lilongwe District",
+      "Machinga District",
+      "Mangochi District",
+      "Mchinji District",
+      "Mulanje District",
+      "Mwanza District",
+      "Mzimba District",
+      "Nkhata Bay District",
+      "Nkhotakota District",
+      "Northern Region",
+      "Nsanje District",
+      "Ntcheu District",
+      "Ntchisi District",
+      "Phalombe District",
+      "Rumphi District",
+      "Salima District",
+      "Southern Region",
+      "Thyolo District",
+      "Zomba District"
+    ]
+  },
+  "Mali": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Bamako",
+      "Gao Region",
+      "Kayes Region",
+      "Kidal Region",
+      "Koulikoro Region",
+      "Mopti Region",
+      "Ménaka Region",
+      "Sikasso Region",
+      "Ségou Region",
+      "Taoudénit Region",
+      "Tombouctou Region"
+    ]
+  },
+  "Mauritania": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Adrar Region",
+      "Assaba Region",
+      "Brakna Region",
+      "Dakhlet Nouadhibou",
+      "Gorgol Region",
+      "Guidimaka Region",
+      "Hodh Ech Chargui Region",
+      "Hodh El Gharbi Region",
+      "Inchiri Region",
+      "Nouakchott-Nord Region",
+      "Nouakchott-Ouest Region",
+      "Nouakchott-Sud Region",
+      "Tagant Region",
+      "Tiris Zemmour Region",
+      "Trarza Region"
+    ]
+  },
+  "Mauritius": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Agaléga",
+      "Beau Bassin-Rose Hill",
+      "Cargados Carajos",
+      "Curepipe",
+      "Flacq District",
+      "Grand Port District",
+      "Moka District",
+      "Pamplemousses District",
+      "Plaines Wilhems District",
+      "Port Louis",
+      "Port Louis District",
+      "Quatre Bornes",
+      "Rivière Noire District",
+      "Rivière du Rempart District",
+      "Rodrigues",
+      "Savanne District",
+      "Vacoas-Phoenix"
+    ]
+  },
+  "Morocco": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Agadir-Ida-Ou-Tanane",
+      "Al Haouz",
+      "Al Hoceïma",
+      "Aousserd (EH)",
+      "Assa-Zag (EH-partial)",
+      "Azilal",
+      "Benslimane",
+      "Berkane",
+      "Berrechid",
+      "Boujdour (EH)",
+      "Boulemane",
+      "Béni Mellal",
+      "Béni Mellal-Khénifra",
+      "Casablanca",
+      "Casablanca-Settat",
+      "Chefchaouen",
+      "Chichaoua",
+      "Chtouka-Ait Baha",
+      "Dakhla-Oued Ed-Dahab (EH)",
+      "Driouch",
+      "Drâa-Tafilalet",
+      "El Hajeb",
+      "El Jadida",
+      "El Kelâa des Sraghna",
+      "Errachidia",
+      "Es-Semara (EH-partial)",
+      "Essaouira",
+      "Fahs-Anjra",
+      "Figuig",
+      "Fquih Ben Salah",
+      "Fès",
+      "Fès-Meknès",
+      "Guelmim",
+      "Guelmim-Oued Noun (EH-partial)",
+      "Guercif",
+      "Ifrane",
+      "Inezgane-Ait Melloul",
+      "Jerada",
+      "Khouribga",
+      "Khémisset",
+      "Khénifra",
+      "Kénitra",
+      "L'Oriental",
+      "Larache",
+      "Laâyoune (EH)",
+      "Laâyoune-Sakia El Hamra (EH-partial)",
+      "Marrakech",
+      "Marrakesh-Safi",
+      "Meknès",
+      "Midelt",
+      "Mohammadia",
+      "Moulay Yacoub",
+      "Médiouna",
+      "M’diq-Fnideq",
+      "Nador",
+      "Nouaceur",
+      "Ouarzazate",
+      "Oued Ed-Dahab (EH)",
+      "Ouezzane",
+      "Oujda-Angad",
+      "Rabat",
+      "Rabat-Salé-Kénitra",
+      "Rehamna",
+      "Safi",
+      "Salé",
+      "Sefrou",
+      "Settat",
+      "Sidi Bennour",
+      "Sidi Ifni",
+      "Sidi Kacem",
+      "Sidi Slimane",
+      "Skhirate-Témara",
+      "Souss-Massa",
+      "Tan-Tan (EH-partial)",
+      "Tanger-Assilah",
+      "Tanger-Tétouan-Al Hoceïma",
+      "Taounate",
+      "Taourirt",
+      "Tarfaya (EH-partial)",
+      "Taroudannt",
+      "Tata",
+      "Taza",
+      "Tinghir",
+      "Tiznit",
+      "Tétouan",
+      "Youssoufia",
+      "Zagora"
+    ]
+  },
+  "Mozambique": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Cabo Delgado Province",
+      "Gaza Province",
+      "Inhambane Province",
+      "Manica Province",
+      "Maputo",
+      "Maputo Province",
+      "Nampula Province",
+      "Niassa Province",
+      "Sofala Province",
+      "Tete Province",
+      "Zambezia Province"
+    ]
+  },
+  "Namibia": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Erongo Region",
+      "Hardap Region",
+      "Karas Region",
+      "Kavango East Region",
+      "Kavango West Region",
+      "Khomas Region",
+      "Kunene Region",
+      "Ohangwena Region",
+      "Omaheke Region",
+      "Omusati Region",
+      "Oshana Region",
+      "Oshikoto Region",
+      "Otjozondjupa Region",
+      "Zambezi Region"
+    ]
+  },
+  "Niger": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Agadez Region",
+      "Diffa Region",
+      "Dosso Region",
+      "Maradi Region",
+      "Tahoua Region",
+      "Tillabéri Region",
+      "Zinder Region"
+    ]
+  },
+  "Nigeria": {
+    "label": "State",
+    "placeholder": "Select State",
+    "options": [
+      "Abia",
+      "Adamawa",
+      "Akwa Ibom",
+      "Anambra",
+      "Bauchi",
+      "Bayelsa",
+      "Benue",
+      "Borno",
+      "Cross River",
+      "Delta",
+      "Ebonyi",
+      "Edo",
+      "Ekiti",
+      "Enugu",
+      "FCT - Abuja",
+      "Gombe",
+      "Imo",
+      "Jigawa",
+      "Kaduna",
+      "Kano",
+      "Katsina",
+      "Kebbi",
+      "Kogi",
+      "Kwara",
+      "Lagos",
+      "Nasarawa",
+      "Niger",
+      "Ogun",
+      "Ondo",
+      "Osun",
+      "Oyo",
+      "Plateau",
+      "Rivers",
+      "Sokoto",
+      "Taraba",
+      "Yobe",
+      "Zamfara"
+    ]
+  },
+  "Rwanda": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Eastern Province",
+      "Kigali district",
+      "Northern Province",
+      "Southern Province",
+      "Western Province"
+    ]
+  },
+  "Sao Tome and Principe": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Príncipe Province",
+      "São Tomé Province"
+    ]
+  },
+  "Senegal": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Dakar",
+      "Diourbel Region",
+      "Fatick",
+      "Kaffrine",
+      "Kaolack",
+      "Kolda",
+      "Kédougou",
+      "Louga",
+      "Matam",
+      "Saint-Louis",
+      "Sédhiou",
+      "Tambacounda Region",
+      "Thiès Region",
+      "Ziguinchor"
+    ]
+  },
+  "Seychelles": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Anse Boileau",
+      "Anse Royale",
+      "Anse-aux-Pins",
+      "Au Cap",
+      "Baie Lazare",
+      "Baie Sainte Anne",
+      "Beau Vallon",
+      "Bel Air",
+      "Bel Ombre",
+      "Cascade",
+      "Glacis",
+      "Grand'Anse Mahé",
+      "Grand'Anse Praslin",
+      "La Digue",
+      "La Rivière Anglaise",
+      "Les Mamelles",
+      "Mont Buxton",
+      "Mont Fleuri",
+      "Plaisance",
+      "Pointe La Rue",
+      "Port Glaud",
+      "Roche Caiman",
+      "Saint Louis",
+      "Takamaka"
+    ]
+  },
+  "Sierra Leone": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Eastern Province",
+      "Northern Province",
+      "Southern Province",
+      "Western Area"
+    ]
+  },
+  "Somalia": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Awdal Region",
+      "Bakool",
+      "Banaadir",
+      "Bari",
+      "Bay",
+      "Galguduud",
+      "Gedo",
+      "Hiran",
+      "Lower Juba",
+      "Lower Shebelle",
+      "Middle Juba",
+      "Middle Shebelle",
+      "Mudug",
+      "Nugal",
+      "Sanaag Region",
+      "Togdheer Region"
     ]
   },
   "South Africa": {
-    label: "Province",
-    placeholder: "Select Province",
-    options: [
-      "Gauteng", "Western Cape", "KwaZulu-Natal", "Eastern Cape", "Free State", "Limpopo", "Mpumalanga", "North West", "Northern Cape"
+    "label": "Province",
+    "placeholder": "Select Province",
+    "options": [
+      "Gauteng",
+      "Western Cape",
+      "KwaZulu-Natal",
+      "Eastern Cape",
+      "Free State",
+      "Limpopo",
+      "Mpumalanga",
+      "North West",
+      "Northern Cape"
+    ]
+  },
+  "South Sudan": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Central Equatoria",
+      "Eastern Equatoria",
+      "Jonglei State",
+      "Lakes",
+      "Northern Bahr el Ghazal",
+      "Unity",
+      "Upper Nile",
+      "Warrap",
+      "Western Bahr el Ghazal",
+      "Western Equatoria"
+    ]
+  },
+  "Sudan": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Al Jazirah",
+      "Al Qadarif",
+      "Blue Nile",
+      "Central Darfur",
+      "East Darfur",
+      "Kassala",
+      "Khartoum",
+      "North Darfur",
+      "North Kordofan",
+      "Northern",
+      "Red Sea",
+      "River Nile",
+      "Sennar",
+      "South Darfur",
+      "South Kordofan",
+      "West Darfur",
+      "West Kordofan",
+      "White Nile"
+    ]
+  },
+  "Tanzania": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Arusha",
+      "Dar es Salaam",
+      "Dodoma",
+      "Geita",
+      "Iringa",
+      "Kagera",
+      "Katavi",
+      "Kigoma",
+      "Kilimanjaro",
+      "Lindi",
+      "Manyara",
+      "Mara",
+      "Mbeya",
+      "Morogoro",
+      "Mtwara",
+      "Mwanza",
+      "Njombe",
+      "Pemba North",
+      "Pemba South",
+      "Pwani",
+      "Rukwa",
+      "Ruvuma",
+      "Shinyanga",
+      "Simiyu",
+      "Singida",
+      "Songwe",
+      "Tabora",
+      "Tanga",
+      "Zanzibar North",
+      "Zanzibar South",
+      "Zanzibar West"
+    ]
+  },
+  "Togo": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Centrale Region",
+      "Kara Region",
+      "Maritime",
+      "Plateaux Region",
+      "Savanes Region"
+    ]
+  },
+  "Tunisia": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Ariana Governorate",
+      "Ben Arous Governorate",
+      "Bizerte Governorate",
+      "Gabès Governorate",
+      "Gafsa Governorate",
+      "Jendouba Governorate",
+      "Kairouan Governorate",
+      "Kasserine Governorate",
+      "Kassrine",
+      "Kebili Governorate",
+      "Kef Governorate",
+      "Mahdia Governorate",
+      "Manouba Governorate",
+      "Medenine Governorate",
+      "Monastir Governorate",
+      "Sfax Governorate",
+      "Sidi Bouzid Governorate",
+      "Siliana Governorate",
+      "Sousse Governorate",
+      "Tataouine Governorate",
+      "Tozeur Governorate",
+      "Tunis Governorate",
+      "Zaghouan Governorate"
+    ]
+  },
+  "Uganda": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Abim District",
+      "Adjumani District",
+      "Agago District",
+      "Alebtong District",
+      "Amolatar District",
+      "Amudat District",
+      "Amuria District",
+      "Amuru District",
+      "Apac District",
+      "Arua District",
+      "Budaka District",
+      "Bududa District",
+      "Bugiri District",
+      "Buhweju District",
+      "Buikwe District",
+      "Bukedea District",
+      "Bukomansimbi District",
+      "Bukwo District",
+      "Bulambuli District",
+      "Buliisa District",
+      "Bundibugyo District",
+      "Bunyangabu District",
+      "Bushenyi District",
+      "Busia District",
+      "Butaleja District",
+      "Butambala District",
+      "Butebo District",
+      "Buvuma District",
+      "Buyende District",
+      "Central Region",
+      "Dokolo District",
+      "Eastern Region",
+      "Gomba District",
+      "Gulu District",
+      "Ibanda District",
+      "Iganga District",
+      "Isingiro District",
+      "Jinja District",
+      "Kaabong District",
+      "Kabale District",
+      "Kabarole District",
+      "Kaberamaido District",
+      "Kagadi District",
+      "Kakumiro District",
+      "Kalangala District",
+      "Kaliro District",
+      "Kalungu District",
+      "Kampala District",
+      "Kamuli District",
+      "Kamwenge District",
+      "Kanungu District",
+      "Kapchorwa District",
+      "Kasese District",
+      "Katakwi District",
+      "Kayunga District",
+      "Kibaale District",
+      "Kiboga District",
+      "Kibuku District",
+      "Kiruhura District",
+      "Kiryandongo District",
+      "Kisoro District",
+      "Kitgum District",
+      "Koboko District",
+      "Kole District",
+      "Kotido District",
+      "Kumi District",
+      "Kween District",
+      "Kyankwanzi District",
+      "Kyegegwa District",
+      "Kyenjojo District",
+      "Kyotera District",
+      "Lamwo District",
+      "Lira District",
+      "Luuka District",
+      "Luwero District",
+      "Lwengo District",
+      "Lyantonde District",
+      "Manafwa District",
+      "Maracha District",
+      "Masaka District",
+      "Masindi District",
+      "Mayuge District",
+      "Mbale District",
+      "Mbarara District",
+      "Mitooma District",
+      "Mityana District",
+      "Moroto District",
+      "Moyo District",
+      "Mpigi District",
+      "Mubende District",
+      "Mukono District",
+      "Nakapiripirit District",
+      "Nakaseke District",
+      "Nakasongola District",
+      "Namayingo District",
+      "Namisindwa District",
+      "Namutumba District",
+      "Napak District",
+      "Nebbi District",
+      "Ngora District",
+      "Northern Region",
+      "Ntoroko District",
+      "Ntungamo District",
+      "Nwoya District",
+      "Omoro District",
+      "Otuke District",
+      "Oyam District",
+      "Pader District",
+      "Pakwach District",
+      "Pallisa District",
+      "Rakai District",
+      "Rubanda District",
+      "Rubirizi District",
+      "Rukiga District",
+      "Rukungiri District",
+      "Sembabule District",
+      "Serere District",
+      "Sheema District",
+      "Sironko District",
+      "Soroti District",
+      "Tororo District",
+      "Wakiso District",
+      "Western Region",
+      "Yumbe District",
+      "Zombo District"
+    ]
+  },
+  "Zambia": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Central Province",
+      "Copperbelt Province",
+      "Eastern Province",
+      "Luapula Province",
+      "Lusaka Province",
+      "Muchinga Province",
+      "Northern Province",
+      "Northwestern Province",
+      "Southern Province",
+      "Western Province"
+    ]
+  },
+  "Zimbabwe": {
+    "label": "State/Region",
+    "placeholder": "Select State/Region",
+    "options": [
+      "Bulawayo Province",
+      "Harare Province",
+      "Manicaland",
+      "Mashonaland Central Province",
+      "Mashonaland East Province",
+      "Mashonaland West Province",
+      "Masvingo Province",
+      "Matabeleland North Province",
+      "Matabeleland South Province",
+      "Midlands Province"
     ]
   },
   "United States": {
-    label: "State",
-    placeholder: "Select State",
-    options: [
-      "California", "Texas", "New York", "Florida", "Illinois", "Georgia", "North Carolina", "Pennsylvania", "Ohio", "Michigan", "Other State"
+    "label": "State",
+    "placeholder": "Select State",
+    "options": [
+      "California",
+      "Texas",
+      "New York",
+      "Florida",
+      "Illinois",
+      "Georgia",
+      "North Carolina",
+      "Pennsylvania",
+      "Ohio",
+      "Michigan",
+      "Other State"
     ]
   },
   "Canada": {
-    label: "Province",
-    placeholder: "Select Province",
-    options: [
-      "Ontario", "Quebec", "British Columbia", "Alberta", "Manitoba", "Other Province"
+    "label": "Province",
+    "placeholder": "Select Province",
+    "options": [
+      "Ontario",
+      "Quebec",
+      "British Columbia",
+      "Alberta",
+      "Manitoba",
+      "Other Province"
     ]
   },
   "United Kingdom": {
-    label: "Country/Region",
-    placeholder: "Select Country/Region",
-    options: ["England", "Scotland", "Wales", "Northern Ireland", "Other Region"]
+    "label": "Country/Region",
+    "placeholder": "Select Country/Region",
+    "options": [
+      "England",
+      "Scotland",
+      "Wales",
+      "Northern Ireland",
+      "Other Region"
+    ]
   }
 };
 
-export default function TelegramCommunityPage() {
+export default function WhatsAppCommunityPage() {
   const { content, submitFormSubmission } = useContent();
   const branding = safeJsonParse(content.brandingSettingsJson, {} as any);
   let tData: any = {};
   try {
-    tData = JSON.parse(content.telegramLandingPageJson || "{}");
+    tData = JSON.parse(content.whatsappLandingPageJson || "{}");
   } catch(e) {}
 
   // Use content URLs if available, otherwise fallback
-  const heroBgUrl = content.telegramHeroBgUrl || "";
-  const communityImgUrl = content.telegramCommunityImgUrl || "";
-  const founderImageUrl = content.telegramFounderImageUrl || content.drFidImageUrl || "";
+  const heroBgUrl = content.whatsappHeroBgUrl || "";
+  const communityImgUrl = content.whatsappCommunityImgUrl || "";
+  const founderImageUrl = content.whatsappFounderImageUrl || content.drFidImageUrl || "";
 
   // Preferred Logo Values from JSON or Global Config
-  const heroLogoUrl = tData.logoUrl || content.telegramHeroLogoUrl || "";
-  const heroLogoHeight = tData.logoHeight || content.telegramHeroLogoHeight || 150;
-  const heroLogoType = tData.logoType || content.telegramHeroLogoType || "text";
-  const heroLogoText = tData.heroHeaderTextLogo || content.telegramHeroHeaderTextLogo || "The Vagina Room";
+  const heroLogoUrl = tData.logoUrl || content.whatsappHeroLogoUrl || "";
+  const heroLogoHeight = tData.logoHeight || content.whatsappHeroLogoHeight || 150;
+  const heroLogoType = tData.logoType || content.whatsappHeroLogoType || "text";
+  const heroLogoText = tData.heroHeaderTextLogo || content.whatsappHeroHeaderTextLogo || "The Vagina Room";
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [step, setStep] = useState(1);
@@ -117,6 +1425,8 @@ export default function TelegramCommunityPage() {
     subdivision: "",
     city: ""
   });
+  const [isCustomSubdivision, setIsCustomSubdivision] = useState(false);
+  const [customSubdivision, setCustomSubdivision] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [scrolled, setScrolled] = useState(false);
@@ -141,6 +1451,8 @@ export default function TelegramCommunityPage() {
       subdivision: "",
       city: ""
     });
+    setIsCustomSubdivision(false);
+    setCustomSubdivision("");
     setError("");
     setIsModalOpen(true);
   };
@@ -149,9 +1461,10 @@ export default function TelegramCommunityPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleNextStep = () => {
+  const handleNextStep = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
-      setError("Please fill out your name, email, and Telegram number.");
+      setError("Please fill out your name, email, and WhatsApp number.");
       return;
     }
 
@@ -188,21 +1501,14 @@ export default function TelegramCommunityPage() {
       return;
     }
 
-    setIsSubmitting(true);
-    try {
-      const res = await submitFormSubmission("telegram_community", formData);
+    // Submit the data in the background instantly so the user doesn't experience any lag or spinner
+    submitFormSubmission("whatsapp_community", formData).catch((err) => {
+      console.warn("Background form submission error:", err);
+    });
 
-      if (!res.success) {
-        throw new Error("Failed to submit request.");
-      }
-
-      // Automatically go to the thank you page
-      navigate("/telegram/thank-you");
-    } catch (err: any) {
-      setError(err.message || "An unexpected error occurred.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Close the modal and navigate to the thank you page immediately for an instantaneous, seamless experience
+    setIsModalOpen(false);
+    navigate("/whatsapp/thank-you");
   };
 
   const containerVariants = {
@@ -220,8 +1526,10 @@ export default function TelegramCommunityPage() {
 
   // Section Individual Rendering Helpers
   const renderHeroSection = () => (
-    <section key="telegram_hero" className="relative px-6 pt-40 pb-32 lg:pt-48 lg:pb-32 flex flex-col items-center text-center min-h-[90vh] justify-center overflow-hidden">
-      <img src={heroBgUrl || heroBg} alt="Hero Background" referrerPolicy="no-referrer" className="absolute inset-x-0 top-0 w-full h-[120%] object-cover object-top opacity-30 select-none pointer-events-none mix-blend-screen" />
+    <section key="whatsapp_hero" className="relative px-6 pt-40 pb-32 lg:pt-48 lg:pb-32 flex flex-col items-center text-center min-h-[90vh] justify-center overflow-hidden">
+      {heroBgUrl && (
+        <img src={heroBgUrl} alt="Hero Background" referrerPolicy="no-referrer" className="absolute inset-x-0 top-0 w-full h-[120%] object-cover object-top opacity-30 select-none pointer-events-none mix-blend-screen" />
+      )}
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-zinc-950/80 to-zinc-950 pointer-events-none" />
       <div className="absolute top-0 left-1/4 w-full max-w-2xl h-[500px] bg-brand-gold/10 blur-[130px] rounded-full pointer-events-none mix-blend-screen" />
       <div className="absolute bottom-0 right-1/4 w-full max-w-xl h-[400px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
@@ -243,9 +1551,9 @@ export default function TelegramCommunityPage() {
             />
           </motion.div>
         ) : (
-          <motion.div variants={itemVariants} className="mb-6 font-sans text-3xl font-black tracking-tighter text-white uppercase group flex items-center gap-2 justify-center">
-            <span className="text-3xl tracking-tighter uppercase">
-              {heroLogoText}
+          <motion.div variants={itemVariants} className="mb-6 font-sans text-3xl md:text-4xl font-black tracking-tighter text-white uppercase group flex items-center gap-2 justify-center">
+            <span className="tracking-tighter uppercase">
+              The <span className="text-brand-gold italic font-light lowercase transition-transform group-hover:scale-110 inline-block">Vagina</span> Room
             </span>
           </motion.div>
         )}
@@ -257,7 +1565,7 @@ export default function TelegramCommunityPage() {
         <motion.h1 
           variants={itemVariants} 
           className="text-4xl md:text-6xl lg:text-7xl font-serif text-white leading-[1.1] tracking-tight"
-          dangerouslySetInnerHTML={{ __html: tData.heroTitle || "Welcome To <br/><span class='text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-gold italic pr-2'>The Vagina Room</span><br/>Free Telegram Community" }}
+          dangerouslySetInnerHTML={{ __html: tData.heroTitle || "Welcome To <br/><span class='text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-gold italic pr-2'>The Vagina Room</span><br/>Free WhatsApp Community" }}
         />
         
         <motion.p variants={itemVariants} className="text-lg md:text-2xl text-zinc-400 font-light leading-relaxed max-w-3xl mx-auto">
@@ -286,7 +1594,7 @@ export default function TelegramCommunityPage() {
   );
 
   const renderPurposePainSection = () => (
-    <section key="telegram_purpose_pain" className="py-24 px-6 md:py-32 relative border-t border-white/5 bg-zinc-950">
+    <section key="whatsapp_purpose_pain" className="py-24 px-6 md:py-32 relative border-t border-white/5 bg-zinc-950">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-rose-500/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen translate-x-1/3 -translate-y-1/2" />
       
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -359,7 +1667,7 @@ export default function TelegramCommunityPage() {
   );
 
   const renderBentoSection = () => (
-    <section key="telegram_bento" className="py-24 px-6 max-w-7xl mx-auto">
+    <section key="whatsapp_bento" className="py-24 px-6 max-w-7xl mx-auto">
       <motion.div 
         initial="hidden"
         whileInView="visible"
@@ -419,7 +1727,7 @@ export default function TelegramCommunityPage() {
   );
 
   const renderShowcaseSection = () => (
-    <section key="telegram_showcase" className="py-24 px-6 relative">
+    <section key="whatsapp_showcase" className="py-24 px-6 relative">
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="text-center space-y-4">
           <h2 className="text-4xl md:text-5xl font-serif text-white">{tData.showcaseTitle || "Inside The Community"}</h2>
@@ -449,13 +1757,13 @@ export default function TelegramCommunityPage() {
   );
 
   const renderBenefitsSection = () => (
-    <section key="telegram_benefits" className="py-24 px-6 md:py-32 relative border-t border-white/5 bg-zinc-950">
+    <section key="whatsapp_benefits" className="py-24 px-6 md:py-32 relative border-t border-white/5 bg-zinc-950">
       <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-brand-gold/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen -translate-y-1/2" />
       
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-serif text-white">{tData.benefitsTitle || "What You Get When You Join"}</h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">{tData.benefitsSubtitle || "As a member of our free Telegram community, you will receive:"}</p>
+          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">{tData.benefitsSubtitle || "As a member of our free WhatsApp community, you will receive:"}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -494,7 +1802,7 @@ export default function TelegramCommunityPage() {
   );
 
   const renderWhoShouldJoinSection = () => (
-    <section key="telegram_who_should_join" className="py-24 px-6 bg-zinc-900/20 border-y border-white/5 relative overflow-hidden">
+    <section key="whatsapp_who_should_join" className="py-24 px-6 bg-zinc-900/20 border-y border-white/5 relative overflow-hidden">
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-brand-gold/5 blur-[100px] rounded-full -translate-y-1/2 pointer-events-none" />
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-emerald-500/5 blur-[100px] rounded-full -translate-y-1/2 pointer-events-none" />
       
@@ -535,7 +1843,7 @@ export default function TelegramCommunityPage() {
   );
 
   const renderFounderSection = () => (
-    <section key="telegram_founder" className="py-24 px-6 md:py-32 relative border-t border-white/5 bg-black">
+    <section key="whatsapp_founder" className="py-24 px-6 md:py-32 relative border-t border-white/5 bg-black">
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-brand-gold/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen -translate-y-1/2" />
       
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -609,7 +1917,7 @@ export default function TelegramCommunityPage() {
   );
 
   const renderPromiseSection = () => (
-    <section key="telegram_promise" className="py-24 px-6 md:py-32 relative bg-zinc-900/20 border-t border-white/5 overflow-hidden">
+    <section key="whatsapp_promise" className="py-24 px-6 md:py-32 relative bg-zinc-900/20 border-t border-white/5 overflow-hidden">
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-brand-gold/5 blur-[100px] rounded-full -translate-y-1/2 pointer-events-none" />
       
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -661,7 +1969,7 @@ export default function TelegramCommunityPage() {
   );
 
   const renderSisterhoodSection = () => (
-    <section key="telegram_community_sisterhood" className="py-24 px-6 md:py-32 relative border-t border-white/5 bg-zinc-950">
+    <section key="whatsapp_community_sisterhood" className="py-24 px-6 md:py-32 relative border-t border-white/5 bg-zinc-950">
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-brand-gold/5 blur-[100px] rounded-full -translate-y-1/2 pointer-events-none" />
       
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -672,9 +1980,21 @@ export default function TelegramCommunityPage() {
           transition={{ duration: 0.6 }}
           className="relative"
         >
-          <div className="aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/10 relative shadow-2xl">
-            <img src={communityImgUrl || communityImg} alt="Women Community" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent mix-blend-multiply" />
+          <div className="aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/10 relative shadow-2xl bg-zinc-900 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-br from-zinc-900 via-black to-zinc-900">
+            {communityImgUrl ? (
+              <>
+                <img src={communityImgUrl} alt="Women Community" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent mix-blend-multiply" />
+              </>
+            ) : (
+              <div className="space-y-4">
+                <div className="w-16 h-16 rounded-full bg-brand-gold/10 flex items-center justify-center mx-auto">
+                  <Users size={32} className="text-brand-gold" />
+                </div>
+                <h3 className="text-xl font-serif text-white">The Vagina Room Community</h3>
+                <p className="text-sm text-zinc-400 max-w-xs mx-auto">A sacred, private, and non-judgmental space for women worldwide.</p>
+              </div>
+            )}
           </div>
           <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-gold/10 rounded-full blur-[40px] pointer-events-none" />
         </motion.div>
@@ -704,7 +2024,7 @@ export default function TelegramCommunityPage() {
   );
 
   const renderCtaSection = () => (
-    <section key="telegram_cta" className="py-24 px-6 relative">
+    <section key="whatsapp_cta" className="py-24 px-6 relative">
       <div className="max-w-4xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
@@ -716,22 +2036,22 @@ export default function TelegramCommunityPage() {
           <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none mix-blend-screen" />
           
           <div className="relative z-10 space-y-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0088cc]/10 text-[#0088cc] text-xs font-mono uppercase tracking-widest mb-2 font-bold">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366]/10 text-[#25D366] text-xs font-mono uppercase tracking-widest mb-2 font-bold">
               {tData.ctaFinalLabel || "Your Next Step"}
             </div>
             
             <h2 className="text-4xl md:text-5xl font-serif text-white leading-tight max-w-2xl mx-auto" dangerouslySetInnerHTML={{ __html: tData.ctaFinalTitle || "Take the first step toward better understanding your <span class='text-brand-gold italic'>body.</span>" }} />
             
             <div className="space-y-6 text-lg text-zinc-400 font-light leading-relaxed max-w-2xl mx-auto">
-              <p>{tData.ctaFinalDesc || "Improve your wellness and join a supportive community that truly cares. Join The Vagina Room Free Telegram Community Today."}</p>
+              <p>{tData.ctaFinalDesc || "Improve your wellness and join a supportive community that truly cares. Join The Vagina Room Free WhatsApp Community Today."}</p>
             </div>
 
             <div className="pt-4 max-w-md mx-auto">
               <button
                 onClick={openModal}
-                className="w-full inline-flex items-center justify-center px-8 py-5 bg-[#0088cc] text-white font-bold text-lg hover:bg-[#007ab8] transition-all duration-300 rounded-xl shadow-lg shadow-[#0088cc]/20 gap-3 active:scale-95 group cursor-pointer border-none"
+                className="w-full inline-flex items-center justify-center px-8 py-5 bg-[#25D366] text-white font-bold text-lg hover:bg-[#1DA851] transition-all duration-300 rounded-xl shadow-lg shadow-[#25D366]/20 gap-3 active:scale-95 group cursor-pointer border-none"
               >
-                {tData.ctaFinalBtnText || "Join Telegram Group"} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                {tData.ctaFinalBtnText || "Join WhatsApp Group"} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
 
               <div className="mt-8 pt-6 border-t border-white/5 text-brand-gold font-serif italic text-xl flex items-center justify-center gap-2">
@@ -746,25 +2066,25 @@ export default function TelegramCommunityPage() {
 
   const renderSection = (id: string) => {
     switch (id) {
-      case "telegram_hero":
+      case "whatsapp_hero":
         return renderHeroSection();
-      case "telegram_purpose_pain":
+      case "whatsapp_purpose_pain":
         return renderPurposePainSection();
-      case "telegram_bento":
+      case "whatsapp_bento":
         return renderBentoSection();
-      case "telegram_showcase":
+      case "whatsapp_showcase":
         return renderShowcaseSection();
-      case "telegram_benefits":
+      case "whatsapp_benefits":
         return renderBenefitsSection();
-      case "telegram_who_should_join":
+      case "whatsapp_who_should_join":
         return renderWhoShouldJoinSection();
-      case "telegram_founder":
+      case "whatsapp_founder":
         return renderFounderSection();
-      case "telegram_promise":
+      case "whatsapp_promise":
         return renderPromiseSection();
-      case "telegram_community_sisterhood":
+      case "whatsapp_community_sisterhood":
         return renderSisterhoodSection();
-      case "telegram_cta":
+      case "whatsapp_cta":
         return renderCtaSection();
       default:
         return null;
@@ -772,66 +2092,36 @@ export default function TelegramCommunityPage() {
   };
 
   let sectionIds = [
-    "telegram_hero",
-    "telegram_purpose_pain",
-    "telegram_bento",
-    "telegram_showcase",
-    "telegram_benefits",
-    "telegram_who_should_join",
-    "telegram_founder",
-    "telegram_promise",
-    "telegram_community_sisterhood",
-    "telegram_cta"
+    "whatsapp_hero",
+    "whatsapp_purpose_pain",
+    "whatsapp_bento",
+    "whatsapp_showcase",
+    "whatsapp_benefits",
+    "whatsapp_who_should_join",
+    "whatsapp_founder",
+    "whatsapp_promise",
+    "whatsapp_community_sisterhood",
+    "whatsapp_cta"
   ];
 
-  if (content.telegramPageSectionsOrder) {
+  if (content.whatsappPageSectionsOrder) {
     try {
-      const parsed = JSON.parse(content.telegramPageSectionsOrder);
+      const parsed = JSON.parse(content.whatsappPageSectionsOrder);
       if (Array.isArray(parsed)) {
         sectionIds = parsed;
       }
     } catch (e) {
-      console.warn("Error parsing telegramPageSectionsOrder", e);
+      console.warn("Error parsing whatsappPageSectionsOrder", e);
     }
   }
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-50 font-sans selection:bg-brand-gold/30 relative">
       <SEO 
-        title="Welcome to The Vagina Room | Join Our Telegram Community" 
-        description="A Safe Space for Women's Health, Healing & Empowerment. Join our free Telegram community today." 
+        title="Welcome to The Vagina Room | Join Our WhatsApp Community" 
+        description="A Safe Space for Women's Health, Healing & Empowerment. Join our free WhatsApp community today." 
       />
 
-      {/* Sticky Glassmorphic Header */}
-      <motion.header 
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${scrolled ? 'bg-zinc-950/70 backdrop-blur-xl border-b border-white/5 py-3' : 'bg-transparent py-6'}`}
-      >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <Link to="/" className="font-sans text-xl font-black tracking-tighter text-white uppercase group flex items-center gap-2">
-            {content.telegramHeaderLogoType === 'image' && content.telegramHeaderLogoUrl && content.telegramHeaderLogoUrl.trim() !== "" ? (
-              <img 
-                src={content.telegramHeaderLogoUrl} 
-                alt="The Vagina Room"
-                style={{ height: `${content.telegramHeaderLogoHeight || 44}px` }}
-                className="w-auto object-contain transition-transform group-hover:scale-105" 
-                referrerPolicy="no-referrer"
-              />
-            ) : (
-              <span className="text-xl tracking-tighter uppercase">
-                The <span className="text-brand-gold italic font-light lowercase transition-transform group-hover:scale-110 inline-block">Vagina</span> Room
-              </span>
-            )}
-          </Link>
-          <button 
-            onClick={openModal}
-            className="hidden md:block text-sm font-semibold uppercase tracking-widest bg-white text-black px-5 py-2.5 rounded-full hover:scale-105 active:scale-95 transition-transform cursor-pointer border-none"
-          >
-            Join Community
-          </button>
-        </div>
-      </motion.header>
 
       <main className="flex-grow">
         {sectionIds.map(id => renderSection(id))}
@@ -849,15 +2139,18 @@ export default function TelegramCommunityPage() {
       {/* Modern Glassmorphic Location Registration Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <>
             <motion.div
+              key="modal-overlay"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 animate-fade-in"
               onClick={() => !isSubmitting && setIsModalOpen(false)}
             />
+        )}
+        {isModalOpen && (
             <motion.div
+              key="modal-content"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -892,7 +2185,7 @@ export default function TelegramCommunityPage() {
               )}
 
               {step === 1 ? (
-                <div className="space-y-4">
+                <form onSubmit={handleNextStep} className="space-y-4">
                   <div className="space-y-1.5">
                     <label htmlFor="name" className="block text-[11px] font-mono text-zinc-500 uppercase tracking-wider ml-1">
                       Full Name
@@ -927,7 +2220,7 @@ export default function TelegramCommunityPage() {
 
                   <div className="space-y-1.5">
                     <label htmlFor="phone" className="block text-[11px] font-mono text-zinc-500 uppercase tracking-wider ml-1">
-                      Telegram Number
+                      WhatsApp Number
                     </label>
                     <input
                       type="tel"
@@ -942,13 +2235,12 @@ export default function TelegramCommunityPage() {
                   </div>
 
                   <button
-                    type="button"
-                    onClick={handleNextStep}
+                    type="submit"
                     className="w-full mt-6 bg-zinc-100 text-zinc-950 rounded-xl px-6 py-4 font-bold text-sm hover:bg-white transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer border-none"
                   >
                     Continue to Location <ArrowRight size={16} />
                   </button>
-                </div>
+                </form>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="space-y-1 rounded-none">
@@ -1001,6 +2293,8 @@ export default function TelegramCommunityPage() {
                             subdivision: "",
                             city: ""
                           });
+                          setIsCustomSubdivision(false);
+                          setCustomSubdivision("");
                         }}
                         className={`w-full bg-zinc-900 border border-white/10 rounded-xl p-4 pr-10 text-white focus:outline-none focus:border-brand-gold/50 transition-all text-sm appearance-none cursor-pointer ${!formData.continent ? "opacity-40 cursor-not-allowed" : ""}`}
                       >
@@ -1025,8 +2319,17 @@ export default function TelegramCommunityPage() {
                               id="subdivision"
                               name="subdivision"
                               required
-                              value={formData.subdivision}
-                              onChange={(e) => setFormData({ ...formData, subdivision: e.target.value })}
+                              value={isCustomSubdivision ? "Other" : formData.subdivision}
+                              onChange={(e) => {
+                                const val = e.target.value;
+                                if (val === "Other") {
+                                  setIsCustomSubdivision(true);
+                                  setFormData({ ...formData, subdivision: customSubdivision });
+                                } else {
+                                  setIsCustomSubdivision(false);
+                                  setFormData({ ...formData, subdivision: val });
+                                }
+                              }}
                               className="w-full bg-zinc-900 border border-white/10 rounded-xl p-4 pr-10 text-white focus:outline-none focus:border-brand-gold/50 transition-all text-sm appearance-none cursor-pointer"
                             >
                               <option value="" disabled className="bg-zinc-900 text-zinc-400">Select Option</option>
@@ -1051,7 +2354,7 @@ export default function TelegramCommunityPage() {
                         )}
                       </div>
 
-                      {formData.subdivision === "Other" && (
+                      {isCustomSubdivision && (
                         <div className="space-y-1.5">
                           <label htmlFor="customSubdivision" className="block text-[11px] font-mono text-zinc-500 uppercase tracking-wider ml-1">
                             Specify {SUBDIVISIONS[formData.country] ? SUBDIVISIONS[formData.country].label : "Local Area"}
@@ -1059,9 +2362,14 @@ export default function TelegramCommunityPage() {
                           <input
                             type="text"
                             id="customSubdivision"
-                            name="subdivision"
+                            name="customSubdivision"
                             required
-                            onChange={(e) => setFormData({ ...formData, subdivision: e.target.value })}
+                            value={customSubdivision}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              setCustomSubdivision(val);
+                              setFormData({ ...formData, subdivision: val });
+                            }}
                             className="w-full bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-brand-gold/50 focus:bg-white/5 transition-all text-sm"
                             placeholder="Specify custom location name"
                           />
@@ -1109,7 +2417,6 @@ export default function TelegramCommunityPage() {
                 </form>
               )}
             </motion.div>
-          </>
         )}
       </AnimatePresence>
     </div>

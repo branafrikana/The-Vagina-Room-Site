@@ -64,11 +64,11 @@ export default function ScreenLoader({ labelOverride }: { labelOverride?: string
             src={logoUrl} 
             alt="The Vagina Room Logo" 
             style={{ height: `${logoHeight}px` }}
-            className="max-h-24 w-auto object-contain animate-pulse"
+            className="max-h-24 w-auto object-contain"
             referrerPolicy="no-referrer"
           />
         ) : (
-          <div className="text-3xl sm:text-4xl font-black tracking-tight text-white uppercase font-sans animate-pulse">
+          <div className="text-3xl sm:text-4xl font-black tracking-tight text-white uppercase font-sans">
             THE <span className="text-brand-gold italic font-extralight lowercase font-serif px-1 inline-block normal-case tracking-normal text-4xl">vagina</span> ROOM
           </div>
         )}

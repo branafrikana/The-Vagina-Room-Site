@@ -144,15 +144,17 @@ export default function PrimaryHero() {
     <section className="relative min-h-screen bg-brand-black flex flex-col items-center justify-center pt-32 overflow-hidden perspective-1000">
       {/* Background Image with Cinematic Infinite Ease Zoom Out */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <motion.img 
-          initial={{ scale: 1.15, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.35 }}
-          transition={{ duration: 4.2, ease: [0.16, 1, 0.3, 1] }}
-          src={content.heroBgUrl || "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80"} 
-          alt="" 
-          className="absolute inset-0 w-full h-full object-cover"
-          referrerPolicy="no-referrer"
-        />
+        {content.heroBgUrl && (
+          <motion.img 
+            initial={{ scale: 1.15, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.35 }}
+            transition={{ duration: 4.2, ease: [0.16, 1, 0.3, 1] }}
+            src={content.heroBgUrl} 
+            alt="" 
+            className="absolute inset-0 w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+        )}
         {/* Soft atmospheric vignettes */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-black via-transparent to-brand-black opacity-85 pointer-events-none" />
         <div className="absolute inset-0 bg-brand-black/45 pointer-events-none" />

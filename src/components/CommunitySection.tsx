@@ -44,12 +44,20 @@ export default function CommunitySection() {
             transition={{ duration: 1 }}
             className="w-full lg:w-1/2 relative aspect-square lg:aspect-auto lg:h-[700px] group"
           >
-            <img 
-               src={content.communityImageUrl || "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=1200"} 
-               alt="Community Gathering" 
-               className="w-full h-full object-cover transition-all duration-1000 border border-white/10"
-               referrerPolicy="no-referrer"
-            />
+            {content.communityImageUrl ? (
+              <img 
+                 src={content.communityImageUrl} 
+                 alt="Community Gathering" 
+                 className="w-full h-full object-cover transition-all duration-1000 border border-white/10"
+                 referrerPolicy="no-referrer"
+              />
+            ) : (
+              <div className="w-full h-full min-h-[400px] bg-zinc-900/50 border border-brand-gold/10 flex flex-col items-center justify-center p-12 text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-brand-gold/5 to-transparent pointer-events-none" />
+                <span className="font-serif text-3xl italic text-brand-gold mb-4">The Vagina Room</span>
+                <span className="text-zinc-500 font-mono text-xs uppercase tracking-widest">Shared Community Spaces</span>
+              </div>
+            )}
             {/* Overlay Stats or Badge inspired by the request */}
             <div className="absolute -bottom-10 -right-10 bg-brand-gold p-12 hidden md:block border border-black/10 text-center">
                <p className="text-brand-black font-black text-6xl tracking-tighter uppercase mb-2">JOIN</p>

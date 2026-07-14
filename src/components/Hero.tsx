@@ -57,12 +57,14 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-transparent to-brand-black z-10" />
       
       {/* Background Image/Portrait Placeholder Style */}
-      <div 
-        className="absolute top-0 right-0 w-full lg:w-3/4 h-full z-0 opacity-40 lg:opacity-60 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${content.kyvImageUrl || "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1600"})` }}
-      >
-        <div className="absolute inset-0 bg-brand-black/20" />
-      </div>
+      {content.kyvImageUrl && (
+        <div 
+          className="absolute top-0 right-0 w-full lg:w-3/4 h-full z-0 opacity-40 lg:opacity-60 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${content.kyvImageUrl})` }}
+        >
+          <div className="absolute inset-0 bg-brand-black/20" />
+        </div>
+      )}
 
       <motion.div 
         variants={containerVariants}
