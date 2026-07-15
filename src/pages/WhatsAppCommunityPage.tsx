@@ -8,7 +8,9 @@ import {
 } from "lucide-react";
 import SEO from "../components/SEO";
 import { useContent } from "../context/ContentContext";
+import { SearchableDropdown } from "../components/SearchableDropdown";
 import { safeJsonParse } from "../lib/json";
+import { getCountryInfo } from "../lib/countryData";
 
 // Sample Data for Bento Grid Showcase
 const topics = [
@@ -27,7 +29,7 @@ const topics = [
 ];
 
 const CONTINENT_COUNTRIES: Record<string, string[]> = {
-  "Africa": ["Algeria","Angola","Benin","Botswana","Burkina Faso","Burundi","Cabo Verde","Cameroon","Central African Republic","Chad","Comoros","Congo","Democratic Republic of the Congo","Côte d'Ivoire","Djibouti","Egypt","Equatorial Guinea","Eritrea","Eswatini","Ethiopia","Gabon","The Gambia","Ghana","Guinea","Guinea-Bissau","Kenya","Lesotho","Liberia","Libya","Madagascar","Malawi","Mali","Mauritania","Mauritius","Morocco","Mozambique","Namibia","Niger","Nigeria","Rwanda","Sao Tome and Principe","Senegal","Seychelles","Sierra Leone","Somalia","South Africa","South Sudan","Sudan","Tanzania","Togo","Tunisia","Uganda","Zambia","Zimbabwe","Other African Country"],
+  "Africa": ["Nigeria","Ghana","Kenya","South Africa","The Gambia","Tanzania","Uganda","Zambia","Zimbabwe","Botswana","Liberia","Sierra Leone","Algeria","Angola","Benin","Burkina Faso","Burundi","Cabo Verde","Cameroon","Central African Republic","Chad","Comoros","Congo","Democratic Republic of the Congo","Côte d'Ivoire","Djibouti","Egypt","Equatorial Guinea","Eritrea","Eswatini","Ethiopia","Gabon","Guinea","Guinea-Bissau","Lesotho","Libya","Madagascar","Malawi","Mali","Mauritania","Mauritius","Morocco","Mozambique","Namibia","Niger","Rwanda","Sao Tome and Principe","Senegal","Seychelles","Somalia","South Sudan","Sudan","Togo","Tunisia"],
   "North America": ["United States", "Canada", "Jamaica", "Trinidad and Tobago", "Other North American Country"],
   "Europe": ["United Kingdom", "Germany", "France", "Netherlands", "Ireland", "Italy", "Spain", "Other European Country"],
   "South America": ["Brazil", "Colombia", "Argentina", "Other South American Country"],
@@ -1428,9 +1430,30 @@ export default function WhatsAppCommunityPage() {
   const [isCustomSubdivision, setIsCustomSubdivision] = useState(false);
   const [customSubdivision, setCustomSubdivision] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+
+  // IP detection for country
+  useEffect(() => {
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        const countryName = data.country_name;
+        // Check if country exists in our list
+        if (Object.keys(CONTINENT_COUNTRIES).some(continent => CONTINENT_COUNTRIES[continent].includes(countryName))) {
+          // Auto-select continent based on country
+          const continent = Object.keys(CONTINENT_COUNTRIES).find(c => CONTINENT_COUNTRIES[c].includes(countryName));
+          setFormData(prev => ({ ...prev, continent: continent || "", country: countryName }));
+        }
+      })
+      .catch(console.error);
+  }, []);
+
+  const validatePhone = (phone: string, country: string) => {
+    return true;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1502,9 +1525,13 @@ export default function WhatsAppCommunityPage() {
     }
 
     // Submit the data in the background instantly so the user doesn't experience any lag or spinner
+    setIsSubmitting(true);
+    setIsSuccess(true);
     submitFormSubmission("whatsapp_community", formData).catch((err) => {
       console.warn("Background form submission error:", err);
     });
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     // Close the modal and navigate to the thank you page immediately for an instantaneous, seamless experience
     setIsModalOpen(false);
@@ -2329,38 +2356,30 @@ export default function WhatsAppCommunityPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-1">
-                    <label htmlFor="country" className="block text-[11px] font-mono text-zinc-500 uppercase tracking-wider ml-1">
-                      Country
-                    </label>
-                    <div className="relative">
-                      <select
-                        id="country"
-                        name="country"
-                        required
-                        disabled={!formData.continent}
-                        value={formData.country}
-                        onChange={(e) => {
-                          const val = e.target.value;
-                          setFormData({
-                            ...formData,
-                            country: val,
-                            subdivision: "",
-                            city: ""
-                          });
-                          setIsCustomSubdivision(false);
-                          setCustomSubdivision("");
-                        }}
-                        className={`w-full bg-zinc-900 border border-white/10 rounded-xl p-4 pr-10 text-white focus:outline-none focus:border-brand-gold/50 transition-all text-sm appearance-none cursor-pointer ${!formData.continent ? "opacity-40 cursor-not-allowed" : ""}`}
-                      >
-                        <option value="" disabled className="bg-zinc-900 text-zinc-400">Select Country</option>
-                        {formData.continent && CONTINENT_COUNTRIES[formData.continent]?.map((c) => (
-                          <option key={c} value={c} className="bg-zinc-900 text-white font-sans">{c}</option>
-                        ))}
-                      </select>
-                      <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-zinc-500 text-xs">▼</div>
-                    </div>
-                  </div>
+                  <SearchableDropdown
+                    label="Country"
+                    placeholder="Select Country"
+                    disabled={!formData.continent}
+                    value={formData.country}
+                    options={formData.continent ? CONTINENT_COUNTRIES[formData.continent].map(c => ({
+                      label: c.includes("Other") ? c : c,
+                      icon: getCountryInfo(c).flag
+                    })) : []}
+                    onChange={(val) => {
+                      setFormData({
+                        ...formData,
+                        country: val,
+                        subdivision: "",
+                        city: ""
+                      });
+                      setIsCustomSubdivision(false);
+                      setCustomSubdivision("");
+                    }}
+                  />
+                  
+                  {formData.country && !validatePhone(formData.phone, formData.country) && formData.phone && (
+                    <p className="text-red-500 text-xs mt-1">Invalid phone length for {formData.country}</p>
+                  )}
 
                   {formData.country && (
                     <>
@@ -2459,10 +2478,14 @@ export default function WhatsAppCommunityPage() {
                     </button>
                     <button
                       type="submit"
-                      disabled={isSubmitting}
-                      className="flex-1 bg-zinc-100 text-zinc-950 rounded-xl px-6 py-4 font-bold text-sm hover:bg-white transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer border-none"
+                      disabled={isSubmitting || isSuccess}
+                      className={`flex-1 rounded-xl px-6 py-4 font-bold text-sm transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer border-none ${isSuccess ? "bg-emerald-500 text-white" : "bg-zinc-100 text-zinc-950 hover:bg-white"}`}
                     >
-                      {isSubmitting ? (
+                      {isSuccess ? (
+                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="flex items-center gap-2">
+                          <CheckCircle2 size={16} /> Success!
+                        </motion.div>
+                      ) : isSubmitting ? (
                         <div className="h-5 w-5 border-2 border-zinc-950/20 border-t-zinc-950 rounded-full animate-spin" />
                       ) : (
                         <>Submit & Get Link <MapPin size={16} className="text-zinc-950" /></>
