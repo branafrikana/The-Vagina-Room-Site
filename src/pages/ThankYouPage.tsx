@@ -19,6 +19,15 @@ export default function ThankYouPage() {
       return;
     }
   }, [userData]);
+
+  useEffect(() => {
+    if (typeof (window as any).fbq === "function") {
+      (window as any).fbq('track', 'Contact', {
+        content_name: 'Contact Form Submission'
+      });
+      console.log("Meta Pixel Contact event tracked on general thank-you page.");
+    }
+  }, []);
   
   const bgUrl = content.contactBgUrl || "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=1600";
   const headingText = content.contactThankYouHeading || "THANK YOU FOR REACHING OUT";

@@ -59,6 +59,16 @@ export default function WhatsAppCommunityThankYouPage() {
   const { content } = useContent();
   const communityLink = content.contactThankYouWhatsAppLink || "https://wa.me/";
 
+  useEffect(() => {
+    if (typeof (window as any).fbq === "function") {
+      (window as any).fbq('track', 'CompleteRegistration', {
+        content_name: 'WhatsApp Community Sign-up',
+        status: 'completed'
+      });
+      console.log("Meta Pixel CompleteRegistration event tracked on thank-you page.");
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-50 flex flex-col font-sans selection:bg-brand-gold/30 relative">
       <SEO 

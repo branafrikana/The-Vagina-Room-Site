@@ -117,6 +117,16 @@ export default function DrFidBookingPage() {
       
       await addDoc(collection(db, "submissions"), payload);
       
+      if (typeof (window as any).fbq === "function") {
+        (window as any).fbq('track', 'Schedule', {
+          content_name: 'Dr FID Booking Request',
+          content_category: formData.bookingType,
+          value: 0,
+          currency: 'NGN'
+        });
+        console.log("Meta Pixel Schedule event tracked.");
+      }
+      
       setIsSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {

@@ -3,6 +3,7 @@ import { lazy, Suspense, ReactNode, useMemo } from 'react';
 import { usePreloadImages } from './hooks/usePreloadImages';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useGoogleAnalytics } from './hooks/useGoogleAnalytics';
+import { useMetaPixel } from './hooks/useMetaPixel';
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
 import PwaPopup from './components/PwaPopup';
@@ -218,6 +219,7 @@ function AdminSuspense() {
 
 function AnimatedRoutes() {
   useGoogleAnalytics();
+  useMetaPixel();
   const location = useLocation();
   return (
     <div className="min-h-screen">

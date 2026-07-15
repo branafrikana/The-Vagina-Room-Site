@@ -1801,46 +1801,101 @@ export default function WhatsAppCommunityPage() {
     </section>
   );
 
-  const renderWhoShouldJoinSection = () => (
-    <section key="whatsapp_who_should_join" className="py-24 px-6 bg-zinc-900/20 border-y border-white/5 relative overflow-hidden">
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-brand-gold/5 blur-[100px] rounded-full -translate-y-1/2 pointer-events-none" />
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-emerald-500/5 blur-[100px] rounded-full -translate-y-1/2 pointer-events-none" />
-      
-      <div className="max-w-5xl mx-auto relative z-10">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-serif text-white">{tData.whoJoinTitle || "Who Should Join?"}</h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">{tData.whoJoinSubtitle || "This community is for:"}</p>
-        </div>
+  const renderWhoShouldJoinSection = () => {
+    const defaultWhoJoinItems = [
+      { emoji: "🌸", text: "Women who want to better understand their bodies and reproductive health." },
+      { emoji: "🩸", text: "Women experiencing irregular menstrual cycles or hormonal changes." },
+      { emoji: "🤰", text: "Women navigating fertility challenges or trying to conceive." },
+      { emoji: "👶", text: "Women preparing for pregnancy or planning to start a family." },
+      { emoji: "🤱", text: "Expectant mothers seeking reliable pregnancy wellness information." },
+      { emoji: "💖", text: "Women recovering after childbirth and looking to restore their reproductive and overall wellbeing." },
+      { emoji: "🦋", text: "Women dealing with recurrent vaginal infections, discomfort, or intimate health concerns." },
+      { emoji: "🌼", text: "Women approaching or experiencing perimenopause and menopause." },
+      { emoji: "📚", text: "Women seeking evidence-informed education instead of confusing online advice." },
+      { emoji: "🧠", text: "Women who want to improve their emotional, mental, and hormonal wellbeing." },
+      { emoji: "🌿", text: "Women interested in natural and holistic approaches to women's wellness." },
+      { emoji: "🛡️", text: "Women who value preventive healthcare and healthy lifestyle practices." },
+      { emoji: "💍", text: "Married women and couples seeking fertility and reproductive wellness education." },
+      { emoji: "🎓", text: "Young adult women who want to build healthy lifelong wellness habits." },
+      { emoji: "🤝", text: "Women looking for a confidential, respectful, and judgment-free community." },
+      { emoji: "🎙️", text: "Women who want access to expert-led discussions, live sessions, and practical wellness resources." },
+      { emoji: "✨", text: "Women committed to learning, healing, growing, and empowering other women along the journey." }
+    ];
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {(tData.whoJoinItems || [
-            "Women seeking better understanding of their bodies",
-            "Women preparing for pregnancy",
-            "Women navigating fertility challenges",
-            "Women interested in hormonal and reproductive wellness",
-            "Married women and couples seeking fertility education",
-            "Women looking for a supportive and judgment-free wellness community",
-            "Women committed to living healthier, more empowered lives",
-            "Women seeking holistic and expert-led approaches to intimate health"
-          ]).map((item: string, i: number) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex items-start gap-4 p-6 bg-zinc-950/50 border border-white/5 rounded-2xl backdrop-blur-md group hover:border-brand-gold/30 transition-colors"
-            >
-              <div className="p-2 rounded-full bg-brand-gold/10 text-brand-gold shrink-0 mt-1 group-hover:scale-110 transition-transform">
-                <CheckCircle2 size={20} />
+    const items = tData.whoJoinItems ? tData.whoJoinItems.map((item: string) => {
+      const emojiMatch = item.match(/^([\uD800-\uDBFF][\uDC00-\uDFFF]|\p{Emoji_Presentation}|\p{Emoji})/u);
+      if (emojiMatch) {
+        const emoji = emojiMatch[0];
+        const text = item.slice(emoji.length).trim();
+        return { emoji, text };
+      }
+      return { emoji: "🌸", text: item };
+    }) : defaultWhoJoinItems;
+
+    const title = tData.whoJoinTitle || "Who Should Join The Vagina Room Community?";
+    const subtitle = tData.whoJoinSubtitle || "The Vagina Room is open to every woman seeking trusted guidance, practical education, and a supportive community focused on holistic wellness.";
+
+    return (
+      <section key="whatsapp_who_should_join" className="py-24 px-6 bg-zinc-900/20 border-y border-white/5 relative overflow-hidden">
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-brand-gold/5 blur-[100px] rounded-full -translate-y-1/2 pointer-events-none" />
+        <div className="absolute top-1/2 right-0 w-96 h-96 bg-emerald-500/5 blur-[100px] rounded-full -translate-y-1/2 pointer-events-none" />
+        
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-serif text-white">{title}</h2>
+            <p className="text-zinc-300 max-w-3xl mx-auto text-lg leading-relaxed">{subtitle}</p>
+            <div className="pt-4">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-mono uppercase tracking-wider font-semibold">
+                This Community Is Perfect For:
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {items.map((item: any, i: number) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.5) }}
+                className="flex items-start gap-4 p-5 bg-zinc-950/40 border border-white/5 rounded-2xl backdrop-blur-md group hover:border-brand-gold/20 hover:bg-zinc-950/70 transition-all duration-300"
+              >
+                <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-brand-gold/5 text-xl shrink-0 border border-brand-gold/10 group-hover:scale-110 group-hover:bg-brand-gold/10 transition-all duration-300">
+                  {item.emoji}
+                </div>
+                <div className="space-y-1">
+                  <p className="text-zinc-300 text-base md:text-lg leading-relaxed group-hover:text-zinc-100 transition-colors">{item.text}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Journey Card Footer */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-16 p-8 md:p-10 rounded-[2rem] bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 border border-white/10 relative overflow-hidden group hover:border-brand-gold/20 transition-all duration-500"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/5 blur-[80px] rounded-full pointer-events-none" />
+            <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6">
+              <div className="w-14 h-14 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-3xl shrink-0 border border-brand-gold/20 shadow-lg shadow-brand-gold/5">
+                💬
               </div>
-              <span className="text-zinc-300 text-lg leading-relaxed">{item}</span>
-            </motion.div>
-          ))}
+              <div className="space-y-3">
+                <h4 className="text-xl md:text-2xl font-serif text-white font-medium">No Matter Where You Are in Your Journey...</h4>
+                <p className="text-zinc-400 text-base md:text-lg leading-relaxed">
+                  Whether you're simply curious about your body, managing a health concern, preparing for motherhood, recovering after childbirth, navigating hormonal changes, or looking for a trusted community that understands your experiences, <span className="text-brand-gold font-medium">The Vagina Room</span> is a safe place to learn, ask questions, receive guidance, and grow with confidence.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  };
 
   const renderFounderSection = () => (
     <section key="whatsapp_founder" className="py-24 px-6 md:py-32 relative border-t border-white/5 bg-black">

@@ -103,6 +103,19 @@ export default function CheckoutPage() {
 
   // Handle setting-based redirection for digital products
   React.useEffect(() => {
+    if (typeof (window as any).fbq === "function" && cartItems.length > 0) {
+      (window as any).fbq('track', 'InitiateCheckout', {
+        value: totalPrice,
+        currency: cartItems[0]?.currency || 'NGN',
+        content_ids: cartItems.map(item => item.id || item.title),
+        content_type: 'product',
+        num_items: cartItems.reduce((acc, item) => acc + item.quantity, 0)
+      });
+      console.log("Meta Pixel InitiateCheckout event tracked.");
+    }
+  }, []);
+
+  React.useEffect(() => {
     if (isSuccess && hasDigital) {
       try {
         const seoSettings = JSON.parse(content.seoSettingsJson || '{}');
@@ -223,6 +236,17 @@ Thank you for shopping with *The Vagina Room* 💜`;
             const phoneToUse = generalConfig.whatsappPhone || content.contactPhone;
             const message = generateWhatsAppMessage(orderNo);
             await sendWhatsAppMessage(phoneToUse, message, generalConfig.whatsappMethod || 'REDIRECT');
+          }
+          
+          if (typeof (window as any).fbq === "function") {
+            (window as any).fbq('track', 'Purchase', {
+              value: grandTotal,
+              currency: cartItems[0]?.currency || 'NGN',
+              content_ids: cartItems.map(item => item.id || item.title),
+              content_type: 'product',
+              num_items: cartItems.reduce((acc, item) => acc + item.quantity, 0)
+            });
+            console.log("Meta Pixel Purchase event tracked.");
           }
           
           setOrderId(orderNo);
