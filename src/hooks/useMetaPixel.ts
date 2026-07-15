@@ -1,11 +1,19 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useContent } from "../context/ContentContext";
 
 export function useMetaPixel() {
   const location = useLocation();
+  const { content } = useContent();
 
   useEffect(() => {
-    const pixelId = "2144539326476576";
+    let pixelId = "1739772653824128";
+    try {
+      const seoData = JSON.parse(content.seoSettingsJson);
+      if (seoData.fbPixelId) {
+        pixelId = seoData.fbPixelId;
+      }
+    } catch (e) {}
     
     // Privacy compliance: Respect browser's "Do Not Track" and local opt-out choice
     const isOptedOut = localStorage.getItem("fb_pixel_opt_out") === "true";

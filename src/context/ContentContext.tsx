@@ -412,7 +412,7 @@ export const FALLBACK_DEFAULTS = {
   footerLogo1Url: "",
   footerLogo2Url: "",
   socialLogoUrl: "",
-  seoSettingsJson: '{\n  "metaDescription": "A safe community and global supportive community providing trusted clinical education, restorative therapy, and guidance.",\n  "metaKeywords": "women\'s health, reproductive health, vaginal health, Dr. FID, intimate wellness",\n  "ogImage": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80",\n  "authorName": "Dr. FID"\n}',
+  seoSettingsJson: '{\n  "metaDescription": "A safe community and global supportive community providing trusted clinical education, restorative therapy, and guidance.",\n  "metaKeywords": "women\'s health, reproductive health, vaginal health, Dr. FID, intimate wellness",\n  "ogImage": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80",\n  "authorName": "Dr. FID",\n  "fbPixelId": "1739772653824128"\n}',
   ogImage: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80",
   securitySettingsJson: '{\n  "sessionTimeout": "60 mins",\n  "twoFactorAuth": "Optional",\n  "restrictIframe": "No",\n  "allowedOrigins": "*"\n}',
   topHeaderSettingsJson: '{\n  "logoText": "The Vagina Room",\n  "logoImageUrl": "",\n  "enableSearchBar": true,\n  "enableNotificationsIcon": true,\n  "enableMessagesIcon": true,\n  "enableAdminProfileDropdown": true\n}',
@@ -625,6 +625,21 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
           acc[key] = typeof data[key] === 'string' ? data[key].trim() : data[key];
           return acc;
         }, {} as any);
+
+        // Auto-migrate outdated Facebook Pixel ID to the new ID if present
+        if (trimmedData.seoSettingsJson) {
+          try {
+            const parsedSeo = JSON.parse(trimmedData.seoSettingsJson);
+            if (parsedSeo.fbPixelId === "2144539326476576") {
+              parsedSeo.fbPixelId = "1739772653824128";
+              trimmedData.seoSettingsJson = JSON.stringify(parsedSeo, null, 2);
+              await setDoc(docRef, { seoSettingsJson: trimmedData.seoSettingsJson }, { merge: true });
+              console.log("Auto-migrated Facebook Pixel ID in Firestore to 1739772653824128");
+            }
+          } catch (seoErr) {
+            console.error("Error parsing or migrating seoSettingsJson:", seoErr);
+          }
+        }
 
         // Hydrate optional large blob fields stored in dedicated sub-documents to safeguard against 1MB Firestore document limits
         const blobKeys = Object.keys(trimmedData).filter(key => 
