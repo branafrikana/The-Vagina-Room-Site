@@ -119,8 +119,8 @@ export default function RegisterPage() {
     setLoading(true);
 
     const amount = isNigeria 
-      ? (plan === 'gold' ? parseInt(content.membershipPriceGoldNGN || "25000") : parseInt(content.membershipPriceDiamondNGN || "85000"))
-      : (plan === 'gold' ? parseInt(content.membershipPriceGoldUSD || "45") : parseInt(content.membershipPriceDiamondUSD || "150"));
+      ? (plan === 'gold' ? parseInt(content.membershipPriceGoldNGN || "35000") : parseInt(content.membershipPriceDiamondNGN || "120000"))
+      : (plan === 'gold' ? parseInt(content.membershipPriceGoldUSD || "35") : parseInt(content.membershipPriceDiamondUSD || "120"));
 
     const currencyCodeForPayment = isNigeria ? "NGN" : "USD";
 
@@ -328,8 +328,8 @@ export default function RegisterPage() {
   const currencySymbol = isNigeria ? "₦" : "$";
   const currencyCode = isNigeria ? "NGN" : "USD";
 
-  const goldPriceDisplay = isNigeria ? `₦${content.membershipPriceGoldNGN || "25,000"}` : `$${content.membershipPriceGoldUSD || "45"}`;
-  const diamondPriceDisplay = isNigeria ? `₦${content.membershipPriceDiamondNGN || "85,000"}` : `$${content.membershipPriceDiamondUSD || "150"}`;
+  const goldPriceDisplay = isNigeria ? `₦${content.membershipPriceGoldNGN || "35,000"}` : `$${content.membershipPriceGoldUSD || "35"}`;
+  const diamondPriceDisplay = isNigeria ? `₦${content.membershipPriceDiamondNGN || "120,000"}` : `$${content.membershipPriceDiamondUSD || "120"}`;
 
   const planDetails = {
     gold: {

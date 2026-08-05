@@ -252,40 +252,40 @@ export default function AdminSettingsTab({ activeTab }: AdminSettingsTabProps) {
               <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">Gold Plan Price (₦ - NGN)</label>
               <input 
                 type="text" 
-                value={content.membershipPriceGoldNGN || "25000"}
+                value={content.membershipPriceGoldNGN || "35000"}
                 onChange={(e) => updateContentField("membershipPriceGoldNGN", e.target.value)}
                 className="w-full bg-brand-black border border-white/10 p-3 text-white focus:border-brand-gold focus:outline-none text-xs" 
-                placeholder="25000"
+                placeholder="35000"
               />
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">Gold Plan Price ($ - USD)</label>
               <input 
                 type="text" 
-                value={content.membershipPriceGoldUSD || "45"}
+                value={content.membershipPriceGoldUSD || "35"}
                 onChange={(e) => updateContentField("membershipPriceGoldUSD", e.target.value)}
                 className="w-full bg-brand-black border border-white/10 p-3 text-white focus:border-brand-gold focus:outline-none text-xs" 
-                placeholder="45"
+                placeholder="35"
               />
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">Diamond Plan Price (₦ - NGN)</label>
               <input 
                 type="text" 
-                value={content.membershipPriceDiamondNGN || "85000"}
+                value={content.membershipPriceDiamondNGN || "120000"}
                 onChange={(e) => updateContentField("membershipPriceDiamondNGN", e.target.value)}
                 className="w-full bg-brand-black border border-white/10 p-3 text-white focus:border-brand-gold focus:outline-none text-xs" 
-                placeholder="85000"
+                placeholder="120000"
               />
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-wider text-white/30 block">Diamond Plan Price ($ - USD)</label>
               <input 
                 type="text" 
-                value={content.membershipPriceDiamondUSD || "150"}
+                value={content.membershipPriceDiamondUSD || "120"}
                 onChange={(e) => updateContentField("membershipPriceDiamondUSD", e.target.value)}
                 className="w-full bg-brand-black border border-white/10 p-3 text-white focus:border-brand-gold focus:outline-none text-xs" 
-                placeholder="150"
+                placeholder="120"
               />
             </div>
           </div>

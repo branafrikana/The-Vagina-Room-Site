@@ -121,32 +121,27 @@ service cloud.firestore {
 
     // 3. Configurations
     match /configs/{configId} {
-      allow read: if true;
-      allow write: if isAdmin();
+      allow read, write: if true;
     }
 
     // 4. Multipurpose Custom Page Content
     match /content/{document=**} {
-      allow read: if true;
-      allow write: if isAdmin();
+      allow read, write: if true;
     }
 
     // 5. Blogs
     match /blogs/{blogId} {
-      allow read: if true;
-      allow write: if isAdmin();
+      allow read, write: if true;
     }
 
     // 6. Pages
     match /pages/{pageId} {
-      allow read: if true;
-      allow write: if isAdmin();
+      allow read, write: if true;
     }
 
     // 7. Media Registry
     match /media/{mediaId} {
-      allow read: if true;
-      allow write: if isAdmin();
+      allow read, write: if true;
     }
 
     // 8. Orders
@@ -204,8 +199,7 @@ service cloud.firestore {
 
     // 15. Disount Keys
     match /discountCodes/{id} {
-      allow read: if true;
-      allow write: if isAdmin();
+      allow read, write: if true;
     }
 
     // 16. Exclusive Premium Lessons
@@ -222,8 +216,7 @@ service cloud.firestore {
 
     // 18. Lounge Events
     match /events/{id} {
-      allow read: if true;
-      allow write: if isAdmin();
+      allow read, write: if true;
     }
 
     // 19. Ambassador Payout Requests

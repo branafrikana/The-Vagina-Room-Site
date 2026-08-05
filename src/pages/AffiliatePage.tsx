@@ -37,12 +37,12 @@ export default function AffiliatePage() {
 
   // Calculate active pricing metrics based on content settings (with fallbacks)
   const goldPrice = currency === 'NGN' 
-    ? parseFloat(content.membershipPriceGoldNGN || "25000") 
-    : parseFloat(content.membershipPriceGoldUSD || "45");
+    ? parseFloat(content.membershipPriceGoldNGN || "35000") 
+    : parseFloat(content.membershipPriceGoldUSD || "35");
   const goldCommission = goldPrice * 0.20;
   const diamondPrice = currency === 'NGN' 
-    ? parseFloat(content.membershipPriceDiamondNGN || "85000") 
-    : parseFloat(content.membershipPriceDiamondUSD || "150");
+    ? parseFloat(content.membershipPriceDiamondNGN || "120000") 
+    : parseFloat(content.membershipPriceDiamondUSD || "120");
   const diamondCommission = diamondPrice * 0.20;
   const currencySymbol = currency === 'NGN' ? '₦' : '$';
 

@@ -8,10 +8,12 @@ import { handleFirestoreError, OperationType } from '../lib/firestore-errors';
 export const FALLBACK_DEFAULTS = {
   badgesConfigJson: '[\n  { "id": "womb_listener", "title": "🌸 Womb Listener", "desc": "Active Thread Starter", "criteria": "Draft 1+ post onto the global Community Timeline." },\n  { "id": "somatic_helper", "title": "💬 Somatic Helper", "desc": "Sisterhood Guidance", "criteria": "Write 1+ helpful reply or thread comment inside discussion circles." },\n  { "id": "luminous_beacon", "title": "🌟 Luminous Beacon", "desc": "Atmospheric Support", "criteria": "Glow 3+ support hearts to sisters across timeline feeds." },\n  { "id": "circle_guardian", "title": "👥 Circle Guardian", "desc": "Circle Pioneer", "criteria": "Be an active sibling inside 2+ specialized discussion groups." },\n  { "id": "community_pillar", "title": "👑 Community Pillar", "desc": "Steward-Mentor Rank", "criteria": "Accumulate a total of 50+ holistic contribution points." }\n]',
 
-  membershipPriceGoldNGN: "25000",
-  membershipPriceGoldUSD: "45",
-  membershipPriceDiamondNGN: "85000",
-  membershipPriceDiamondUSD: "150",
+  membershipPriceGoldNGN: "35000",
+  membershipPriceGoldUSD: "35",
+  membershipPriceDiamondNGN: "120000",
+  membershipPriceDiamondUSD: "120",
+  goldPlanFeaturesJson: '[\n  "3 Months Full Membership Access",\n  "Two Live Group Therapy Sessions Per Month (6 Sessions)",\n  "Live Workshops & Masterclasses",\n  "Private Community Lounge",\n  "Personalized Wellness Dashboard",\n  "Women\'s Health Assessment Checklists",\n  "Educational Review of Laboratory Test Results",\n  "Trusted Women\'s Health Product Guide",\n  "DIY Wellness Remedies Library",\n  "Nutrition & Food Guide for Women\'s Health",\n  "Weekly Accountability & Progress Tracking",\n  "Monthly Wellness Challenges",\n  "Member Discounts on Selected Products & Services"\n]',
+  diamondPlanFeaturesJson: '[\n  "12 Months Unlimited Membership Access",\n  "Twenty-Four Live Group Therapy Sessions Per Year",\n  "Priority Member Support",\n  "Priority Review of Health Questions",\n  "Exclusive Members-Only Masterclasses",\n  "VIP Resource Library",\n  "Annual Women\'s Wellness Planning Session",\n  "Early Access to New Programs",\n  "Exclusive Member Discounts",\n  "Special Guest Expert Sessions",\n  "VIP Recognition & Rewards"\n]',
 
   registerHeading: 'Enter the <br/>\n<span class="text-brand-gold italic">Community</span>',
   registerSub: 'Join a global community focused on women’s holistic health education, supporting informed choices, healing, and empowerment at every stage of womanhood.',
@@ -150,6 +152,17 @@ export const FALLBACK_DEFAULTS = {
   joinCommunityTitle: "Join The Community",
   joinCommunityHeading: "Your Journey to Holistic Wholeness Starts Here.",
   joinCommunitySubheading: "Become part of a global movement dedicated to restoring knowledge, confidence, and healing to every woman.",
+  joinCommunityAboutBadge: "INNER CIRCLE",
+  joinCommunityAboutTitle: "About This Membership",
+  joinCommunityAboutText1: "The Vagina Room Inner Circle is a premium membership led by Dr. FID, providing ongoing education, clinical guidance, accountability, and personalized support to help women improve their vaginal, reproductive, and intimate health.",
+  joinCommunityAboutText2: "Whether you're dealing with recurring infections, vaginal discomfort, hormonal changes, or simply want expert guidance on maintaining optimal intimate health, this membership gives you direct access to professional support in a confidential and supportive community.",
+  membershipDetailedBenefitsJson: '[\n  {\n    "number": "01",\n    "title": "Live Group Therapy",\n    "description": "6 live interactive sessions over 3 months (Gold Plan) or 24 sessions over 1 year (Diamond Plan)",\n    "bullets": [\n      "Expert education & live Q&A with Dr. FID",\n      "Vaginal infections, discharge & odour",\n      "Recurrent yeast infections & PID",\n      "Sexual wellness, hormonal & menstrual health",\n      "Fertility, reproductive wellness & prevention"\n    ]\n  },\n  {\n    "number": "02",\n    "title": "Health Assessment",\n    "description": "",\n    "bullets": [\n      "Structured intake to identify symptoms & risk factors",\n      "Lifestyle habits and health history review",\n      "Guides individualized recommendations and follow-up discussions"\n    ]\n  },\n  {\n    "number": "03",\n    "title": "Laboratory Test Results",\n    "description": "",\n    "bullets": [\n      "Submit your lab reports for expert explanation",\n      "Vaginal swabs, urinalysis & STI screening",\n      "Culture & sensitivity reports",\n      "Hormonal investigations & other relevant women\'s health tests"\n    ]\n  },\n  {\n    "number": "04",\n    "title": "Personalized Treatment Plan",\n    "description": "",\n    "bullets": [\n      "Individualized plan based on symptoms, history & investigations",\n      "Medication recommendations or prescriptions where legally permitted",\n      "Lifestyle modifications & nutrition guidance",\n      "Referrals for specialist care when necessary"\n    ]\n  },\n  {\n    "number": "05",\n    "title": "Trusted Product Guide",\n    "description": "",\n    "bullets": [\n      "Women\'s probiotics, lubricants & moisturizers",\n      "Feminine hygiene & menstrual care products",\n      "Cotton underwear & clinically recommended wellness items"\n    ]\n  },\n  {\n    "number": "06",\n    "title": "DIY Wellness & Home Care",\n    "description": "",\n    "bullets": [\n      "Evidence-informed home care practices",\n      "Sitz baths & comfort care routines",\n      "Safe self-care practices & lifestyle strategies"\n    ]\n  },\n  {\n    "number": "07",\n    "title": "Nutrition for Health",\n    "description": "",\n    "bullets": [\n      "Practical guidance to support your vaginal microbiome",\n      "Hormonal balance, gut health & immune function",\n      "Meal suggestions & dietary recommendations"\n    ]\n  },\n  {\n    "number": "08",\n    "title": "Personalized Dashboard",\n    "description": "",\n    "bullets": [\n      "Track symptoms, menstrual cycle & treatment progress",\n      "Medication schedule & wellness goals",\n      "Appointment history & progress notes"\n    ]\n  },\n  {\n    "number": "09",\n    "title": "Accountability & Follow-Up",\n    "description": "",\n    "bullets": [\n      "Weekly accountability check-ins",\n      "Progress monitoring & treatment reminders",\n      "Follow-up support & community encouragement"\n    ]\n  }\n]',
+  whoShouldJoinSubheading: "Same operating principle, different leverage points. We restore knowledge across all generations.",
+  whoShouldJoinDetailedJson: '[\n  { "number": "01", "title": "Teen girls", "desc": "Foundation for a lifelong journey of self-discovery." },\n  { "number": "02", "title": "Young women", "desc": "Clear guidance for the years of transition." },\n  { "number": "03", "title": "Married women", "desc": "Restoring intimacy and relational harmony." },\n  { "number": "04", "title": "Expectant mothers", "desc": "Nurturing wholeness through the miracle of life." },\n  { "number": "05", "title": "Postpartum mothers", "desc": "Support through the transformation of motherhood." },\n  { "number": "06", "title": "Women with fertility challenges", "desc": "Compassionate guidance through seasons of waiting." },\n  { "number": "07", "title": "Women navigating hormone changes", "desc": "Balance and grace for the seasons of shift." },\n  { "number": "08", "title": "Couples seeking intimacy support", "desc": "Rebuilding bridges of connection and intimacy." },\n  { "number": "09", "title": "Women seeking healing from trauma", "desc": "Safe passage toward reclamation and peace." }\n]',
+  welcomeGiftBadge: "WELCOME GIFT • FOR EVERY NEW MEMBER",
+  welcomeGiftTitle: "Complimentary Women's Wellness Starter Pack",
+  welcomeGiftText: "Women's Probiotic & Slippery Elm Supplement — included free for all first-time subscribers.",
+  welcomeGiftImageUrl: "https://res.cloudinary.com/dhqlhxjcj/image/upload/v1785892041/IMG-20260731-WA0004_sazcb3.jpg",
   joinCommunityBenefitsJson: '[\n  { "title": "Safe & Private", "text": "A confidential space where your questions are respected and your privacy is paramount.", "icon": "ShieldCheck" },\n  { "title": "Expert-Led Education", "text": "Access trusted, science-backed guidance on reproductive and intimate wellness.", "icon": "BookOpen" },\n  { "title": "Global Sisterhood", "text": "Connect with women worldwide on similar journeys of healing and discovery.", "icon": "Users" },\n  { "title": "Holistic Support", "text": "Integrative wellness tools that address your physical, emotional, and relational well-being.", "icon": "Heart" }\n]',
   joinCommunityRegistrationCost: "Registration Fee: NGN 25,000 / $50",
   joinCommunityCtaText: "Register Now",
@@ -157,6 +170,8 @@ export const FALLBACK_DEFAULTS = {
   joinCommunityWhatYouGetJson: '[\n  "Bi-weekly wellness masterclasses with Dr. FID",\n  "Access to our private discussion community",\n  "Digital intimacy wellness library & resources",\n  "Priority booking for retreats and workshops",\n  "Exclusive discounts on curated healing products",\n  "A supportive network of like-minded women"\n]',
   joinCommunityHeroBgUrl: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=1600",
   joinCommunityHeroLabel: "THE COMMUNITY",
+  joinCommunityPrivacyTitle: "PRIVACY & CONFIDENTIALITY ASSURANCE",
+  joinCommunityPrivacyText: "Your privacy is paramount. Information and clinical records are kept strictly confidential and will never be shared without your explicit consent.",
   joinCommunityExclusiveLabel: "EXCLUSIVE ACCESS",
   joinCommunityDeliveryHeading: "What You Receive As A Member Of Our Community.",
   joinCommunityReadyHeading: "Ready to Begin?",
@@ -682,7 +697,12 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
       }
     } catch (e) {
       console.warn("Firestore configs unavailable, utilizing robust client storage values.", e);
-      setContent(FALLBACK_DEFAULTS);
+      try {
+        const cached = localStorage.getItem("tvr_content_cache");
+        if (cached) {
+          setContent((prev) => ({ ...prev, ...JSON.parse(cached) }));
+        }
+      } catch (cacheErr) {}
     } finally {
       setLoading(false);
     }
@@ -699,11 +719,37 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
     
     // Add real-time listener to keep UI in sync
     const docRef = doc(db, "configs", "generalSettings");
-    const unsub = onSnapshot(docRef, (docSnap) => {
+    const unsub = onSnapshot(docRef, async (docSnap) => {
         if (docSnap.exists()) {
-            const data = docSnap.data() as ContentData;
-            // Only update if data is different to prevent loops
-            setContent(prev => ({...prev, ...data}));
+            const data = docSnap.data();
+            const trimmedData = Object.keys(data).reduce((acc, key) => {
+              acc[key] = typeof data[key] === 'string' ? data[key].trim() : data[key];
+              return acc;
+            }, {} as any);
+
+            // Hydrate any blob fields if stored separately
+            const blobKeys = Object.keys(trimmedData).filter(key => 
+              typeof trimmedData[key] === 'string' && trimmedData[key].startsWith("_blob_ref_:")
+            );
+            if (blobKeys.length > 0) {
+              await Promise.all(blobKeys.map(async (key) => {
+                try {
+                  const blobRefDoc = doc(db, "configs", `gs_blob_${key}`);
+                  const blobDocSnap = await getDoc(blobRefDoc);
+                  if (blobDocSnap.exists()) {
+                    const blobVal = blobDocSnap.data().value;
+                    if (typeof blobVal === "string") {
+                      trimmedData[key] = blobVal;
+                    }
+                  }
+                } catch (blobLoadErr) {
+                  if (contentRef.current && (contentRef.current as any)[key]) {
+                    trimmedData[key] = (contentRef.current as any)[key];
+                  }
+                }
+              }));
+            }
+            setContent(prev => ({...prev, ...trimmedData}));
         }
     }, (err) => {
         console.warn("Real-time content listener failed, utilizing current/cached values:", err);
@@ -774,12 +820,15 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
   const saveContentChanges = async (updates?: Partial<ContentData>): Promise<{ success: boolean; message: string }> => {
     try {
       const mergedContent = updates ? { ...content, ...updates } : content;
-      if (updates) {
-        setContent(mergedContent);
-      }
+      setContent(mergedContent);
+      try {
+        localStorage.setItem("tvr_content_cache", JSON.stringify(mergedContent));
+      } catch (cacheErr) {}
       const trimmedContent = Object.keys(mergedContent).reduce((acc, key) => {
         const value = mergedContent[key as keyof ContentData];
-        acc[key as keyof ContentData] = typeof value === 'string' ? value.trim() : (value as any);
+        if (value !== undefined) {
+          acc[key as keyof ContentData] = typeof value === 'string' ? value.trim() : (value as any);
+        }
         return acc;
       }, {} as ContentData);
 
@@ -802,10 +851,11 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
       const docRef = doc(db, "configs", "generalSettings");
       console.log("Saving to Firestore:", trimmedContent);
       try {
-        setDoc(docRef, trimmedContent).catch(e => console.error("Firestore sync failed in background", e));
+        await setDoc(docRef, trimmedContent);
         console.log("Saved successfully!");
       } catch (err: any) {
         handleFirestoreError(err, OperationType.WRITE, "configs/generalSettings");
+        throw err;
       }
 
       if (trimmedContent.adminPassword !== adminPasswordToken) {
