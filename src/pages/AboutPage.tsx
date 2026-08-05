@@ -331,7 +331,7 @@ export default function AboutPage() {
                 </div>
 
                 <Link to="/join-community" className="bg-brand-black text-white px-20 py-8 rounded-none text-xs font-black tracking-[0.5em] uppercase hover:bg-white hover:text-brand-black transition-all duration-500 shadow-2xl inline-flex items-center group">
-                  Join the Community
+                  JOIN INNER CIRCLE
                   <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" size={20} />
                 </Link>
               </motion.div>

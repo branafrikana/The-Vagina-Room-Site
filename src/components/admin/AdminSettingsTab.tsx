@@ -1379,7 +1379,7 @@ export default function AdminSettingsTab({ activeTab }: AdminSettingsTabProps) {
         </div>
 
         <div className="border border-white/5 bg-white/[0.01] p-5 space-y-4">
-          <p className="text-[10px] font-black uppercase tracking-widest text-brand-gold border-b border-white/5 pb-2">Browser Presence & Branding</p>
+          <p className="text-[10px] font-black uppercase tracking-widest text-brand-gold border-b border-white/5 pb-2">Browser Presence, SEO & WhatsApp Link Previews</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
                <ImageUploader 
@@ -1393,11 +1393,11 @@ export default function AdminSettingsTab({ activeTab }: AdminSettingsTabProps) {
             <div className="space-y-4">
                <ImageUploader 
                   fieldKey="ogImage" 
-                  label="OG Graph Preview Image (Social Sharing)" 
+                  label="WhatsApp & Social Share Preview Image (OG Image)" 
                   currentValue={config.ogImage}
                   onUploadSuccess={(url: string) => updateJSONField("seoSettingsJson", "ogImage", url)}
                />
-               <p className="text-[9px] text-white/30 italic">Recommended size: 1200x630px for optimal social sharing previews.</p>
+               <p className="text-[9px] text-white/30 italic">This image displays as the link preview thumbnail when shared on WhatsApp, Facebook, or Twitter. Recommended size: 1200x630px.</p>
             </div>
           </div>
         </div>

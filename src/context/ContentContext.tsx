@@ -21,7 +21,7 @@ export const FALLBACK_DEFAULTS = {
   heroWelcome: "WELCOME TO",
   heroHeading: "The Vagina Room",
   heroSub: "Where Women Heal, Learn & Thrive...",
-  heroBtnText: "👉 Join The Community",
+  heroBtnText: "JOIN INNER CIRCLE",
   heroBtnUrl: "/join-community",
   heroBgUrl: "",
 
@@ -109,7 +109,7 @@ export const FALLBACK_DEFAULTS = {
   focusAreasCtaHeading: "Start Your Transformation.",
   focusAreasCtaSub: "Healing is a journey. We are here to guide every step.",
   focusAreasCtaUrl: "/join-community",
-  focusAreasCtaBtnText: "Join The Community",
+  focusAreasCtaBtnText: "JOIN INNER CIRCLE",
   focusAreasCtaBgUrl: "",
   
   // Who We Serve phase list
@@ -145,11 +145,11 @@ export const FALLBACK_DEFAULTS = {
   communityExperiencesTitle: "Inside The Vagina Room, You Will Experience:",
   communityExperiences: "Educational wellness sessions\nWomen’s health awareness discussions\nSafe and supportive conversations\nExpert-led guidance and insights\nConfidential peer community interaction\nPractical reproductive and intimate health education\nEmotional wellness and confidence support\nRestorative wellness and holistic self-care",
   communityQuote: '"A community where your voice is heard, your questions are respected, and your wellbeing truly matters."',
-  communityBtnText: "Join The Community",
+  communityBtnText: "JOIN INNER CIRCLE",
   communityBtnUrl: "/join-community",
 
   // Join Community Page
-  joinCommunityTitle: "Join The Community",
+  joinCommunityTitle: "JOIN INNER CIRCLE",
   joinCommunityHeading: "Your Journey to Holistic Wholeness Starts Here.",
   joinCommunitySubheading: "Become part of a global movement dedicated to restoring knowledge, confidence, and healing to every woman.",
   joinCommunityAboutBadge: "INNER CIRCLE",
@@ -196,8 +196,8 @@ export const FALLBACK_DEFAULTS = {
   promiseRightLabel: "Every Woman's Right",
   promiseList: "Access to accurate intimate health education\nA safe space to be heard and supported\nConfidence in her body\nFreedom from shame and stigma\nHolistic wellness and healing\nThe power to make informed decisions",
   promiseBannerHeading: "Reclaim Your Wholeness.",
-  promiseBannerDesc: "Restore. Heal. Thrive. Join The Community for informed, confident, and empowered women.",
-  promiseBannerBtnText: "Join the Community",
+  promiseBannerDesc: "Restore. Heal. Thrive. Join Inner Circle for informed, confident, and empowered women.",
+  promiseBannerBtnText: "JOIN INNER CIRCLE",
   promiseBannerBtnUrl: "/join-community",
 
   // Focus Areas Detailed
@@ -604,7 +604,11 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
     try {
       const cached = localStorage.getItem("tvr_content_cache");
       if (cached) {
-        return { ...FALLBACK_DEFAULTS, ...JSON.parse(cached) };
+        const parsed = JSON.parse(cached);
+        if (parsed.heroBtnText && parsed.heroBtnText.toLowerCase().includes("join the community")) {
+          parsed.heroBtnText = "JOIN INNER CIRCLE";
+        }
+        return { ...FALLBACK_DEFAULTS, ...parsed };
       }
     } catch (e) {}
     return FALLBACK_DEFAULTS;

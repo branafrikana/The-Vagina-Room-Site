@@ -231,7 +231,7 @@ export default function PrimaryHero() {
                 whileTap={{ scale: 0.95 }}
                 className="bg-brand-red text-white px-10 py-5 font-black tracking-widest text-sm uppercase flex items-center hover:bg-brand-gold hover:text-brand-black transition-all duration-300 shadow-xl shadow-black/40"
               >
-                {isAdmin && isEditMode ? <EditableText field="heroBtnText" /> : (content.heroBtnText || "👉 Join The Community")}
+                {isAdmin && isEditMode ? <EditableText field="heroBtnText" /> : (content.heroBtnText || "JOIN INNER CIRCLE")}
               </motion.button>
             </Link>
             <Link 

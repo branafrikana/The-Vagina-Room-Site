@@ -124,6 +124,22 @@ export default function SEO({
       {/* Additional SEO */}
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={window.location.href} />
+
+      {/* Google Search Structured Data (Organization Logo & Schema) */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": siteName,
+          "url": window.location.origin,
+          "logo": finalOgImage,
+          "description": finalDescription,
+          "founder": {
+            "@type": "Person",
+            "name": seoData.authorName || "Dr. FID"
+          }
+        })}
+      </script>
     </Helmet>
   );
 }
